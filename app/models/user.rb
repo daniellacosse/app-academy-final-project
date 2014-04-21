@@ -1,13 +1,12 @@
 class User < ActiveRecord::Base
 
-  before_validation :reset_token!
+  before_validation :ensure_token
 
   attr_reader :password, :password_conf
 
   validates :username,
             :email,
             :password_digest,
-            :token,
             :country,
             :date_of_birth,
             presence: true
@@ -23,10 +22,20 @@ class User < ActiveRecord::Base
     SecureRandom::urlsafe_base64(16)
   end
 
+  def ensure_token
+    self.token ||= User.create_token
+  end
+
   def reset_token!
     self.token = User.create_token
     self.save!
     self.token
+  end
+
+  def self.find_by_credentials(user_params)
+    user = User.find_by_username(user_params[:username])
+    return user if !!user && user.is_password?(user_params[:password])
+    nil
   end
 
   def password=(naked_password)

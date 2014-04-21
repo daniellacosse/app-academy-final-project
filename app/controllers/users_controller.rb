@@ -17,9 +17,8 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(user_params)
-
-    if @user.save!
-      redirect_to @user
+    if @user.save
+      render @user
     else
       flash.now[:errors] = @user.errors.full_messages
       render :new
@@ -27,15 +26,15 @@ class UsersController < ApplicationController
   end
 
   def update
-    if @user.update!(user_params)
-      redirect_to @user
+    if @user.update(user_params)
+      render :show
     else
       render :edit
     end
   end
 
   def destroy
-    @user.destroy!
+    @user.destroy
 
     logout
 

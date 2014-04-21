@@ -4,20 +4,20 @@ class SessionsController < ApplicationController
   end
 
   def create
-    user = User.find_by(
-      username: params[:user][:username],
-      password: params[:user][:password]
-    )
+    user = User.find_by_credentials(params[:user])
 
     if user
       login(user)
+      redirect_to user_url(user)
     else
-      flash.now[:errors] = "Invalid Credentials"
+      flash.now[:errors] = ["Invalid Credentials"]
       render :new
     end
   end
 
   def destroy
     logout
+
+    redirect_to :root
   end
 end

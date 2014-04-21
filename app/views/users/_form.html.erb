@@ -1,70 +1,98 @@
-<form action="<%= users_url %>" method="post">
+<form action="<%= @user.id ? user_url : users_url %>" method="post">
+
+  <% if @user.id %>
+    <input type="hidden" name="_method" value="patch">
+  <% end %>
 
   <%= auth_token %>
 
   <label>
-    Username
+    Username<br>
     <input type="text" name="user[username]" value="<%= @user.username %>">
   </label>
   <br>
 
   <label>
-    Email
+    Email<br>
     <input type="email" name="user[email]" value="<%= @user.email %>">
   </label>
   <br>
 
-  <label>
-    Password
-    <input type="password" name="user[password]">
-  </label>
-  <br>
+  <% unless @user.id %>
 
-  <label>
-    Confirm Password
-    <input type="password" name="user[conf_password]">
-  </label>
-  <br>
+    <label>
+      Password<br>
+      <input type="password" name="user[password]">
+    </label>
+    <br>
+
+    <label>
+      Confirm Password<br>
+      <input type="password" name="user[conf_password]">
+    </label>
+    <br>
+
+  <% end %>
 
   <hr>
   <label>
-    First Name
+    First Name<br>
     <input type="text" name="user[first_name]" value="<%= @user.first_name %>">
   </label>
   <br>
 
   <label>
-    Last Name
-    <input type="text" name="user[first_name]" value="<%= @user.last_name %>">
+    Last Name<br>
+    <input type="text" name="user[last_name]" value="<%= @user.last_name %>">
   </label>
   <br>
 
   <fieldset>
-    Sex
+    Gender<br>
     <label>
       Male
-      <input type="radio" name="user[gender]" value="M">
-    </label>
+      <input
+        type="radio"
+        name="user[gender]"
+        value="M"
+        <%= "checked" if @user.gender == "M"%>
+      >
+    </label><br>
 
     <label>
       Female
-      <input type="radio" name="user[gender]" value="F">
-    </label>
+      <input
+        type="radio"
+        name="user[gender]"
+        value="F"
+        <%= "checked" if @user.gender == "F"%>
+      >
+    </label><br>
 
     <label>
       Other
-      <input type="radio" name="user[gender]" value="O">
-    </label>
+      <input
+        type="radio"
+        name="user[gender]"
+        value="O"
+        <%= "checked" if @user.gender == "O"%>
+      >
+    </label><br>
 
     <label>
-      None
-      <input type="radio" name="user[gender]">
+      None/Prefer not to say
+      <input
+        type="radio"
+        name="user[gender]"
+        value="n/a"
+        <%= "checked" if @user.gender == "n/a" %>
+      >
     </label>
   </fieldset>
   <br>
 
   <label>
-    Date of Birth
+    Date of Birth<br>
     <input type="date"
            name="user[date_of_birth]"
            value="<%= @user.date_of_birth %>">
@@ -72,20 +100,30 @@
   <br>
 
   <label>
-    Country
-    <select>
-      <option selected></option>
-      <option value="United States">United States</option>
-      <option value="Canada">Canada</option>
+    Country<br>
+    <select name="user[country]">
+      <option></option>
+      <option
+        value="United States"
+        <%= "selected" if @user.country == "United States" %>
+      >
+        America
+      </option>
+      <option
+        value="Canada"
+        <%= "selected" if @user.country == "Canada" %>
+      >
+        Not America
+      </option>
     </select>
   </label>
    <br>
 
    <label>
-    Biography
-    <textarea value="<%= @user.biography %>"></textarea>
+    Biography<br>
+    <textarea name="user[biography]"><%= @user.biography %></textarea>
   </label>
   <br>
 
-  <input type="submit" value="Sign Up">
+  <input type="submit" value="<%= @user.id ? "Finish Editing" : "Sign Up" %>">
 </form>
