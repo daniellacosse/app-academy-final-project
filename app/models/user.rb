@@ -2,7 +2,7 @@ class User < ActiveRecord::Base
 
   before_validation :ensure_token
 
-  attr_reader :password, :password_conf
+  attr_accessor :password, :conf_password
 
   validates :username,
             :email,
@@ -16,7 +16,7 @@ class User < ActiveRecord::Base
             :token,
             uniqueness: true
 
-  validates :password, :password_conf, length:
+  validates :password, :conf_password, length:
 
                               { minimum: 7,
                                 allow_nil: true,
@@ -54,6 +54,6 @@ class User < ActiveRecord::Base
 
   private
   def password_confirmation
-    flash.now[:errors] << "Passwords must match." unless self.password == self.password_conf
+    errors[:base] << "Passwords must match." unless self.password == self.conf_password
   end
 end

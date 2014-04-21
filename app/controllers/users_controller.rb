@@ -53,7 +53,7 @@ class UsersController < ApplicationController
         :last_name,
         :email,
         :password,
-        :password_conf,
+        :conf_password,
         :gender,
         :date_of_birth,
         :country,
