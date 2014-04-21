@@ -8,7 +8,7 @@ FactoryGirl.define do
     token "MyString"
     gender ""
     date_of_birth "2014-04-21"
-    location "MyString"
+    country "MyString"
     biography "MyText"
   end
 end

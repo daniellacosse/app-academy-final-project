@@ -7,7 +7,7 @@
 
 <p>
   <strong> Name: </strong><br>
-  <%= @user.first_name %> &nbsp; <%= @user.last_name %>
+  <%= @user.first_name %> <%= @user.last_name %>
 </p>
 
 <p>
@@ -35,5 +35,4 @@
   <%= @user.biography %>
 </p>
 
-<%= link_to 'Edit', edit_user_path(@user) %> |
-<%= link_to 'Back', users_path %>
+<%= link_to 'Edit', edit_user_url(@user) %>

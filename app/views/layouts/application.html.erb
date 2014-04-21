@@ -12,13 +12,16 @@
       font: inherit;
       font-family: Helvetica,sans-serif;
     }
+
+    body { width: 100%; text-align: center; padding-top: 200px;}
+    .error {color: red;}
   </style>
 </head>
 <body>
 
   <% if flash[:errors] %>
     <% flash[:errors].each do |error| %>
-      <strong><%= error %></strong><br>
+      <strong class="error"><%= error %></strong><br>
     <% end %>
     <br><br>
   <% end %>

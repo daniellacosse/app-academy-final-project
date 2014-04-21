@@ -16,6 +16,12 @@ class User < ActiveRecord::Base
             :token,
             uniqueness: true
 
+  validates :password, :password_conf, length:
+
+                              { minimum: 7,
+                                allow_nil: true,
+                                message: "Password length must be at least 7." }
+
   validate :password_confirmation
 
   def self.create_token
@@ -48,6 +54,7 @@ class User < ActiveRecord::Base
 
   private
   def password_confirmation
-    errors[:base] << "passwords must match" unless self.password == self.password_conf
+    fail
+    flash.now[:errors] << "Passwords must match." unless self.password == self.password_conf
   end
 end
