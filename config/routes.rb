@@ -2,5 +2,5 @@ DArt::Application.routes.draw do
   resources :users
   resource :session, only: [:new, :create, :destroy]
 
-  root to: "session#new"
+  root to: "sessions#new"
 end
