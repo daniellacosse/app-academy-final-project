@@ -33,7 +33,7 @@ describe User do
         email: "name@name.com",
         password_digest: BCrypt::Password.create("password"),
         token: User.create_token,
-        gender: male,
+        gender: "M",
         date_of_birth: "2014-04-21",
         country: "United States",
         biography: "lol hi"
@@ -44,7 +44,7 @@ describe User do
         email: "name2@name.com",
         password_digest: BCrypt::Password.create("password"),
         token: User.create_token,
-        gender: male,
+        gender: "M",
         date_of_birth: "2014-04-21",
         country: "United States",
         biography: "lol hi"
@@ -60,7 +60,7 @@ describe User do
         email: "name@name.com",
         password_digest: BCrypt::Password.create("password"),
         token: User.create_token,
-        gender: male,
+        gender: "M",
         date_of_birth: "2014-04-21",
         country: "United States",
         biography: "lol hi"
@@ -71,7 +71,7 @@ describe User do
         email: "name@name.com",
         password_digest: BCrypt::Password.create("password"),
         token: User.create_token,
-        gender: male,
+        gender: "M",
         date_of_birth: "2014-04-21",
         country: "United States",
         biography: "lol hi"
@@ -89,7 +89,7 @@ describe User do
         password: "password",
         password_conf: "other_password",
         token: User.create_token,
-        gender: male,
+        gender: "M",
         date_of_birth: "2014-04-21",
         country: "United States",
         biography: "lol hi"
@@ -105,7 +105,7 @@ describe User do
         password: "secret",
         password_conf: "secret",
         token: User.create_token,
-        gender: male,
+        gender: "M",
         date_of_birth: "2014-04-21",
         country: "United States",
         biography: "lol hi"

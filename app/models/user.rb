@@ -54,7 +54,6 @@ class User < ActiveRecord::Base
 
   private
   def password_confirmation
-    fail
     flash.now[:errors] << "Passwords must match." unless self.password == self.password_conf
   end
 end
