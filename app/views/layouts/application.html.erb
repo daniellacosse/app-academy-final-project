@@ -1,12 +1,32 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>DArt</title>
-  <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
-  <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+  <title>dArt</title>
   <%= csrf_meta_tags %>
+  <style>
+    p, body, html, h1, fieldset {
+      padding: 0;
+      margin: 0;
+      border: 0;
+
+      font: inherit;
+      font-family: Helvetica,sans-serif;
+    }
+  </style>
 </head>
 <body>
+
+  <% if flash[:errors] %>
+    <% flash[:errors].each do |error| %>
+      <strong><%= error %></strong><br>
+    <% end %>
+  <% end %>
+
+  <% if logged_in? %>
+    <strong><%= current_user.username %></strong>
+
+    <%= button_to "Log out", session_url, method: :delete %>
+  <% end %>
 
 <%= yield %>
 

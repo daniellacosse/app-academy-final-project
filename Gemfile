@@ -10,6 +10,8 @@ gem 'pry-rails'
 gem 'jbuilder', '~> 1.2'
 gem 'bcrypt', '~> 3.1.7'
 gem 'backbone-on-rails'
+gem "paperclip"
+gem "aws-sdk"
 # gem 'turbolinks'
 
 group :doc do

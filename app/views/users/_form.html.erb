@@ -1,0 +1,91 @@
+<form action="<%= users_url %>" method="post">
+
+  <%= auth_token %>
+
+  <label>
+    Username
+    <input type="text" name="user[username]" value="<%= @user.username %>">
+  </label>
+  <br>
+
+  <label>
+    Email
+    <input type="email" name="user[email]" value="<%= @user.email %>">
+  </label>
+  <br>
+
+  <label>
+    Password
+    <input type="password" name="user[password]">
+  </label>
+  <br>
+
+  <label>
+    Confirm Password
+    <input type="password" name="user[conf_password]">
+  </label>
+  <br>
+
+  <hr>
+  <label>
+    First Name
+    <input type="text" name="user[first_name]" value="<%= @user.first_name %>">
+  </label>
+  <br>
+
+  <label>
+    Last Name
+    <input type="text" name="user[first_name]" value="<%= @user.last_name %>">
+  </label>
+  <br>
+
+  <fieldset>
+    Sex
+    <label>
+      Male
+      <input type="radio" name="user[gender]" value="M">
+    </label>
+
+    <label>
+      Female
+      <input type="radio" name="user[gender]" value="F">
+    </label>
+
+    <label>
+      Other
+      <input type="radio" name="user[gender]" value="O">
+    </label>
+
+    <label>
+      None
+      <input type="radio" name="user[gender]">
+    </label>
+  </fieldset>
+  <br>
+
+  <label>
+    Date of Birth
+    <input type="date"
+           name="user[date_of_birth]"
+           value="<%= @user.date_of_birth %>">
+  </label>
+  <br>
+
+  <label>
+    Country
+    <select>
+      <option selected></option>
+      <option value="United States">United States</option>
+      <option value="Canada">Canada</option>
+    </select>
+  </label>
+   <br>
+
+   <label>
+    Biography
+    <textarea value="<%= @user.biography %>"></textarea>
+  </label>
+  <br>
+
+  <input type="submit" value="Sign Up">
+</form>
