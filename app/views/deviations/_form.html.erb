@@ -1,4 +1,5 @@
 <form
+  class="deviation-form"
   action="<%= @deviation.persisted? ? deviation_url : deviations_url %>"
   method="post"
   enctype="multipart/form-data">
@@ -6,19 +7,20 @@
   <% if @deviation.persisted? %>
     <input type="hidden" name="_method" value="patch">
 
-    <img src="<%= @deviation.media.url %>">
+    <img class="image-upload-preview" src="<%= @deviation.media.url %>">
   <% end %>
 
   <%= auth_token %>
 
   <input type="hidden" name="deviation[user_id]" value="<%= current_user.id %>">
 
-  <div>
+  <div class="file-upload">
     <label for="deviation_media">Your Artwork</label>
     <input type="file" name="deviation[media]" id="deviation_media">
   </div>
 
   <input
+    class="text-input"
     type="text"
     name="deviation[title]"
     value="<%= @deviation.title %>"
@@ -26,14 +28,15 @@
   >
 
   <textarea
+    class="textarea-input"
     name="deviation[description]"
     placeholder="Description"
   ><%= @deviation.description %></textarea>
 
-  <fieldset>
+  <fieldset class="checkbox-input-set">
     <legend>Options:</legend>
 
-    <div>
+    <div class="checkbox">
       <label for="can_comment">Can Comment?</label>
       <input type="hidden" name="deviation[is_commentable]" value="false">
       <input
@@ -45,7 +48,7 @@
       >
     </div>
 
-    <div>
+    <div class="checkbox">
       <label for="can_share">Can Share?</label>
       <input type="hidden" name="deviation[is_shareable]" value="false">
       <input
@@ -57,7 +60,7 @@
       >
     </div>
 
-    <div>
+    <div class="checkbox">
       <label for="can_like">Can Like?</label>
       <input type="hidden" name="deviation[is_likeable]" value="false">
       <input
@@ -69,7 +72,7 @@
       >
     </div>
 
-    <div>
+    <div class="checkbox">
       <label for="mature_content">Mature Content?</label>
       <input type="hidden" name="deviation[is_mature]" value="false">
       <input
@@ -81,7 +84,7 @@
       >
     </div>
 
-    <div>
+    <div class="checkbox">
       <label for="can_remix">Allow Remixes?</label>
       <input type="hidden" name="deviation[can_remix]" value="false">
       <input
@@ -93,7 +96,7 @@
       >
     </div>
 
-    <div>
+    <div class="checkbox">
       <label for="is_cc">Creative Commons?</label>
       <input type="hidden" name="deviation[is_CC]" value="false">
       <input
@@ -105,7 +108,7 @@
       >
     </div>
 
-    <div>
+    <div class="checkbox">
       <label for="is_drm">DRM Free?</label>
       <input type="hidden" name="deviation[is_DRM]" value="true">
       <input
@@ -118,8 +121,8 @@
   </fieldset>
 
   <input
+    class="submit-button"
     type="submit"
     value="<%= @deviation.persisted? ? "Edit Deviation" : "Create Deviation" %>"
-  >
-
+  > 
 </form>

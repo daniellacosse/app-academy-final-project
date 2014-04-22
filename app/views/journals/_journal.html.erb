@@ -1,10 +1,17 @@
-<h1>
-  <a href="<%= journal_url(journal) %>"><%= journal.title %></a>
-</h1>
-<date><%= time_ago_in_words(journal.created_at) %> ago, </date>
+<div class="_journal" data-id="<%= @journal.id %>">
+  <h2 class="_journal-header">
+    <a href="<%= journal_url(journal) %>"><%= journal.title %></a>
+  </h2>
 
-by ~<a href="<%= user_url(journal.user) %>"><%= journal.user.username %></a>
+  <span class="_journal-metadata">
+    <date class="_journal-post-date">
+      <%= time_ago_in_words(journal.created_at) %> ago,
+    </date>
 
-<p>
-  <%= journal.body %>
-</p>
+    by ~<a href="<%= user_url(journal.user) %>"><%= journal.user.username %></a>
+  </span>
+
+  <p class="_journal-body">
+    <%= journal.body %>
+  </p>
+</div>

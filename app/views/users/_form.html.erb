@@ -1,4 +1,5 @@
 <form
+  class="user-form"
   action="<%= @user.persisted? ? user_url : users_url %>"
   method="post"
   enctype="multipart/form-data">
@@ -10,12 +11,14 @@
   <%= auth_token %>
 
   <input
+    class="text-input"
     type="text"
     name="user[username]"
     value="<%= @user.username %>"
     placeholder="Username">
 
   <input
+    class="text-input"
     type="email"
     name="user[email]"
     value="<%= @user.email %>"
@@ -23,19 +26,21 @@
 
   <% unless @user.persisted? %>
 
-    <!-- display current img if there is one? -->
+    <!-- display current img if there is one?; class="image-upload-preview" -->
 
-    <div>
+    <div class="file-upload">
       <label for="user_avatar">Profile Picture:</label>
       <input type="file" name="user[avatar]" id="user_avatar">
     </div>
 
     <input
+      class="text-input"
       type="password"
       name="user[password]"
       placeholder="Password">
 
     <input
+      class="text-input"
       type="password"
       name="user[password_confirmation]"
       placeholder="Confirm Password">
@@ -43,21 +48,23 @@
   <% end %>
 
   <input
+    class="text-input"
     type="text"
     name="user[first_name]"
     value="<%= @user.first_name %>"
     placeholder="First Name">
 
   <input
+    class="text-input"
     type="text"
     name="user[last_name]"
     value="<%= @user.last_name %>"
     placeholder="Last Name">
 
-  <fieldset>
+  <fieldset class="radio-button-input-set">
     <legend>Gender:</legend>
 
-    <div>
+    <div class="radio-button">
       <label for="male_gender">Male</label>
       <input
         id="male_gender"
@@ -68,7 +75,7 @@
       >
     </div>
 
-    <div>
+    <div class="radio-button">
       <label for="female_gender">Female</label>
       <input
         id="female_gender"
@@ -79,6 +86,7 @@
       >
     </div>
 
+    <div class="radio-button">
       <label for="other_gender">Other</label>
       <input
         id="other_gender"
@@ -87,8 +95,9 @@
         value="O"
         <%= "checked" if @user.gender == "O"%>
       >
+    </div>
 
-    <div>
+    <div class="radio-button">
       <label for="no_gender">None/Prefer not to say</label>
       <input
         type="radio"
@@ -100,7 +109,7 @@
 
   </fieldset>
 
-  <div>
+  <div class="date-input">
     <label for="dob">Date of Birth:</label>
     <input
       id="dob"
@@ -109,7 +118,7 @@
       value="<%= @user.date_of_birth %>">
   </div>
 
-  <div>
+  <div class="dropdown-input">
     <label for="user_country">Place of Origin:</label>
     <select id="user_country" name="user[country]">
       <option></option>
@@ -127,11 +136,13 @@
   <div>
 
   <textarea
+    class="textarea-input"
     name="user[biography]"
     placeholder="Biography"><%= @user.biography %></textarea>
 
   <input
+    class="submit-button"
     type="submit"
-    value="<%= @user.persisted? ? "Update" : "Sign Up" %>">
-
+    value="<%= @user.persisted? ? "Update" : "Sign Up" %>"
+  >
 </form>

@@ -1,4 +1,5 @@
 <form
+  class="journal-form"
   action="<%= @journal.persisted? ? journal_url : user_journals_url %>"
   method="post"
 >
@@ -12,19 +13,21 @@
   <input type="hidden" name="journal[user_id]" value="<%= current_user.id %>">
 
   <input
+    class="text-input"
     type="text"
     name="journal[title]"
     value="<%= @journal.title %>"
     placeholder="Title">
 
   <textarea
+    class="textarea-input"
     name="journal[body]"
     placeholder="Write Your Journal Here"
   ><%= @journal.body %></textarea>
 
   <input
+    class
     type="submit"
     value="<%= @journal.persisted? ? "Edit Journal" : "Post Journal" %>"
   >
-
 </form>

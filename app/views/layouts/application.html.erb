@@ -2,28 +2,35 @@
 <html>
 <head>
   <title>dArt</title>
+
   <%= stylesheet_link_tag "application" %>
   <%= csrf_meta_tags %>
 </head>
 <body>
 
-  <a href="<%= deviations_url %>"><em>d</em><strong>Art</strong><br></a>
+  <header>
+    <h1 class="dArt-header">
+      <a href="<%= deviations_url %>">dArt</a>
+    </h1>
+
+    <% if logged_in? %>
+      <h2 class="current-user-header">
+        <a href="<%= user_url(current_user) %>"><%= current_user.username %></a>
+      </h2>
+
+      <%= button_to "Submit Art", new_deviation_url, method: :get %>
+      <%= button_to "Log out", session_url, method: :delete %>
+    <% end %>
+  </header>
 
   <% if flash[:errors] %>
     <% flash[:errors].each do |error| %>
-      <strong class="error"><%= error %></strong><br>
+    <% fail %>
+      <p class="error"><%= error %></p>
     <% end %>
-    <br><br>
   <% end %>
 
-  <% if logged_in? %>
-    <strong><a href="<%= user_url(current_user) %>"><%= current_user.username %></a></strong>
-    <%= button_to "Submit Art", new_deviation_url, method: :get %>
-
-    <%= button_to "Log out", session_url, method: :delete %>
-  <% end %>
-
-<%= yield %>
+  <%= yield %>
 
 </body>
 </html>

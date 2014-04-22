@@ -27,7 +27,7 @@ class User < ActiveRecord::Base
                                 message: "Password length must be at least 7" }
 
   validates_confirmation_of :password
-  # validates_attatchment_content_type :avatar, content_type: :image
+  validates_attachment_content_type :avatar, content_type: :image
 
   has_many :deviations
   has_many :journals

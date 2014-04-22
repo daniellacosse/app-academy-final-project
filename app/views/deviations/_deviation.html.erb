@@ -1,8 +1,17 @@
-<img src="<%= @deviation.media.url %>">
+<div class="_deviation" data-id="<%= @deviation.id %>">
+  <img class="_deviation-media" src="<%= @deviation.media.url %>">
 
-<h1><a href="<%= deviation_url(deviation) %>"><%= deviation.title %></a></h1>
-by ~<a href="<%= user_url(deviation.user) %>"><%= deviation.user.username %></a>
+  <h2 class="_deviation-title">
+    <a href="<%= deviation_url(deviation) %>"><%= deviation.title %></a>
+  </h2>
 
-<p>
-  <%= deviation.description %>
-</p>
+  <span class="_deviation-author">
+    by ~<a href="<%= user_url(deviation.user) %>">
+      <%= deviation.user.username %>
+    </a>
+  </span>
+
+  <p class="_deviation-description">
+    <%= deviation.description %>
+  </p>
+</div>
