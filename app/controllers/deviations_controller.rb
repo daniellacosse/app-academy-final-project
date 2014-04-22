@@ -17,7 +17,6 @@ class DeviationsController < ApplicationController
 
   def create
     @deviation = Deviation.new(deviation_params)
-    fail
     if @deviation.save
       render @deviation
     else
@@ -47,7 +46,8 @@ class DeviationsController < ApplicationController
       :is_shareable,
       :is_mature,
       :is_CC,
-      :is_DRM
+      :is_DRM,
+      :can_remix
     )
   end
 end

@@ -1,10 +1,10 @@
 class User < ActiveRecord::Base
-  
+
   # TODO: has_attached_file :avatar
 
   before_validation :ensure_token
 
-  attr_accessor :password, :conf_password
+  attr_accessor :password, :naked_password, :conf_password
 
   validates :username,
             :email,
@@ -22,12 +22,12 @@ class User < ActiveRecord::Base
 
                               { minimum: 7,
                                 allow_nil: true,
-                                message: "Password length must be at least 7." }
+                                message: "Password length must be at least 7" }
 
   validate :password_confirmation
-  
+
   has_many :deviations
-  
+
   def self.create_token
     SecureRandom::urlsafe_base64(16)
   end
@@ -49,6 +49,7 @@ class User < ActiveRecord::Base
   end
 
   def password=(naked_password)
+    self.naked_password = naked_password
     self.password_digest = BCrypt::Password.create(naked_password)
   end
 
@@ -58,6 +59,6 @@ class User < ActiveRecord::Base
 
   private
   def password_confirmation
-    errors[:base] << "Passwords must match." unless self.password == self.conf_password
+    errors[:base] << "Passwords must match" unless self.naked_password == self.conf_password
   end
 end

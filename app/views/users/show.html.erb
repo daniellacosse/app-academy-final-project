@@ -35,6 +35,8 @@
   <%= @user.biography %>
 </p>
 
-<%= link_to 'Edit', edit_user_url(@user) %>
+<% if @user.id == current_user.try(:id) %>
+  <%= link_to 'Edit', edit_user_url(@user) %>
+<% end %>
 
 <%= render @user.deviations %>

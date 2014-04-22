@@ -27,7 +27,7 @@
   <% end %>
 
   <% if logged_in? %>
-    <strong><%= current_user.username %></strong>
+    <strong><a href="<%= user_url(current_user) %>"><%= current_user.username %></a></strong>
     <%= button_to "Submit Art", new_deviation_url, method: :get %>
 
     <%= button_to "Log out", session_url, method: :delete %>

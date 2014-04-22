@@ -2,6 +2,10 @@ require 'spec_helper'
 
 describe User do
 
+  describe "associations" do
+    it { should have_many(:deviations) }
+  end
+
   context "validates presence" do
     let(:incomplete_user) { User.new }
 
@@ -95,7 +99,20 @@ describe User do
         biography: "lol hi"
       })
 
+      user2 = User.new({
+        username: "name2",
+        email: "name@name.com",
+        password: "password",
+        conf_password: "password",
+        token: User.create_token,
+        gender: "M",
+        date_of_birth: "2014-04-21",
+        country: "United States",
+        biography: "lol hi"
+      })
+
       expect(user).not_to be_valid
+      expect(user2).to be_valid
     end
 
     it "validates password length" do
@@ -111,7 +128,20 @@ describe User do
         biography: "lol hi"
       })
 
+      user2 = User.new({
+        username: "name2",
+        email: "name@name.com",
+        password: "large_secret",
+        conf_password: "large_secret",
+        token: User.create_token,
+        gender: "M",
+        date_of_birth: "2014-04-21",
+        country: "United States",
+        biography: "lol hi"
+      })
+
       expect(user).not_to be_valid
+      expect(user2).to be_valid
     end
   end
 end
