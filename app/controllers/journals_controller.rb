@@ -1,0 +1,2 @@
+class JournalsController < ApplicationController
+end

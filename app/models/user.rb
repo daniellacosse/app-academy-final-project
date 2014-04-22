@@ -27,6 +27,7 @@ class User < ActiveRecord::Base
   validate :password_confirmation
 
   has_many :deviations
+  has_many :journals
 
   def self.create_token
     SecureRandom::urlsafe_base64(16)

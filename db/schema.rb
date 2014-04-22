@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140422022008) do
+ActiveRecord::Schema.define(version: 20140422145452) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -33,6 +33,16 @@ ActiveRecord::Schema.define(version: 20140422022008) do
 
   add_index "deviations", ["user_id", "title"], name: "index_deviations_on_user_id_and_title", unique: true, using: :btree
   add_index "deviations", ["user_id"], name: "index_deviations_on_user_id", using: :btree
+
+  create_table "journals", force: true do |t|
+    t.string   "title",      null: false
+    t.text     "body",       null: false
+    t.integer  "user_id",    null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "journals", ["user_id"], name: "index_journals_on_user_id", using: :btree
 
   create_table "users", force: true do |t|
     t.string   "username",        null: false

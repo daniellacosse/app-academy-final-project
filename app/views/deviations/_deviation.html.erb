@@ -1,6 +1,6 @@
 <br>
 <h1><strong><a href="<%= deviation_url(deviation) %>"><%= deviation.title %></a></strong></h1>
-<em>by <a href="<%= user_url(deviation.user) %>">~<%= deviation.user.username %></a></em>
+<em>by ~<a href="<%= user_url(deviation.user) %>"><%= deviation.user.username %></a></em>
 <p>
 <%= deviation.description %>
 </p>

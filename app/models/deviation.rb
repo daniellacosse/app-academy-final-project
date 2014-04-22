@@ -13,7 +13,7 @@ class Deviation < ActiveRecord::Base
               :is_DRM,
               :is_CC,
               :can_remix,
-              inclusion: { in: [true, false], message: "something's up" }
+              inclusion: { in: [true, false], message: "something's up" } 
 
     belongs_to :user
 end

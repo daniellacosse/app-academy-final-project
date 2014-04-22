@@ -1,5 +1,3 @@
-<p id="notice"><%= notice %></p>
-
 <p>
   <strong>Username:</strong>
   <%= @user.username %>
@@ -36,7 +34,9 @@
 </p>
 
 <% if @user.id == current_user.try(:id) %>
-  <%= link_to 'Edit', edit_user_url(@user) %>
+  <%= link_to 'Edit My Info', edit_user_url(@user) %>
 <% end %>
+
+<br>
 
 <%= render @user.deviations %>
