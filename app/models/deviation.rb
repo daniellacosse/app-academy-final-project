@@ -1,5 +1,4 @@
 class Deviation < ActiveRecord::Base
-
     has_attached_file :media
 
     validates :user_id,
@@ -15,5 +14,5 @@ class Deviation < ActiveRecord::Base
               :can_remix,
               inclusion: { in: [true, false], message: "something's up" }
 
-    belongs_to :user
+    belongs_to :user, dependent: :destroy
 end

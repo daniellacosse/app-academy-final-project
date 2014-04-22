@@ -1,0 +1,17 @@
+<div class="_message" data-id="<%= message.id %>">
+  <h2 class="_message-header">
+    <%= message.title %>
+  </h2>
+
+  <span class="_message-metadata">
+    <date class="_message-post-date">
+      <%= time_ago_in_words(message.created_at) %> ago,
+    </date>
+
+    from ~<a href="<%= user_url(message.user) %>"><%= message.author.username %></a>
+  </span>
+
+  <p class="_message-body">
+    <%= message.body %>
+  </p>
+</div>

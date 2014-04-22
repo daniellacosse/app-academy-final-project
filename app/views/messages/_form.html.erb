@@ -1,0 +1,34 @@
+<form
+  class="message-form"
+  action="<%= @message.persisted? ? message_url : user_messages_url %>"
+  method="post"
+>
+
+  <% if @message.persisted? %>
+    <input type="hidden" name="_method" value="patch">
+  <% end %>
+
+  <%= auth_token %>
+
+  <input type="hidden" name="message[author_id]" value="<%= current_user.id %>">
+  <input type="hidden" name="message[user_id]" value="<%= @user.id %>">
+
+  <input
+    class="text-input"
+    type="text"
+    name="message[title]"
+    value="<%= @message.title %>"
+    placeholder="Title">
+
+  <textarea
+    class="textarea-input"
+    name="message[body]"
+    placeholder="Write Your Message Here"
+  ><%= @message.body %></textarea>
+
+  <input
+    class
+    type="submit"
+    value="<%= @message.persisted? ? "Edit Message" : "Post Message" %>"
+  >
+</form>

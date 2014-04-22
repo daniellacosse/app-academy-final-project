@@ -9,5 +9,9 @@ DArt::Application.routes.draw do
     end
   end
 
+  resources :users do
+    resources :messages
+  end
+
   resource :session, only: [:new, :create, :destroy]
 end

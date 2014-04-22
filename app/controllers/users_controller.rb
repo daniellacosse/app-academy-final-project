@@ -17,8 +17,6 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(user_params)
-    puts @user.password
-    puts @user.password_confirmation
     if @user.save
       login(@user)
 

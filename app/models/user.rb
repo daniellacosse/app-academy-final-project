@@ -1,12 +1,15 @@
 class User < ActiveRecord::Base
-
-  has_attached_file :avatar, styles: {
-    thumb: "200x200>", icon: "50x50>"
-  }
+  attr_reader :password, :password_confirmation
 
   before_validation :ensure_token
 
-  attr_reader :password, :password_confirmation
+  has_attached_file :avatar# , styles: {
+#     thumb: "200x200>", icon: "50x50>"
+#   }
+
+  validates_attachment :avatar, content_type: {
+    content_type: ["image/jpg", "image/gif", "image/png"]
+  }
 
   validates :username,
             :email,
@@ -20,17 +23,22 @@ class User < ActiveRecord::Base
             :token,
             uniqueness: true
 
+  validates_confirmation_of :password
   validates :password, length:
 
                               { minimum: 7,
                                 allow_nil: true,
                                 message: "Password length must be at least 7" }
 
-  validates_confirmation_of :password
-  validates_attachment_content_type :avatar, content_type: :image
-
   has_many :deviations
   has_many :journals
+  has_many :messages
+  has_many(
+    :authored_messages,
+    class_name: "Message",
+    foreign_key: :author_id,
+    primary_key: :id
+  )
 
   def self.create_token
     SecureRandom::urlsafe_base64(16)

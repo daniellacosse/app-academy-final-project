@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140422145452) do
+ActiveRecord::Schema.define(version: 20140422233925) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -37,6 +37,16 @@ ActiveRecord::Schema.define(version: 20140422145452) do
 
   add_index "deviations", ["user_id"], name: "index_deviations_on_user_id", using: :btree
 
+  create_table "galleries", force: true do |t|
+    t.string   "title"
+    t.text     "description"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "galleries", ["user_id"], name: "index_galleries_on_user_id", using: :btree
+
   create_table "journals", force: true do |t|
     t.string   "title",      null: false
     t.text     "body",       null: false
@@ -46,6 +56,18 @@ ActiveRecord::Schema.define(version: 20140422145452) do
   end
 
   add_index "journals", ["user_id"], name: "index_journals_on_user_id", using: :btree
+
+  create_table "messages", force: true do |t|
+    t.string   "title",      null: false
+    t.text     "body",       null: false
+    t.integer  "user_id",    null: false
+    t.integer  "author_id",  null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "messages", ["author_id"], name: "index_messages_on_author_id", using: :btree
+  add_index "messages", ["user_id"], name: "index_messages_on_user_id", using: :btree
 
   create_table "users", force: true do |t|
     t.string   "username",            null: false

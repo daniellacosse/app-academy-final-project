@@ -1,4 +1,4 @@
-p, body, html, h1, fieldset {
+p, body, html, h1, fieldset, input {
   padding: 0;
   margin: 0;
   border: 0;
@@ -7,17 +7,76 @@ p, body, html, h1, fieldset {
   font-family: Helvetica,sans-serif;
 }
 
+form {
+  display: inline;
+}
+
+.text-input, .textarea-input {
+  display: block;
+  margin: auto;
+  width: 300px;
+}
+
+.textarea-input {
+  height: 150px;
+}
+
+.submit-button, input[type="submit"] {
+  cursor: pointer;
+  display: inline-block;
+  margin: 5px;
+}
+
+.submit-button:hover, input[type="submit"]:hover {
+  background-color: blue;
+  border-color: blue;
+  color:white;
+}
+
+input:focus, select:focus, textarea:focus {
+  outline: none;
+  border: 1px solid red;
+}
+
+input, .textarea-input {
+  padding: 5px 10px;
+  border: 1px solid #AAA;
+}
+
 h1 {
   font-weight: bold;
   margin-top: 20px;
+  margin-bottom: 10px;
+}
+
+.dArt-header {
+  font-size: 40pt;
+}
+
+a {
+  text-decoration: none;
+  color: blue;
+}
+
+a:hover {
+  color: red;
+}
+
+ul {
+  list-style-type: none;
 }
 
 body {
   width: 100%;
   text-align: center;
-  padding-top: 150px;
+  padding: 150px 0;
 }
 
 .error {
   color: red;
+  font-weight: bold;
+}
+
+img {
+  padding: 20px 0;
 }

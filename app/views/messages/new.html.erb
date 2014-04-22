@@ -1,0 +1,5 @@
+<h1 class="new-message-header">
+  New Message to <%= @user.username %>
+</h1>
+
+<%= render 'form', locals: {message: @message} %>

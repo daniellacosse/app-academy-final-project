@@ -5,6 +5,8 @@ describe User do
   describe "associations" do
     it { should have_many(:deviations) }
     it { should have_many(:journals) }
+    it { should have_many(:messages) }
+    it { should have_many(:authored_messages) }
   end
 
   context "validates presence" do
