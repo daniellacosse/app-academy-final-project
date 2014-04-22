@@ -8,7 +8,7 @@ describe Journal do
   context "validates presence" do
     let(:incomplete_journal) { Journal.new }
 
-    it "validates presence of " do
+    it "validates presence of :title" do
       expect(incomplete_journal).to have(1).error_on(:title)
     end
 

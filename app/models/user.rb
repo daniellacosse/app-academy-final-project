@@ -31,6 +31,7 @@ class User < ActiveRecord::Base
                                 message: "Password length must be at least 7" }
 
   has_many :deviations
+  has_many :galleries
   has_many :journals
   has_many :messages
   has_many(

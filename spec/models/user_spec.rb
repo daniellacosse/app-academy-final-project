@@ -7,6 +7,7 @@ describe User do
     it { should have_many(:journals) }
     it { should have_many(:messages) }
     it { should have_many(:authored_messages) }
+    it { should have_many(:galleries) }
   end
 
   context "validates presence" do
