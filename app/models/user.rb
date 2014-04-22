@@ -1,6 +1,8 @@
 class User < ActiveRecord::Base
 
-  # TODO: has_attached_file :avatar
+  has_attached_file :avatar, styles: {
+    thumb: "200x200>", icon: "50x50>"
+  }
 
   before_validation :ensure_token
 

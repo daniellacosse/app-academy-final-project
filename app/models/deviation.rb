@@ -1,6 +1,6 @@
 class Deviation < ActiveRecord::Base
 
-    # TODO: has_attached_file :media
+    has_attached_file :media
 
     validates :user_id,
               :title,
@@ -13,7 +13,7 @@ class Deviation < ActiveRecord::Base
               :is_DRM,
               :is_CC,
               :can_remix,
-              inclusion: { in: [true, false], message: "something's up" } 
+              inclusion: { in: [true, false], message: "something's up" }
 
     belongs_to :user
 end
