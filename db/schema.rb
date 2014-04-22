@@ -11,10 +11,28 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140421162618) do
+ActiveRecord::Schema.define(version: 20140422022008) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "deviations", force: true do |t|
+    t.string   "title",          null: false
+    t.text     "description"
+    t.integer  "user_id",        null: false
+    t.boolean  "is_mature",      null: false
+    t.boolean  "is_commentable", null: false
+    t.boolean  "is_shareable",   null: false
+    t.boolean  "is_likeable",    null: false
+    t.boolean  "is_DRM",         null: false
+    t.boolean  "is_CC",          null: false
+    t.boolean  "can_remix",      null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "deviations", ["user_id", "title"], name: "index_deviations_on_user_id_and_title", unique: true, using: :btree
+  add_index "deviations", ["user_id"], name: "index_deviations_on_user_id", using: :btree
 
   create_table "users", force: true do |t|
     t.string   "username",        null: false

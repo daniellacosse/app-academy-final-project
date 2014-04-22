@@ -7,7 +7,6 @@ development:
   adapter: postgresql
   database: dArt_development
   host: localhost
-  username: appacademy
   pool: 5
   timeout: 5000
 
@@ -18,14 +17,5 @@ test:
   adapter: postgresql
   database: dArt_test
   host: localhost
-  username: appacademy
-  pool: 5
-  timeout: 5000
-
-production:
-  adapter: sqlite3
-  database: dArt_production
-  host: localhost
-  username: appacademy
   pool: 5
   timeout: 5000

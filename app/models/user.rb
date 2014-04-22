@@ -1,4 +1,6 @@
 class User < ActiveRecord::Base
+  
+  # TODO: has_attached_file :avatar
 
   before_validation :ensure_token
 
@@ -23,7 +25,9 @@ class User < ActiveRecord::Base
                                 message: "Password length must be at least 7." }
 
   validate :password_confirmation
-
+  
+  has_many :deviations
+  
   def self.create_token
     SecureRandom::urlsafe_base64(16)
   end
