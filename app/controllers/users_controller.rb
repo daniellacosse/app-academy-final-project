@@ -20,6 +20,8 @@ class UsersController < ApplicationController
     puts @user.password
     puts @user.password_confirmation
     if @user.save
+      login(@user)
+
       render :show
     else
       flash.now[:errors] = @user.errors.full_messages
@@ -60,7 +62,8 @@ class UsersController < ApplicationController
         :gender,
         :date_of_birth,
         :country,
-        :biography
+        :biography,
+        :avatar
       )
     end
 end

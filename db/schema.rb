@@ -17,21 +17,24 @@ ActiveRecord::Schema.define(version: 20140422145452) do
   enable_extension "plpgsql"
 
   create_table "deviations", force: true do |t|
-    t.string   "title",          null: false
+    t.string   "media_file_name"
+    t.string   "media_content_type"
+    t.integer  "media_file_size"
+    t.datetime "media_updated_at"
+    t.string   "title",              null: false
     t.text     "description"
-    t.integer  "user_id",        null: false
-    t.boolean  "is_mature",      null: false
-    t.boolean  "is_commentable", null: false
-    t.boolean  "is_shareable",   null: false
-    t.boolean  "is_likeable",    null: false
-    t.boolean  "is_DRM",         null: false
-    t.boolean  "is_CC",          null: false
-    t.boolean  "can_remix",      null: false
+    t.integer  "user_id",            null: false
+    t.boolean  "is_mature",          null: false
+    t.boolean  "is_commentable",     null: false
+    t.boolean  "is_shareable",       null: false
+    t.boolean  "is_likeable",        null: false
+    t.boolean  "is_DRM",             null: false
+    t.boolean  "is_CC",              null: false
+    t.boolean  "can_remix",          null: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  add_index "deviations", ["user_id", "title"], name: "index_deviations_on_user_id_and_title", unique: true, using: :btree
   add_index "deviations", ["user_id"], name: "index_deviations_on_user_id", using: :btree
 
   create_table "journals", force: true do |t|
@@ -45,16 +48,20 @@ ActiveRecord::Schema.define(version: 20140422145452) do
   add_index "journals", ["user_id"], name: "index_journals_on_user_id", using: :btree
 
   create_table "users", force: true do |t|
-    t.string   "username",        null: false
-    t.string   "email",           null: false
-    t.string   "password_digest", null: false
-    t.string   "token",           null: false
+    t.string   "username",            null: false
+    t.string   "email",               null: false
+    t.string   "password_digest",     null: false
+    t.string   "token",               null: false
     t.string   "first_name"
     t.string   "last_name"
     t.string   "gender"
-    t.string   "country",         null: false
-    t.date     "date_of_birth",   null: false
+    t.string   "country",             null: false
+    t.date     "date_of_birth",       null: false
     t.text     "biography"
+    t.string   "avatar_file_name"
+    t.string   "avatar_content_type"
+    t.integer  "avatar_file_size"
+    t.datetime "avatar_updated_at"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

@@ -1,105 +1,125 @@
 <form
   action="<%= @deviation.persisted? ? deviation_url : deviations_url %>"
   method="post"
->
+  enctype="multipart/form-data">
 
   <% if @deviation.persisted? %>
     <input type="hidden" name="_method" value="patch">
+
+    <img src="<%= @deviation.media.url %>">
   <% end %>
 
   <%= auth_token %>
 
   <input type="hidden" name="deviation[user_id]" value="<%= current_user.id %>">
 
-  <% if @deviation.media %>
-    <img src="<%= @deviation.media.url %>">
-  <% end %>
+  <div>
+    <label for="deviation_media">Your Artwork</label>
+    <input type="file" name="deviation[media]" id="deviation_media">
+  </div>
 
-  <label for="deviation_media">Your Artwork</label>
-  <input type="file" name="deviation[media]" id="deviation_media">
+  <input
+    type="text"
+    name="deviation[title]"
+    value="<%= @deviation.title %>"
+    placeholder="Title"
+  >
 
-
-  <label>
-    Title <br>
-    <input type="text" name="deviation[title]" value="<%= @deviation.title %>">
-  </label>
-  <br>
-
-  <label>
-    Description <br>
-    <textarea
-      name="deviation[description]"
-    ><%= @deviation.description %></textarea>
-  </label>
-  <br>
+  <textarea
+    name="deviation[description]"
+    placeholder="Description"
+  ><%= @deviation.description %></textarea>
 
   <fieldset>
-    <input type="hidden" name="deviation[is_commentable]" value="false">
+    <legend>Options:</legend>
 
-    <label>
-      Can Comment?
-      <input type="checkbox" name="deviation[is_commentable]" value="true"
+    <div>
+      <label for="can_comment">Can Comment?</label>
+      <input type="hidden" name="deviation[is_commentable]" value="false">
+      <input
+        id="can_comment"
+        type="checkbox"
+        name="deviation[is_commentable]"
+        value="true"
         <%= "checked" if @deviation.is_commentable %>
       >
-    </label><br>
+    </div>
 
-    <input type="hidden" name="deviation[is_shareable]" value="false">
-
-    <label>
-      Can Share?
-      <input type="checkbox" name="deviation[is_shareable]" value="true"
+    <div>
+      <label for="can_share">Can Share?</label>
+      <input type="hidden" name="deviation[is_shareable]" value="false">
+      <input
+        id="can_share"
+        type="checkbox"
+        name="deviation[is_shareable]"
+        value="true"
         <%= "checked" if @deviation.is_shareable %>
       >
-    </label><br>
+    </div>
 
-    <input type="hidden" name="deviation[is_likeable]" value="false">
-
-    <label>
-      Can Like?
-      <input type="checkbox" name="deviation[is_likeable]" value="true"
+    <div>
+      <label for="can_like">Can Like?</label>
+      <input type="hidden" name="deviation[is_likeable]" value="false">
+      <input
+        id="can_like"
+        type="checkbox"
+        name="deviation[is_likeable]"
+        value="true"
         <%= "checked" if @deviation.is_likeable %>
       >
-    </label><br><br>
+    </div>
 
-    <input type="hidden" name="deviation[is_mature]" value="false">
-
-    <label>
-      Mature Content?
-      <input type="checkbox" name="deviation[is_mature]" value="true"
+    <div>
+      <label for="mature_content">Mature Content?</label>
+      <input type="hidden" name="deviation[is_mature]" value="false">
+      <input
+        id="mature_content"
+        type="checkbox"
+        name="deviation[is_mature]"
+        value="true"
         <%= "checked" if @deviation.is_mature %>
       >
-    </label><br>
+    </div>
 
-    <input type="hidden" name="deviation[can_remix]" value="false">
-
-    <label>
-      Allow Remixes?
-      <input type="checkbox" name="deviation[can_remix]" value="true"
+    <div>
+      <label for="can_remix">Allow Remixes?</label>
+      <input type="hidden" name="deviation[can_remix]" value="false">
+      <input
+        id="can_remix"
+        type="checkbox"
+        name="deviation[can_remix]"
+        value="true"
         <%= "checked" if @deviation.can_remix %>
       >
-    </label><br>
+    </div>
 
-    <input type="hidden" name="deviation[is_CC]" value="false">
-
-    <label>
-      Creative Commons?
-      <input type="checkbox" name="deviation[is_CC]" value="true"
+    <div>
+      <label for="is_cc">Creative Commons?</label>
+      <input type="hidden" name="deviation[is_CC]" value="false">
+      <input
+        id="is_cc"
+        type="checkbox"
+        name="deviation[is_CC]"
+        value="true"
         <%= "checked" if @deviation.is_CC %>
       >
-    </label><br>
+    </div>
 
-    <input type="hidden" name="deviation[is_DRM]" value="true">
-
-    <label>
-      DRM Free?
-      <input type="checkbox" name="deviation[is_DRM]" value="false"
+    <div>
+      <label for="is_drm">DRM Free?</label>
+      <input type="hidden" name="deviation[is_DRM]" value="true">
+      <input
+        type="checkbox"
+        name="deviation[is_DRM]"
+        value="false"
         <%= "checked" if @deviation.is_DRM == false %>
       >
-    </label>
-  </fieldset><br>
+    </div>
+  </fieldset>
 
-  <input type="submit"
-         value="<%= @deviation.persisted? ? "Edit Deviation" : "Create Deviation" %>"
+  <input
+    type="submit"
+    value="<%= @deviation.persisted? ? "Edit Deviation" : "Create Deviation" %>"
   >
 
 </form>

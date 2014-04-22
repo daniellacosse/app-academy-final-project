@@ -1,4 +1,7 @@
-<form action="<%= @user.persisted? ? user_url : users_url %>" method="post">
+<form
+  action="<%= @user.persisted? ? user_url : users_url %>"
+  method="post"
+  enctype="multipart/form-data">
 
   <% if @user.persisted? %>
     <input type="hidden" name="_method" value="patch">
@@ -6,132 +9,129 @@
 
   <%= auth_token %>
 
+  <input
+    type="text"
+    name="user[username]"
+    value="<%= @user.username %>"
+    placeholder="Username">
 
-  <label>
-    Username<br>
-    <input type="text" name="user[username]" value="<%= @user.username %>">
-  </label>
-  <br>
-
-  <label>
-    Email<br>
-    <input type="email" name="user[email]" value="<%= @user.email %>">
-  </label>
-  <br>
+  <input
+    type="email"
+    name="user[email]"
+    value="<%= @user.email %>"
+    placeholder="Email">
 
   <% unless @user.persisted? %>
 
-    <% if @user.avatar %>
-      <img src="<%= @user.avatar.url(:thumb) %>">
-    <% end %>
+    <!-- display current img if there is one? -->
 
-    <label for="user_avatar">Profile Picture</label>
-    <input type="file" name="user[avatar]" id="user_avatar">
+    <div>
+      <label for="user_avatar">Profile Picture:</label>
+      <input type="file" name="user[avatar]" id="user_avatar">
+    </div>
 
-    <label>
-      Password<br>
-      <input type="password" name="user[password]">
-    </label>
-    <br>
+    <input
+      type="password"
+      name="user[password]"
+      placeholder="Password">
 
-    <label>
-      Confirm Password<br>
-      <input type="password" name="user[password_confirmation]">
-    </label>
-    <br>
+    <input
+      type="password"
+      name="user[password_confirmation]"
+      placeholder="Confirm Password">
 
   <% end %>
 
-  <hr>
-  <label>
-    First Name<br>
-    <input type="text" name="user[first_name]" value="<%= @user.first_name %>">
-  </label>
-  <br>
+  <input
+    type="text"
+    name="user[first_name]"
+    value="<%= @user.first_name %>"
+    placeholder="First Name">
 
-  <label>
-    Last Name<br>
-    <input type="text" name="user[last_name]" value="<%= @user.last_name %>">
-  </label>
-  <br>
+  <input
+    type="text"
+    name="user[last_name]"
+    value="<%= @user.last_name %>"
+    placeholder="Last Name">
 
   <fieldset>
-    Gender<br>
-    <label>
-      Male
+    <legend>Gender:</legend>
+
+    <div>
+      <label for="male_gender">Male</label>
       <input
+        id="male_gender"
         type="radio"
         name="user[gender]"
         value="M"
         <%= "checked" if @user.gender == "M"%>
       >
-    </label><br>
+    </div>
 
-    <label>
-      Female
+    <div>
+      <label for="female_gender">Female</label>
       <input
+        id="female_gender"
         type="radio"
         name="user[gender]"
         value="F"
         <%= "checked" if @user.gender == "F"%>
       >
-    </label><br>
+    </div>
 
-    <label>
-      Other
+      <label for="other_gender">Other</label>
       <input
+        id="other_gender"
         type="radio"
         name="user[gender]"
         value="O"
         <%= "checked" if @user.gender == "O"%>
       >
-    </label><br>
 
-    <label>
-      None/Prefer not to say
+    <div>
+      <label for="no_gender">None/Prefer not to say</label>
       <input
         type="radio"
         name="user[gender]"
         value="n/a"
-        <%= "checked" if @user.gender == "n/a" %>
+        <%= "checked" if @user.gender == "n/a" || !@user.persisted? %>
       >
-    </label>
+    </div>
+
   </fieldset>
-  <br>
 
-  <label>
-    Date of Birth<br>
-    <input type="date"
-           name="user[date_of_birth]"
-           value="<%= @user.date_of_birth %>">
-  </label>
-  <br>
+  <div>
+    <label for="dob">Date of Birth:</label>
+    <input
+      id="dob"
+      type="date"
+      name="user[date_of_birth]"
+      value="<%= @user.date_of_birth %>">
+  </div>
 
-  <label>
-    Country<br>
-    <select name="user[country]">
+  <div>
+    <label for="user_country">Place of Origin:</label>
+    <select id="user_country" name="user[country]">
       <option></option>
-      <option
-        value="United States"
-        <%= "selected" if @user.country == "United States" %>
-      >
-        America
-      </option>
-      <option
-        value="Canada"
-        <%= "selected" if @user.country == "Canada" %>
-      >
-        Not America
-      </option>
+
+      <% ApplicationHelper::COUNTRIES.each do |country_name| %>
+        <option
+          value="<%= country_name %>"
+          <%= "selected" if @user.country == country_name %>
+        >
+          <%= country_name %>
+        </option>
+      <% end %>
+
     </select>
-  </label>
-   <br>
+  <div>
 
-   <label>
-    Biography<br>
-    <textarea name="user[biography]"><%= @user.biography %></textarea>
-  </label>
-  <br>
+  <textarea
+    name="user[biography]"
+    placeholder="Biography"><%= @user.biography %></textarea>
 
-  <input type="submit" value="<%= @user.persisted? ? "Finish Editing" : "Sign Up" %>">
+  <input
+    type="submit"
+    value="<%= @user.persisted? ? "Update" : "Sign Up" %>">
+
 </form>

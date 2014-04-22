@@ -11,21 +11,20 @@
 
   <input type="hidden" name="journal[user_id]" value="<%= current_user.id %>">
 
-  <label>
-    Title <br>
-    <input type="text" name="journal[title]" value="<%= @journal.title %>">
-  </label>
-  <br>
+  <input
+    type="text"
+    name="journal[title]"
+    value="<%= @journal.title %>"
+    placeholder="Title">
 
-  <label>
-    <textarea
-      name="journal[body]"
-    ><%= @journal.body %></textarea>
-  </label>
-  <br>
+  <textarea
+    name="journal[body]"
+    placeholder="Write Your Journal Here"
+  ><%= @journal.body %></textarea>
 
-  <input type="submit"
-         value="<%= @journal.persisted? ? "Edit Journal" : "Post Journal" %>"
+  <input
+    type="submit"
+    value="<%= @journal.persisted? ? "Edit Journal" : "Post Journal" %>"
   >
 
 </form>

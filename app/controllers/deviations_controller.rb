@@ -38,6 +38,7 @@ class DeviationsController < ApplicationController
   private
   def deviation_params
     params.require(:deviation).permit(
+      :media,
       :title,
       :description,
       :user_id,

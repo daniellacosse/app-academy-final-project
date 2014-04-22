@@ -27,6 +27,7 @@ class User < ActiveRecord::Base
                                 message: "Password length must be at least 7" }
 
   validates_confirmation_of :password
+  # validates_attatchment_content_type :avatar, content_type: :image
 
   has_many :deviations
   has_many :journals
@@ -52,15 +53,11 @@ class User < ActiveRecord::Base
   end
 
   def password=(naked_password)
+    @password = naked_password
     self.password_digest = BCrypt::Password.create(naked_password)
   end
 
   def is_password?(naked_password)
     BCrypt::Password.new(self.password_digest) == naked_password
   end
-
-  # private
-  # def password_confirmation
-  #   errors[:base] << "Passwords must match" unless self.naked_password == self.conf_password
-  # end
 end
