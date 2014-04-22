@@ -28,6 +28,7 @@
 
   <% if logged_in? %>
     <strong><%= current_user.username %></strong>
+    <%= button_to "Submit Art", new_deviation_url, method: :get %>
 
     <%= button_to "Log out", session_url, method: :delete %>
   <% end %>

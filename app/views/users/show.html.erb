@@ -1,38 +1,40 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Username:</strong><br>
+  <strong>Username:</strong>
   <%= @user.username %>
 </p>
 
 <p>
-  <strong> Name: </strong><br>
+  <strong> Name: </strong>
   <%= @user.first_name %> <%= @user.last_name %>
 </p>
 
 <p>
-  <strong>Email:</strong><br>
+  <strong>Email:</strong>
   <%= @user.email %>
 </p>
 
 <p>
-  <strong>Gender:</strong><br>
+  <strong>Gender:</strong>
   <%= @user.gender %>
 </p>
 
 <p>
-  <strong>Date of birth:</strong><br>
+  <strong>Date of birth:</strong>
   <%= @user.date_of_birth %>
 </p>
 
 <p>
-  <strong>Location:</strong><br>
+  <strong>Location:</strong>
   <%= @user.country %>
 </p>
 
 <p>
-  <strong>Biography:</strong><br>
+  <strong>Biography:</strong>
   <%= @user.biography %>
 </p>
 
 <%= link_to 'Edit', edit_user_url(@user) %>
+
+<%= render @user.deviations %>

@@ -29,6 +29,7 @@ class UsersController < ApplicationController
     if @user.update(user_params)
       render :show
     else
+      flash.now[:errors] = @user.errors.full_messages
       render :edit
     end
   end
