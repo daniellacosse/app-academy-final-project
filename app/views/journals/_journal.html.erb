@@ -1,0 +1,10 @@
+<h1>
+  <a href="<%= journal_url(journal) %>"><%= journal.title %></a>
+</h1>
+<date><%= time_ago_in_words(journal.created_at) %> ago, </date>
+
+by ~<a href="<%= user_url(journal.user) %>"><%= journal.user.username %></a>
+
+<p>
+  <%= journal.body %>
+</p>

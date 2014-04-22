@@ -3,8 +3,10 @@ DArt::Application.routes.draw do
 
   resources :deviations
 
-  resources :users do
-    resources :journals
+  shallow do
+    resources :users do
+      resources :journals
+    end
   end
 
   resource :session, only: [:new, :create, :destroy]

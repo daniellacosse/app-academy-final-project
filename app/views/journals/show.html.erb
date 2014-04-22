@@ -1,0 +1,5 @@
+<%= render @journal %>
+
+<% if @journal.user.id == current_user.try(:id) %>
+  <%= link_to 'Edit', edit_journal_url(@journal) %>
+<% end %>

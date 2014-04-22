@@ -18,7 +18,7 @@ class DeviationsController < ApplicationController
   def create
     @deviation = Deviation.new(deviation_params)
     if @deviation.save
-      render @deviation
+      render :show
     else
       flash.now[:errors] = @deviation.errors.full_messages
       render :new
@@ -26,9 +26,9 @@ class DeviationsController < ApplicationController
   end
 
   def update
-    @deviation = Deviation.new(deviation_params)
+    @deviation = Deviation.find(params[:id])
     if @deviation.update_attributes(deviation_params)
-      render @deviation
+      render :show
     else
       flash.now[:errors] = @deviation.errors.full_messages
       render :edit

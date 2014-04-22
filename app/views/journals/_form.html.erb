@@ -1,0 +1,31 @@
+<form
+  action="<%= @journal.persisted? ? journal_url : user_journals_url %>"
+  method="post"
+>
+
+  <% if @journal.persisted? %>
+    <input type="hidden" name="_method" value="patch">
+  <% end %>
+
+  <%= auth_token %>
+
+  <input type="hidden" name="journal[user_id]" value="<%= current_user.id %>">
+
+  <label>
+    Title <br>
+    <input type="text" name="journal[title]" value="<%= @journal.title %>">
+  </label>
+  <br>
+
+  <label>
+    <textarea
+      name="journal[body]"
+    ><%= @journal.body %></textarea>
+  </label>
+  <br>
+
+  <input type="submit"
+         value="<%= @journal.persisted? ? "Edit Journal" : "Post Journal" %>"
+  >
+
+</form>

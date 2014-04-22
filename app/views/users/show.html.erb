@@ -3,6 +3,10 @@
   <%= @user.username %>
 </p>
 
+<a href="<%= user_journals_url(@user) %>">
+  <%= @user.first_name %>'s Journals: (<%= @user.journals.count %>)
+</a>
+
 <p>
   <strong> Name: </strong>
   <%= @user.first_name %> <%= @user.last_name %>
@@ -34,6 +38,7 @@
 </p>
 
 <% if @user.id == current_user.try(:id) %>
+  <%= link_to 'New Journal', new_user_journal_url(@user) %> |
   <%= link_to 'Edit My Info', edit_user_url(@user) %>
 <% end %>
 

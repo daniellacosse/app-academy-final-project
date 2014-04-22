@@ -50,7 +50,7 @@ class User < ActiveRecord::Base
   end
 
   def password=(naked_password)
-    self.naked_password = naked_password
+    self.naked_password = naked_password # @password
     self.password_digest = BCrypt::Password.create(naked_password)
   end
 

@@ -1,0 +1,23 @@
+p, body, html, h1, fieldset {
+  padding: 0;
+  margin: 0;
+  border: 0;
+
+  font: inherit;
+  font-family: Helvetica,sans-serif;
+}
+
+h1 {
+  font-weight: bold;
+  margin-top: 20px;
+}
+
+body {
+  width: 100%;
+  text-align: center;
+  padding-top: 200px;
+}
+
+.error {
+  color: red;
+}
