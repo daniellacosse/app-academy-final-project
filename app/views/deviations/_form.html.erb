@@ -1,15 +1,23 @@
 <form
-  action="<%= @deviation.id ? deviation_url : deviations_url %>"
+  action="<%= @deviation.persisted? ? deviation_url : deviations_url %>"
   method="post"
 >
 
-  <% if @deviation.id %>
+  <% if @deviation.persisted? %>
     <input type="hidden" name="_method" value="patch">
   <% end %>
 
   <%= auth_token %>
 
   <input type="hidden" name="deviation[user_id]" value="<%= current_user.id %>">
+
+  <% if @deviation.media %>
+    <img src="<%= @deviation.media.url %>">
+  <% end %>
+
+  <label for="deviation_media">Your Artwork</label>
+  <input type="file" name="deviation[media]" id="deviation_media">
+
 
   <label>
     Title <br>
@@ -91,7 +99,7 @@
   </fieldset><br>
 
   <input type="submit"
-         value="<%= @deviation.id ? "Edit Deviation" : "Create Deviation" %>"
+         value="<%= @deviation.persisted? ? "Edit Deviation" : "Create Deviation" %>"
   >
 
 </form>

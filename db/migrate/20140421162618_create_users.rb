@@ -14,6 +14,7 @@ class CreateUsers < ActiveRecord::Migration
       t.date :date_of_birth,     null: false
 
       t.text :biography
+      t.attachment :avatar
 
       t.timestamps
     end

@@ -6,7 +6,7 @@ class User < ActiveRecord::Base
 
   before_validation :ensure_token
 
-  attr_accessor :password, :naked_password, :conf_password
+  attr_reader :password, :password_confirmation
 
   validates :username,
             :email,
@@ -20,13 +20,13 @@ class User < ActiveRecord::Base
             :token,
             uniqueness: true
 
-  validates :password, :conf_password, length:
+  validates :password, length:
 
                               { minimum: 7,
                                 allow_nil: true,
                                 message: "Password length must be at least 7" }
 
-  validate :password_confirmation
+  validates_confirmation_of :password
 
   has_many :deviations
   has_many :journals
@@ -52,7 +52,6 @@ class User < ActiveRecord::Base
   end
 
   def password=(naked_password)
-    self.naked_password = naked_password # @password
     self.password_digest = BCrypt::Password.create(naked_password)
   end
 
@@ -60,8 +59,8 @@ class User < ActiveRecord::Base
     BCrypt::Password.new(self.password_digest) == naked_password
   end
 
-  private
-  def password_confirmation
-    errors[:base] << "Passwords must match" unless self.naked_password == self.conf_password
-  end
+  # private
+  # def password_confirmation
+  #   errors[:base] << "Passwords must match" unless self.naked_password == self.conf_password
+  # end
 end

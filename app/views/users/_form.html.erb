@@ -1,6 +1,6 @@
-<form action="<%= @user.id ? user_url : users_url %>" method="post">
+<form action="<%= @user.persisted? ? user_url : users_url %>" method="post">
 
-  <% if @user.id %>
+  <% if @user.persisted? %>
     <input type="hidden" name="_method" value="patch">
   <% end %>
 
@@ -19,7 +19,14 @@
   </label>
   <br>
 
-  <% unless @user.id %>
+  <% unless @user.persisted? %>
+
+    <% if @user.avatar %>
+      <img src="<%= @user.avatar.url(:thumb) %>">
+    <% end %>
+
+    <label for="user_avatar">Profile Picture</label>
+    <input type="file" name="user[avatar]" id="user_avatar">
 
     <label>
       Password<br>
@@ -29,7 +36,7 @@
 
     <label>
       Confirm Password<br>
-      <input type="password" name="user[conf_password]">
+      <input type="password" name="user[password_confirmation]">
     </label>
     <br>
 
@@ -126,5 +133,5 @@
   </label>
   <br>
 
-  <input type="submit" value="<%= @user.id ? "Finish Editing" : "Sign Up" %>">
+  <input type="submit" value="<%= @user.persisted? ? "Finish Editing" : "Sign Up" %>">
 </form>

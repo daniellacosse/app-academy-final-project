@@ -1,10 +1,11 @@
 class CreateDeviations < ActiveRecord::Migration
   def change
     create_table :deviations do |t|
+      t.attachment :media
       t.string :title,      null: false
       t.text :description
       t.integer :user_id,   null: false
-      
+
       t.boolean :is_mature,       null: false
       t.boolean :is_commentable,  null: false
       t.boolean :is_shareable,    null: false
@@ -15,8 +16,7 @@ class CreateDeviations < ActiveRecord::Migration
 
       t.timestamps
     end
-    
+
     add_index :deviations, :user_id
-    add_index :deviations, [:user_id, :title], unique: true
   end
 end

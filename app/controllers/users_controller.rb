@@ -17,6 +17,8 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(user_params)
+    puts @user.password
+    puts @user.password_confirmation
     if @user.save
       render :show
     else
@@ -54,7 +56,7 @@ class UsersController < ApplicationController
         :last_name,
         :email,
         :password,
-        :conf_password,
+        :password_confirmation,
         :gender,
         :date_of_birth,
         :country,

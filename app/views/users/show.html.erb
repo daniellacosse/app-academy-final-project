@@ -1,3 +1,7 @@
+<% if @user.avatar %>
+  <img src="<%= @user.avatar.url(:thumb) %>">
+<% end %>
+
 <p>
   <strong>Username:</strong>
   <%= @user.username %>
