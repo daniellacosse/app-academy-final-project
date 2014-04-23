@@ -8,19 +8,28 @@
 </head>
 <body>
 
-  <header>
-    <h1 class="dArt-header">
+  <header class="clearfix">
+
+		<h1 class="dArt-header">
       <a href="<%= deviations_url %>">dArt</a>
-    </h1>
-
+		</h1>
+			
     <% if logged_in? %>
-      <h2 class="current-user-header">
-        <a href="<%= user_url(current_user) %>"><%= current_user.username %></a>
-      </h2>
-
-      <%= button_to "Submit Art", new_deviation_url, method: :get %>
-      <%= button_to "Log out", session_url, method: :delete %>
-    <% end %>
+			<ul class="header-nav">
+				<li class="current-user-header">				
+	        <a href="<%= user_url(current_user) %>">
+						<%= current_user.username %>
+					</a>
+				</li>
+				<li>
+		      <%= button_to "+ Art", new_deviation_url, method: :get %>	
+				</li>
+				<li>
+		      <%= button_to "Log out", session_url, method: :delete %>			
+				</li>
+			</ul>
+		<% end %>
+		
   </header>
 
   <% if flash[:errors] %>

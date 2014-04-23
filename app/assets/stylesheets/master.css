@@ -31,7 +31,7 @@ form {
 .submit-button:hover, input[type="submit"]:hover {
   background-color: blue;
   border-color: blue;
-  color:white;
+  color: white;
 }
 
 input:focus, select:focus, textarea:focus {
@@ -51,7 +51,8 @@ h1 {
 }
 
 .dArt-header {
-  font-size: 40pt;
+	margin: 0;
+  font-size: 21pt;
 }
 
 a {
@@ -91,4 +92,32 @@ legend {
 div.radio-button {
 	margin-left: 20px; 
 	display: inline;
+}
+
+header {
+	box-sizing: border-box;
+	position: fixed;
+	top: 0;
+	width: 100%;
+	padding: 10px 20px;
+	border-bottom: 6px solid blue;
+	background-color: rgba(255, 255, 255, 0.9);
+}
+
+header > h1 {
+	float: left;
+}
+
+header > ul {
+	margin: 0;
+	float: right;
+}
+
+header > ul > li {
+	float: left;
+}
+
+.clearfix:after{
+	content: "";
+	clear: both;
 }
