@@ -161,11 +161,3 @@ div.radio-button {
 div.comment-wrapper {
   margin-left: 50px;
 }
-
-div.respond-wrapper div.respond {
-  display: hidden;
-}
-
-div.respond-wrapper:hover div.respond {
-  display: block;
-}

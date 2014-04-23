@@ -3,3 +3,10 @@
 <% if @journal.user.id == current_user.try(:id) %>
   <%= link_to 'Edit', edit_journal_url(@journal) %>
 <% end %>
+
+<%= render partial: "comments/form", locals: {
+  type: "Journal",
+  id: @journal.id
+} %>
+
+<%= render @journal.comments %>
