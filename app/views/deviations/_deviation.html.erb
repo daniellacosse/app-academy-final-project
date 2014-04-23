@@ -5,7 +5,7 @@
     <a href="<%= deviation_url(deviation) %>"><%= deviation.title %></a>
   </h2>
 
-  <span class="_deviation-author">
+  <span class="metadata">
     <img src="<%= deviation.user.avatar.url(:icon) %>">
     by ~<a href="<%= user_url(deviation.user) %>">
       <%= deviation.user.username %>

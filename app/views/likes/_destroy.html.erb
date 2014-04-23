@@ -1,0 +1,14 @@
+<form action="<%= like_url(Like.find_by({
+  user_id: current_user.id,
+  likeable_id: id,
+  likeable_type: type
+})) %>" method="post">
+<input type="hidden" name="_method" value="delete">
+  <%= auth_token %>
+
+  <input type="hidden" name="like[user_id]" value="<%= current_user.id %>">
+  <input type="hidden" name="like[likeable_id]" value="<%= id %>">
+  <input type="hidden" name="like[likeable_type]" value="<%= type %>">
+
+  <input class="unlike-this" type="submit" value="❤">
+</form>

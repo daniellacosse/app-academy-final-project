@@ -44,6 +44,15 @@ class User < ActiveRecord::Base
     foreign_key: :user_id,
     primary_key: :id
   )
+  has_many :followed_users,
+           through: :liked,
+           source: :likeable,
+           source_type: "User"
+
+  has_many :liked_deviations,
+           through: :liked,
+           source: :likeable,
+           source_type: "Deviation"
 
   has_many :deviations
   has_many :galleries

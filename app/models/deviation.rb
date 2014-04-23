@@ -15,5 +15,6 @@ class Deviation < ActiveRecord::Base
               inclusion: { in: [true, false], message: "something's up" }
 
     has_many :views, as: :viewable
+    has_many :likes, as: :likeable
     belongs_to :user, dependent: :destroy
 end

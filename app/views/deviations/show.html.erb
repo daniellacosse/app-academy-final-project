@@ -1,5 +1,21 @@
 <img class="deviation-media" src="<%= @deviation.media.url %>">
 
+<span>
+  <%= @deviation.likes.count %>
+</span>
+
+<% if current_user.liked_deviations.include?(@deviation) %>
+  <%= render partial: "likes/destroy", locals: {
+    type: "Deviation",
+    id: @deviation.id
+  } %>
+<% elsif current_user.id != @deviation.id %>
+  <%= render partial: "likes/create", locals: {
+    type: "Deviation",
+    id: @deviation.id
+  } %>
+<% end %>
+
 <h2 class="deviation-title">
   <%= @deviation.title %>
 </h2>

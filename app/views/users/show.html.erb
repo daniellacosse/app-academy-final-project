@@ -1,70 +1,103 @@
+<section class="user-profile">
+<p class="username">
+  <h3>Username:</h3>
+  <span><%= @user.username %></span>
+</p>
+
 <% if @user.avatar %>
   <img src="<%= @user.avatar.url(:thumb) %>">
 <% end %>
 
-<p>
-  <strong>Views:</strong>
-  <%= @user.views.count %>
+<p class="journals-and-galleries">
+  <a href="<%= user_journals_url(@user) %>">
+
+    <% if @user.first_name %>
+      <%= @user.first_name %>'s
+    <% elsif @user.last_name %>
+      <%= @user.last_name %>'s
+    <% end %>
+
+    Journals: (<%= @user.journals.count %>)
+
+  </a> | <a href="<%= user_galleries_url(@user) %>">
+    <% if @user.first_name %>
+      <%= @user.first_name %>'s
+    <% elsif @user.last_name %>
+      <%= @user.last_name %>'s
+    <% end %>
+
+    Galleries
+  </a>
 </p>
 
-<!--
- if current_user.liked.include?(@user)
-    <%= link_to "like", likes_url, method: :post %>
-  else
-    <%= link_to "unlike", like_url, method: :destroy %>
-end
- -->
-
-<p>
-  <strong>Username:</strong>
-  <%= @user.username %>
+<p class="views">
+  <h3>Views:</h3>
+  <span><%= @user.views.count %></span>
 </p>
 
-<a href="<%= user_journals_url(@user) %>">
-  <%= @user.first_name %>'s Journals: (<%= @user.journals.count %>)
-</a> |
+<span>
+  <%= @user.likes.count %>
+</span>
 
-<a href="<%= user_galleries_url(@user) %>">
-  <%= @user.first_name %>'s Galleries
-</a>
-
-<p>
-  <strong> Name: </strong>
-  <%= @user.first_name %> <%= @user.last_name %>
-</p>
-
-<p>
-  <strong>Email:</strong>
-  <%= @user.email %>
-</p>
-
-<p>
-  <strong>Gender:</strong>
-  <%= @user.gender %>
-</p>
-
-<p>
-  <strong>Date of birth:</strong>
-  <%= @user.date_of_birth %>
-</p>
-
-<p>
-  <strong>Location:</strong>
-  <%= @user.country %>
-</p>
-
-<p>
-  <strong>Biography:</strong>
-  <%= @user.biography %>
-</p>
-
-<% if @user.id == current_user.try(:id) %>
-  <a href="<%= user_messages_url(@user) %>">Messages (<%= @user.messages.count %>) </a> |
-  <%= link_to 'Edit My Info', edit_user_url(@user) %>
-<% else %>
-  <%= link_to 'Message Me', new_user_message_url(@user) %>
+<% if current_user.followed_users.include?(@user) %>
+  <%= render partial: "likes/destroy", locals: {
+    type: "User",
+    id: @user.id
+  } %>
+<% elsif current_user.id != @user.id %>
+  <%= render partial: "likes/create", locals: {
+    type: "User",
+    id: @user.id
+  } %>
 <% end %>
 
-<br>
+<% if @user.first_name || @user.last_name  %>
+  <p class="name">
+    <h3> Name: </h3>
+    <span>
+      <%= @user.first_name if @user.first_name %>
+      <%= @user.last_name if @user.last_name %>
+    </span>
+  </p>
+<% end %>
+
+<p class="email">
+  <h3>Email:</h3>
+  <span><%= @user.email %></span>
+</p>
+
+<% if @user.gender  %>
+  <p class="gender">
+    <h3>Gender:</h3>
+    <span><%= @user.gender %></span>
+  </p>
+<% end %>
+
+<p class="dob">
+  <h3>Date of birth:</h3>
+  <span><%= @user.date_of_birth %></span>
+</p>
+
+<p class="location">
+  <h3>Location:</h3>
+  <span><%= @user.country %></span>
+</p>
+
+<% if @user.biography %>
+  <p class="biography">
+    <h3>Biography:</h3>
+    <span><%= @user.biography %></span>
+  </p>
+<% end %>
+
+<p class="user-options">
+  <% if @user.id == current_user.try(:id) %>
+    <a href="<%= user_messages_url(@user) %>">Messages (<%= @user.messages.count %>) </a> |
+    <%= link_to 'Edit My Info', edit_user_url(@user) %>
+  <% else %>
+    <%= link_to 'Message Me', new_user_message_url(@user) %>
+  <% end %>
+</p>
+</section>
 
 <%= render @user.deviations %>
