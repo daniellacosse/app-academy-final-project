@@ -7,6 +7,14 @@
   <%= @user.views.count %>
 </p>
 
+<!--
+ if current_user.liked.include?(@user)
+    <%= link_to "like", likes_url, method: :post %>
+  else
+    <%= link_to "unlike", like_url, method: :destroy %>
+end
+ -->
+
 <p>
   <strong>Username:</strong>
   <%= @user.username %>

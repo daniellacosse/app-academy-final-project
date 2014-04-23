@@ -14,5 +14,6 @@ DArt::Application.routes.draw do
     resources :messages
   end
 
+  resources :likes, only: [:create, :destroy]
   resource :session, only: [:new, :create, :destroy]
 end

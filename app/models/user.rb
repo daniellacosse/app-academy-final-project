@@ -37,6 +37,14 @@ class User < ActiveRecord::Base
     primary_key: :id
   )
 
+  has_many :likes, as: :likeable
+  has_many(
+    :liked,
+    class_name: "Like",
+    foreign_key: :user_id,
+    primary_key: :id
+  )
+
   has_many :deviations
   has_many :galleries
   has_many :journals

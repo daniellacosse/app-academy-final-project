@@ -9,7 +9,7 @@ class DeviationsController < ApplicationController
 
   def show
     @deviation = Deviation.find(params[:id])
-    unless current_user.id == @deviation.user.id
+    unless !logged_in? || current_user.id == @deviation.user.id
       View.create({
         user_id: current_user.id,
         viewable_id: @deviation.id,
