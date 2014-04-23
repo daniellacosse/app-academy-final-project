@@ -12,10 +12,6 @@ class MessagesController < ApplicationController
     @message = Message.find(params[:id])
   end
 
-  def edit
-    @message = Message.find(params[:id])
-  end
-
   def create
     @message = Message.new(message_params)
     if @message.save
@@ -23,16 +19,6 @@ class MessagesController < ApplicationController
     else
       flash.now[:errors] = @message.errors.full_messages
       render :new
-    end
-  end
-
-  def update
-    @message = Message.find(params[:id])
-    if @message.update_attributes(message_params)
-      render :show
-    else
-      flash.now[:errors] = @message.errors.full_messages
-      render :edit
     end
   end
 

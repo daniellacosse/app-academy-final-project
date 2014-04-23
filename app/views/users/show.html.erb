@@ -11,18 +11,18 @@
 <p class="journals-and-galleries">
   <a href="<%= user_journals_url(@user) %>">
 
-    <% if @user.first_name %>
+    <% if @user.last_name.nil? || !@user.first_name.empty? %>
       <%= @user.first_name %>'s
-    <% elsif @user.last_name %>
+    <% elsif @user.last_name.nil? || !@user.last_name.empty? %>
       <%= @user.last_name %>'s
     <% end %>
 
     Journals: (<%= @user.journals.count %>)
 
   </a> | <a href="<%= user_galleries_url(@user) %>">
-    <% if @user.first_name %>
+    <% if @user.first_name.nil? || !@user.first_name.empty? %>
       <%= @user.first_name %>'s
-    <% elsif @user.last_name %>
+    <% elsif @user.last_name.nil? || !@user.last_name.empty? %>
       <%= @user.last_name %>'s
     <% end %>
 
@@ -51,7 +51,7 @@
   } %>
 <% end %>
 
-<% if @user.first_name || @user.last_name  %>
+<% if !@user.first_name.try(:empty?) || !@user.last_name.try(:empty?)  %>
   <p class="name">
     <h3> Name: </h3>
     <span>
