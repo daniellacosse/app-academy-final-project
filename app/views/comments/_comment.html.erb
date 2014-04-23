@@ -1,13 +1,21 @@
 <div class="comment-wrapper">
-  <img src="<% comment.commenter.avatar(:icon) %>">
+  <span class="metadata">
+    <date class="_comment-post-date">
+      <%= time_ago_in_words(comment.created_at) %> ago,
+    </date>
+
+   <img src="<%= comment.commenter.avatar.url(:icon) %>">
+   by ~<a href="<%= user_url(comment.commenter) %>"><%= comment.commenter.username %></a>
+  </span>
+
 
   <p>
     <%= comment.body %>
   </p>
 
-  <div class="respond-div-wrapper">
+  <div class="respond-wrapper">
     Hover to Respond
-    <div class="respond-div">
+    <div class="respond">
     <%= render partial: "comments/form", locals: {
       type: "Comment",
       id: comment.id

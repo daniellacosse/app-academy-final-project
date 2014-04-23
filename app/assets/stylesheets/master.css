@@ -1,4 +1,4 @@
-p, body, html, h1, fieldset, input {
+p, body, html, h1, fieldset, input, div {
   padding: 0;
   margin: 0;
   border: 0;
@@ -159,13 +159,13 @@ div.radio-button {
 }
 
 div.comment-wrapper {
-  margin-left: 20px;
+  margin-left: 50px;
 }
 
-div.respond-div-wrapper > div.respond-div {
+div.respond-wrapper div.respond {
   display: hidden;
 }
 
-div.respond-div-wrapper:hover > div.respond-div {
-  display: hidden;
+div.respond-wrapper:hover div.respond {
+  display: block;
 }
