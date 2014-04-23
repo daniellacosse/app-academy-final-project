@@ -1,0 +1,11 @@
+<div class="_gallery" data-id="<%= @gallery.id %>">
+  <h2 class="_gallery-header">
+    <%= @gallery.title %>
+  </h2>
+
+  <p class="_gallery-description">
+    <%= @gallery.description %>
+  </p>
+
+  <%= render @gallery.deviations %>
+</div>

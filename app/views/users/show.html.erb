@@ -9,6 +9,10 @@
 
 <a href="<%= user_journals_url(@user) %>">
   <%= @user.first_name %>'s Journals: (<%= @user.journals.count %>)
+</a> |
+
+<a href="<%= user_galleries_url(@user) %>">
+  <%= @user.first_name %>'s Galleries
 </a>
 
 <p>
@@ -43,6 +47,7 @@
 
 <% if @user.id == current_user.try(:id) %>
   <%= link_to 'New Journal', new_user_journal_url(@user) %> |
+  <%= link_to 'New Gallery', new_user_gallery_url(@user) %> |
   <a href="<%= user_messages_url(@user) %>">Messages (<%= @user.messages.count %>) </a> |
   <%= link_to 'Edit My Info', edit_user_url(@user) %>
 <% else %>

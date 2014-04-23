@@ -80,3 +80,9 @@ body {
 img {
   padding: 20px 0;
 }
+
+legend {
+  display: inline;
+  width: 100%;
+  font-weight: bold;
+}

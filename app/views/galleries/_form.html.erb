@@ -1,0 +1,52 @@
+<form
+  class="gallery-form"
+  action="<%= @gallery.persisted? ? gallery_url : user_galleries_url %>"
+  method="post"
+>
+
+  <% if @gallery.persisted? %>
+    <input type="hidden" name="_method" value="patch">
+  <% end %>
+
+  <%= auth_token %>
+
+  <input type="hidden" name="gallery[user_id]" value="<%= current_user.id %>">
+
+  <input
+    class="text-input"
+    type="text"
+    name="gallery[title]"
+    value="<%= @gallery.title %>"
+    placeholder="Title">
+
+  <textarea
+    class="textarea-input"
+    name="gallery[description]"
+    placeholder="Description"
+  ><%= @gallery.description %></textarea>
+
+  <input type="hidden" name="gallery[deviations][]" value="">
+
+  <feildset class="checkbox-input-set">
+    <legend>Select Deviations:</legend>
+
+    <% current_user.deviations.each do |deviation| %>
+      <div class="checkbox">
+        <label for="<%= deviation.title %>"><%= deviation.title %></label>
+        <input
+          id="<%= deviation.title %>"
+          type="checkbox"
+          name="gallery[deviations][]"
+          value="<%= deviation.id %>"
+        >
+      </div>
+    <% end %>
+
+  </feildset>
+
+  <input
+    class
+    type="submit"
+    value="<%= @gallery.persisted? ? "Update Gallery" : "Create Gallery" %>"
+  >
+</form>

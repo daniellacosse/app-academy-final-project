@@ -6,6 +6,7 @@ DArt::Application.routes.draw do
   shallow do
     resources :users do
       resources :journals
+      resources :galleries
     end
   end
 
