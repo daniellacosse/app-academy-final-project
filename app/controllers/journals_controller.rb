@@ -1,6 +1,7 @@
 class JournalsController < ApplicationController
   def index
-    @journals = User.find(params[:user_id]).journals
+    @user = User.find(params[:user_id])
+    @journals = @user.journals
   end
 
   def new

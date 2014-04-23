@@ -3,13 +3,11 @@ class User < ActiveRecord::Base
 
   before_validation :ensure_token
 
-  has_attached_file :avatar# , styles: {
-#     thumb: "200x200>", icon: "50x50>"
-#   }
-
-  validates_attachment :avatar, content_type: {
-    content_type: ["image/jpg", "image/gif", "image/png"]
+  has_attached_file :avatar, styles: {
+    thumb: "200x200>", icon: "50x50>"
   }
+
+  validates_attachment_content_type :avatar, content_type: /\Aimage\/.*\Z/
 
   validates :username,
             :email,

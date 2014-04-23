@@ -1,0 +1,9 @@
+<% if @galleries.count > 0 %>
+	<%= render @galleries %>
+<% else %>
+	<p class="notice">
+		No galleries to be found!
+	</p>
+<% end %>
+
+<%= link_to '+ Gallery', new_user_gallery_url(@user) %>

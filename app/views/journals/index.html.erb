@@ -1,1 +1,9 @@
-<%= render @journals %>
+<% if @journals.count > 0 %>
+	<%= render @journals %>
+<% else %>
+	<p class="notice">
+		No journals to be found!
+	</p>
+<% end %>
+
+<%= link_to '+ Journal', new_user_journal_url(@user) %>

@@ -1,4 +1,9 @@
 class GalleriesController < ApplicationController
+  
+  def index
+    @user = User.find(params[:user_id])
+    @galleries = @user.galleries
+  end
 
   def new
     @gallery = Gallery.new

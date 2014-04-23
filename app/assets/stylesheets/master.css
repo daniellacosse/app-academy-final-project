@@ -19,6 +19,7 @@ form {
 
 .textarea-input {
   height: 150px;
+	font-size: 12pt;
 }
 
 .submit-button, input[type="submit"] {
@@ -85,4 +86,9 @@ legend {
   display: inline;
   width: 100%;
   font-weight: bold;
+}
+
+div.radio-button {
+	margin-left: 20px; 
+	display: inline;
 }

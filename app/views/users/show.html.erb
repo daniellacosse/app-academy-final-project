@@ -1,5 +1,5 @@
 <% if @user.avatar %>
-  <img src="<%= @user.avatar.url %>">
+  <img src="<%= @user.avatar.url(:thumb) %>">
 <% end %>
 
 <p>
@@ -46,8 +46,6 @@
 </p>
 
 <% if @user.id == current_user.try(:id) %>
-  <%= link_to 'New Journal', new_user_journal_url(@user) %> |
-  <%= link_to 'New Gallery', new_user_gallery_url(@user) %> |
   <a href="<%= user_messages_url(@user) %>">Messages (<%= @user.messages.count %>) </a> |
   <%= link_to 'Edit My Info', edit_user_url(@user) %>
 <% else %>
