@@ -1,5 +1,10 @@
 require 'spec_helper'
 
 describe Comment do
-  pending "add some examples to (or delete) #{__FILE__}"
+  context "associations" do
+    it { should belong_to(:commenter) }
+    it { should belong_to(:commentable) }
+
+    it { should have_many(:comments) }
+  end
 end

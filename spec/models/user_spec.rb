@@ -8,6 +8,15 @@ describe User do
     it { should have_many(:messages) }
     it { should have_many(:authored_messages) }
     it { should have_many(:galleries) }
+
+    it { should have_many(:views) }
+    it { should have_many(:viewed) }
+    it { should have_many(:likes) }
+    it { should have_many(:liked) }
+    it { should have_many(:commented) }
+
+    it { should have_many(:followed_users) }
+    it { should have_many(:liked_deviations) }
   end
 
   context "validates presence" do

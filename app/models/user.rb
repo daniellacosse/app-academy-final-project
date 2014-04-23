@@ -44,6 +44,14 @@ class User < ActiveRecord::Base
     foreign_key: :user_id,
     primary_key: :id
   )
+
+  has_many(
+    :commented,
+    class_name: "Comment",
+    foreign_key: :user_id,
+    primary_key: :id
+  )
+
   has_many :followed_users,
            through: :liked,
            source: :likeable,

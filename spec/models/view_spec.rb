@@ -1,5 +1,8 @@
 require 'spec_helper'
 
 describe View do
-  pending "add some examples to (or delete) #{__FILE__}"
+  context "associations" do
+    it { should belong_to(:viewer) }
+    it { should belong_to(:viewable) }
+  end
 end

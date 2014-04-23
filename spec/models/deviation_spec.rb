@@ -4,6 +4,10 @@ describe Deviation do
 
   describe "associations" do
     it { should belong_to(:user) }
+
+    it { should have_many(:views) }
+    it { should have_many(:likes) }
+    it { should have_many(:comments) }
   end
 
   context "validates presence" do

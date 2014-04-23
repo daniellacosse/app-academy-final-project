@@ -1,5 +1,8 @@
 require 'spec_helper'
 
 describe Like do
-  pending "add some examples to (or delete) #{__FILE__}"
+  context "associations" do
+    it { should belong_to(:liker) }
+    it { should belong_to(:likeable) }
+  end
 end
