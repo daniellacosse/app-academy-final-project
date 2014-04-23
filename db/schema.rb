@@ -101,10 +101,13 @@ ActiveRecord::Schema.define(version: 20140423140439) do
   add_index "users", ["username"], name: "index_users_on_username", unique: true, using: :btree
 
   create_table "views", force: true do |t|
+    t.integer  "user_id"
     t.integer  "viewable_id"
     t.string   "viewable_type"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "views", ["user_id"], name: "index_views_on_user_id", using: :btree
 
 end

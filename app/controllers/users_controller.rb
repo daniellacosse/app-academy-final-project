@@ -6,6 +6,13 @@ class UsersController < ApplicationController
   end
 
   def show
+    unless current_user.id == Integer(params[:id])
+      View.create({
+        user_id: current_user.id,
+        viewable_id: params[:id],
+        viewable_type: "User"
+      })
+    end
   end
 
   def new

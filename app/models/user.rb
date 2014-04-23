@@ -28,6 +28,15 @@ class User < ActiveRecord::Base
                                 allow_nil: true,
                                 message: "Password length must be at least 7" }
 
+
+  has_many :views, as: :viewable
+  has_many(
+    :viewed,
+    class_name: "View",
+    foreign_key: :user_id,
+    primary_key: :id
+  )
+
   has_many :deviations
   has_many :galleries
   has_many :journals

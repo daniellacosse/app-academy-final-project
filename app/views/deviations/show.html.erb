@@ -1,4 +1,21 @@
-<%= render @deviation %>
+<img class="deviation-media" src="<%= @deviation.media.url %>">
+
+<h2 class="deviation-title">
+  <%= @deviation.title %>
+</h2>
+
+<p>Views: <%= @deviation.views.count %></p>
+
+<span class="deviation-author">
+  <img src="<%= @deviation.user.avatar.url(:icon) %>">
+  by ~<a href="<%= user_url(@deviation.user) %>">
+    <%= @deviation.user.username %>
+  </a>
+</span>
+
+<p class="deviation-description">
+  <%= @deviation.description %>
+</p>
 
 <% if @deviation.user.id == current_user.try(:id) %>
   <%= link_to 'Edit', edit_deviation_url(@deviation) %>

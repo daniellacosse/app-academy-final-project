@@ -26,12 +26,7 @@
 
   <% unless @user.persisted? %>
 
-    <!-- display current img if there is one?; class="image-upload-preview" -->
 
-    <div class="file-upload">
-      <label for="user_avatar">Profile Picture:</label>
-      <input type="file" name="user[avatar]" id="user_avatar">
-    </div>
 
     <input
       class="text-input"
@@ -46,68 +41,6 @@
       placeholder="Confirm Password">
 
   <% end %>
-
-  <input
-    class="text-input"
-    type="text"
-    name="user[first_name]"
-    value="<%= @user.first_name %>"
-    placeholder="First Name">
-
-  <input
-    class="text-input"
-    type="text"
-    name="user[last_name]"
-    value="<%= @user.last_name %>"
-    placeholder="Last Name">
-
-  <fieldset class="radio-button-input-set">
-    <legend>Gender:</legend>
-
-    <div class="radio-button">
-      <label for="male_gender">Male</label>
-      <input
-        id="male_gender"
-        type="radio"
-        name="user[gender]"
-        value="M"
-        <%= "checked" if @user.gender == "M"%>
-      >
-    </div>
-
-    <div class="radio-button">
-      <label for="female_gender">Female</label>
-      <input
-        id="female_gender"
-        type="radio"
-        name="user[gender]"
-        value="F"
-        <%= "checked" if @user.gender == "F"%>
-      >
-    </div>
-
-    <div class="radio-button">
-      <label for="other_gender">Other</label>
-      <input
-        id="other_gender"
-        type="radio"
-        name="user[gender]"
-        value="O"
-        <%= "checked" if @user.gender == "O"%>
-      >
-    </div>
-
-    <div class="radio-button">
-      <label for="no_gender">None/Prefer not to say</label>
-      <input
-        type="radio"
-        name="user[gender]"
-        value="n/a"
-        <%= "checked" if @user.gender == "n/a" || !@user.persisted? %>
-      >
-    </div>
-
-  </fieldset>
 
   <div class="date-input">
     <label for="dob">Date of Birth:</label>
@@ -135,10 +68,84 @@
     </select>
   <div>
 
-  <textarea
-    class="textarea-input"
-    name="user[biography]"
-    placeholder="Biography"><%= @user.biography %></textarea>
+  <% if @user.persisted? %>
+
+    <img class="image-upload-preview" src="<%= @user.avatar.url(:thumb) %>">
+
+    <div class="file-upload">
+      <label for="user_avatar">Profile Picture:</label>
+      <input type="file" name="user[avatar]" id="user_avatar">
+    </div>
+
+    <input
+      class="text-input"
+      type="text"
+      name="user[first_name]"
+      value="<%= @user.first_name %>"
+      placeholder="First Name">
+
+    <input
+      class="text-input"
+      type="text"
+      name="user[last_name]"
+      value="<%= @user.last_name %>"
+      placeholder="Last Name">
+
+
+    <fieldset class="radio-button-input-set">
+      <legend>Gender:</legend>
+
+      <div class="radio-button">
+        <label for="male_gender">Male</label>
+        <input
+          id="male_gender"
+          type="radio"
+          name="user[gender]"
+          value="M"
+          <%= "checked" if @user.gender == "M"%>
+        >
+      </div>
+
+      <div class="radio-button">
+        <label for="female_gender">Female</label>
+        <input
+          id="female_gender"
+          type="radio"
+          name="user[gender]"
+          value="F"
+          <%= "checked" if @user.gender == "F"%>
+        >
+      </div>
+
+      <div class="radio-button">
+        <label for="other_gender">Other</label>
+        <input
+          id="other_gender"
+          type="radio"
+          name="user[gender]"
+          value="O"
+          <%= "checked" if @user.gender == "O"%>
+        >
+      </div>
+
+      <div class="radio-button">
+        <label for="no_gender">None/Prefer not to say</label>
+        <input
+          type="radio"
+          name="user[gender]"
+          value="n/a"
+          <%= "checked" if @user.gender == "n/a" || !@user.persisted? %>
+        >
+      </div>
+
+    </fieldset>
+
+    <textarea
+      class="textarea-input"
+      name="user[biography]"
+      placeholder="Biography"><%= @user.biography %></textarea>
+
+  <% end %>
 
   <input
     class="submit-button"

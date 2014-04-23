@@ -9,8 +9,8 @@ describe GalleryDeviation do
   context "validates presence" do
     let(:incomplete_gallery_deviation) { GalleryDeviation.new }
 
-    it "validates presence of :gallery_id" do
-      expect(incomplete_gallery_deviation).to have(1).error_on(:gallery_id)
+    it "validates presence of :gallery" do
+      expect(incomplete_gallery_deviation).to have(1).error_on(:gallery)
     end
 
     it "validates presence of :deviation_id" do

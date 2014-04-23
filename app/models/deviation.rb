@@ -14,5 +14,6 @@ class Deviation < ActiveRecord::Base
               :can_remix,
               inclusion: { in: [true, false], message: "something's up" }
 
+    has_many :views, as: :viewable
     belongs_to :user, dependent: :destroy
 end

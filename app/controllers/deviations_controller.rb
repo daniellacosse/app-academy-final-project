@@ -1,6 +1,6 @@
 class DeviationsController < ApplicationController
   def index
-    @deviations = Deviation.all
+    @deviations = Deviation.all(order: "created_at DESC")
   end
 
   def new
@@ -9,6 +9,13 @@ class DeviationsController < ApplicationController
 
   def show
     @deviation = Deviation.find(params[:id])
+    unless current_user.id == @deviation.user.id
+      View.create({
+        user_id: current_user.id,
+        viewable_id: @deviation.id,
+        viewable_type: "Deviation"
+      })
+    end
   end
 
   def edit
