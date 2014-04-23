@@ -1,0 +1,19 @@
+<div class="comment-wrapper">
+  <img src="<% comment.commenter.avatar(:icon) %>">
+
+  <p>
+    <%= comment.body %>
+  </p>
+
+  <div class="respond-div-wrapper">
+    Hover to Respond
+    <div class="respond-div">
+    <%= render partial: "comments/form", locals: {
+      type: "Comment",
+      id: comment.id
+    } %>
+    </div>
+  </div>
+
+  <%= render comment.comments %>
+</div>

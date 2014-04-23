@@ -157,3 +157,15 @@ div.radio-button {
   opacity: 0.8;
   font-size: 10pt;
 }
+
+div.comment-wrapper {
+  margin-left: 20px;
+}
+
+div.respond-div-wrapper > div.respond-div {
+  display: hidden;
+}
+
+div.respond-div-wrapper:hover > div.respond-div {
+  display: hidden;
+}

@@ -15,5 +15,6 @@ DArt::Application.routes.draw do
   end
 
   resources :likes, only: [:create, :destroy]
+  resources :comments, only: [:create, :destroy]
   resource :session, only: [:new, :create, :destroy]
 end

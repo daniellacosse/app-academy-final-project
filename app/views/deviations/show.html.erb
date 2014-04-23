@@ -36,3 +36,10 @@
 <% if @deviation.user.id == current_user.try(:id) %>
   <%= link_to 'Edit', edit_deviation_url(@deviation) %>
 <% end %>
+
+<%= render partial: "comments/form", locals: {
+  type: "Deviation",
+  id: @deviation.id
+} %>
+
+<%= render @deviation.comments %>
