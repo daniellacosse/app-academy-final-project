@@ -36,8 +36,9 @@
         <input
           id="<%= deviation.title %>"
           type="checkbox"
-          name="gallery[deviations][]"
+          name="gallery[deviation_ids][]"
           value="<%= deviation.id %>"
+          <%= "checked" if @gallery.deviations.include?(deviation) %>
         >
       </div>
     <% end %>

@@ -1,5 +1,9 @@
 <% if @galleries.count > 0 %>
-	<%= render @galleries %>
+	<% @galleries.each do |gallery| %>
+  <p>
+    <a href="<%= gallery_url(gallery) %>"><%= gallery.title %></a>
+  </p>
+  <% end %>
 <% else %>
 	<p class="notice">
 		No galleries to be found!

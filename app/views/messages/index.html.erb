@@ -1,1 +1,7 @@
-<%= render @messages %>
+<% if @messages.count > 0 %>
+	<%= render @messages %>
+<% else %>
+	<p class="notice">
+		No messages! You're alone in the infinite void of space and time! Congrats!
+	</p>
+<% end %>

@@ -8,6 +8,7 @@
       <%= time_ago_in_words(message.created_at) %> ago,
     </date>
 
+    <img src="<%= message.user.avatar.url(:icon) %>">
     from ~<a href="<%= user_url(message.user) %>"><%= message.author.username %></a>
   </span>
 
