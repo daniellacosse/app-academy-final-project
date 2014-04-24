@@ -12,7 +12,8 @@ gem 'bcrypt', '~> 3.1.7'
 gem 'backbone-on-rails'
 gem 'paperclip'
 gem 'aws-sdk'
-# gem 'turbolinks'
+gem 'figaro'
+gem 'turbolinks'
 
 group :doc do
   gem 'sdoc', require: false
