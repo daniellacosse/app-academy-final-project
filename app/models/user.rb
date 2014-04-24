@@ -99,6 +99,17 @@ class User < ActiveRecord::Base
     !(biography.nil? || biography.empty?)
   end
 
+  def has_seen_notifications
+    # look up how to update a bunch of objects at once
+    notifications.each do |notification|
+      notification.update(was_seen: true)
+    end
+  end
+
+  def unseen_notifications
+    notifications.reject { |n| n.was_seen }
+  end
+
   def ensure_token
     self.token ||= User.create_token
   end

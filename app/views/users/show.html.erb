@@ -4,7 +4,8 @@
   <span><%= @user.username %></span>
 </p>
 
-<% if @user.avatar %>
+<%# TEMPORARY SOLUTION: %>
+<% if /missing.png/ !~ @user.avatar.to_s %>
   <img src="<%= @user.avatar.url(:thumb) %>">
 <% end %>
 
@@ -36,7 +37,7 @@
 </p>
 
 <span>
-  <%= @user.likes.count %>
+  <%= @user.likes.count %> people like you.
 </span>
 
 <% if current_user.followed_users.include?(@user) %>

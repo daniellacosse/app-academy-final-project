@@ -43,7 +43,7 @@ header {
   z-index: 2;
 }
 
-.dArt-header {
+.dArt-logo {
   font-family: 'open_sansregular';
 	margin: 0;
   font-size: 30pt;
@@ -81,6 +81,7 @@ h2 {
 h3 {
   font-family: 'open_sanssemibold';
   font-size: 16pt;
+  margin: 0;
 
   color: white;
 }
