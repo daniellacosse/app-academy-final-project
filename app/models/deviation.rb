@@ -16,6 +16,7 @@ class Deviation < ActiveRecord::Base
 
     has_many :views, as: :viewable, dependent: :destroy
     has_many :likes, as: :likeable, dependent: :destroy
+    has_many :tags, as: :taggable, dependent: :destroy
     has_many :comments, as: :commentable, dependent: :destroy
     belongs_to :user
 end

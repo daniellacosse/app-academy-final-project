@@ -120,6 +120,8 @@
     </div>
   </fieldset>
 
+  <input type="text" name="deviation[tags]" id="tags" placeholder="Tags" value="<%= @deviation.tags.pluck(:tag).join(", ") %>">
+
   <input
     class="submit-button"
     type="submit"

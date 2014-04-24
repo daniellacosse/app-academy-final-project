@@ -29,6 +29,8 @@
   <%= @deviation.description %>
 </p>
 
+<%= render @deviation.tags %>
+
 <% if @deviation.user.id == current_user.try(:id) %>
   <%= link_to 'Edit', edit_deviation_url(@deviation) %>
 <% end %>

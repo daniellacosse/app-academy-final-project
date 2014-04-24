@@ -3,4 +3,5 @@ class Journal < ActiveRecord::Base
 
   belongs_to :user
   has_many :comments, as: :commentable, dependent: :destroy
+  has_many :tags, as: :taggable, dependent: :destroy
 end
