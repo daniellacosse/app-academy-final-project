@@ -19,7 +19,7 @@ class JournalsController < ApplicationController
   def create
     @journal = Journal.new(journal_params)
     if @journal.save
-      tag_params[tags].split(/ |,/).reject{ |el| el.empty? }.each do |tag|
+      tag_params[:tags].split(/ |,/).reject{ |el| el.empty? }.each do |tag|
         Tag.create({
           tag: tag,
           taggable_id: @journal.id,
