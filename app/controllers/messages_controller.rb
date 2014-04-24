@@ -15,6 +15,13 @@ class MessagesController < ApplicationController
   def create
     @message = Message.new(message_params)
     if @message.save
+      Notification.create(
+        notification_type: 0,
+        notifier_id: @message.author.id,
+        user_id: @message.user.id,
+        notifiable_id: @message.id,
+        notifiable_type: "Message"
+      )
       render :show
     else
       flash.now[:errors] = @message.errors.full_messages

@@ -1,6 +1,23 @@
 class LikesController < ApplicationController
   def create
-    Like.create(like_params)
+    like = Like.create(like_params)
+
+    case like.likeable_type
+      when "User"
+        user_id, type = like.likeable_id, 1
+      when "Deviation"
+        user_id, type = Deviation.find(like.likeable_id).user, 2
+      when "Gallery"
+        user_id, type = Gallery.find(like.likeable_id).user, 3
+    end
+
+    Notification.create(
+      notification_type: type,
+      notifier_id: like.liker.id,
+      user_id: user_id,
+      notifiable_id: like.id,
+      notifiable_type: "Like"
+    )
 
     redirect_to :back
   end

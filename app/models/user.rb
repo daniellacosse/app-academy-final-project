@@ -22,12 +22,9 @@ class User < ActiveRecord::Base
             uniqueness: true
 
   validates_confirmation_of :password
-  validates :password, length:
-
-                              { minimum: 7,
-                                allow_nil: true,
-                                message: "Password length must be at least 7" }
-
+  validates :password, length: { minimum: 7,
+                                 allow_nil: true,
+                                 message: "Password length must be at least 7" }
 
   has_many :views, as: :viewable
   has_many(
@@ -45,10 +42,16 @@ class User < ActiveRecord::Base
     primary_key: :id
   )
 
+  has_many :commented,
+           class_name: "Comment",
+           foreign_key: :user_id,
+           primary_key: :id
+
+  has_many :notifications
   has_many(
-    :commented,
-    class_name: "Comment",
-    foreign_key: :user_id,
+    :notified,
+    class_name: "Notification",
+    foreign_key: :notifier_id,
     primary_key: :id
   )
 

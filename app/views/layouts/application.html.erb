@@ -17,6 +17,9 @@
 
     <% if logged_in? %>
 			<ul class="header-nav">
+        <li>
+          Notifications: <%= current_user.notifications.count %>
+        </li>
 				<li class="current-user-header">
 	        <a href="<%= user_url(current_user) %>">
 						<%= current_user.username %>
