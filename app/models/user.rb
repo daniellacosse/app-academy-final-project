@@ -12,7 +12,6 @@ class User < ActiveRecord::Base
   validates :username,
             :email,
             :password_digest,
-            :country,
             :date_of_birth,
             presence: true
 
@@ -78,6 +77,26 @@ class User < ActiveRecord::Base
 
   def self.create_token
     SecureRandom::urlsafe_base64(16)
+  end
+
+  def first_name_isnt_nil_or_empty
+    !(first_name.nil? || first_name.empty?)
+  end
+
+  def last_name_isnt_nil_or_empty
+    !(last_name.nil? || last_name.empty?)
+  end
+
+  def entire_name_isnt_nil_or_empty
+    first_name_isnt_nil_or_empty && last_name_isnt_nil_or_empty
+  end
+
+  def country_isnt_nil_or_empty
+    !(country.nil? || country.empty?)
+  end
+
+  def biography_isnt_nil_or_empty
+    !(biography.nil? || biography.empty?)
   end
 
   def ensure_token

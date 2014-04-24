@@ -12,6 +12,7 @@ DArt::Application.routes.draw do
 
   resources :users do
     resources :messages
+    resources :notifications, only: :index
   end
 
   resources :likes, only: [:create, :destroy]

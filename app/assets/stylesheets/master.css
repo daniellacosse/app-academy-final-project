@@ -61,6 +61,7 @@ header > ul {
 header > ul > li {
 	float: left;
   height: 100%;
+  margin-left: 20px;
 }
 
 h1 {

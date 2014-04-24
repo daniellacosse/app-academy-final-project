@@ -117,11 +117,11 @@ ActiveRecord::Schema.define(version: 20140424125413) do
     t.string   "email",               null: false
     t.string   "password_digest",     null: false
     t.string   "token",               null: false
+    t.date     "date_of_birth",       null: false
     t.string   "first_name"
     t.string   "last_name"
+    t.string   "country"
     t.string   "gender"
-    t.string   "country",             null: false
-    t.date     "date_of_birth",       null: false
     t.text     "biography"
     t.string   "avatar_file_name"
     t.string   "avatar_content_type"
