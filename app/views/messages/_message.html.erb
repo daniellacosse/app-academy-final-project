@@ -9,7 +9,7 @@
     </date>
 
     <img src="<%= message.author.avatar.url(:icon) %>">
-    from ~<a href="<%= user_url(message.user) %>"><%= message.author.username %></a>
+    from ~<a href="<%= user_url(message.author) %>"><%= message.author.username %></a>
   </span>
 
   <p class="_message-body">
