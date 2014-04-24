@@ -5,7 +5,7 @@
     <%= notification.notifier.username %>
   </a>
 
-  <%= fail; notification.message %>
+  <%= notification.message %>
 
   <% case notification.notification_type %>
     <% when 0 %>
@@ -39,7 +39,7 @@
     <% when 5 %>
     <!-- someone comments your journal -->
 
-      <a href="<%= deviation_url(notification.notifiable.commentable_id) %>">
+      <a href="<%= journal_url(notification.notifiable.commentable_id) %>">
         <%= notification.notifiable.commentable.title %>
       </a>
     <% when 6 %>

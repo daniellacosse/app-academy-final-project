@@ -6,7 +6,7 @@ class Notification < ActiveRecord::Base
     3 => " liked your gallery",
     4 => " commented on your deviation",
     5 => " commented on your journal",
-    6 => " replied to your comment.",
+    6 => " replied to your comment",
     # 'broadcasting' - followed user
     7 => " uploaded a deviation",
     8 => " wrote a new journal",

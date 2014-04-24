@@ -24,8 +24,9 @@ class MessagesController < ApplicationController
       )
       render :show
     else
-      flash.now[:errors] = @message.errors.full_messages
-      render :new
+      flash[:errors] = @message.errors.full_messages
+
+      redirect_to new_user_message_url(@message.user_id)
     end
   end
 

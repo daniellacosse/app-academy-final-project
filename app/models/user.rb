@@ -1,6 +1,16 @@
 class User < ActiveRecord::Base
   attr_reader :password, :password_confirmation
 
+  def self.find_by_credentials(user_params)
+    user = User.find_by_username(user_params[:username])
+    return user if !!user && user.is_password?(user_params[:password])
+    nil
+  end
+
+  def self.create_token
+    SecureRandom::urlsafe_base64(16)
+  end
+
   before_validation :ensure_token
 
   has_attached_file :avatar, styles: {
@@ -24,6 +34,33 @@ class User < ActiveRecord::Base
   validates :password, length: { minimum: 7,
                                  allow_nil: true,
                                  message: "Password length must be at least 7" }
+
+ # <- HANG THIS OUT:
+  def first_name_isnt_nil_or_empty
+    !(first_name.nil? || first_name.empty?)
+  end
+
+  def last_name_isnt_nil_or_empty
+    !(last_name.nil? || last_name.empty?)
+  end
+
+  def entire_name_isnt_nil_or_empty
+    first_name_isnt_nil_or_empty && last_name_isnt_nil_or_empty
+  end
+
+  def country_isnt_nil_or_empty
+    !(country.nil? || country.empty?)
+  end
+
+  def biography_isnt_nil_or_empty
+    !(biography.nil? || biography.empty?)
+  end
+
+  def avatar_isnt_empty
+    #temporary solution
+    /missing.png/ !~ avatar.to_s
+  end
+ # ->
 
   has_many :views, as: :viewable
   has_many(
@@ -54,6 +91,17 @@ class User < ActiveRecord::Base
     primary_key: :id
   )
 
+  def has_seen_notifications
+    # look up how to update a bunch of objects at once
+    notifications.each do |notification|
+      notification.update(was_seen: true)
+    end
+  end
+
+  def unseen_notifications
+    notifications.reject { |n| n.was_seen }
+  end
+
   has_many :followed_users,
            through: :liked,
            source: :likeable,
@@ -80,46 +128,6 @@ class User < ActiveRecord::Base
     primary_key: :id
   )
 
-  def self.create_token
-    SecureRandom::urlsafe_base64(16)
-  end
-
-  def first_name_isnt_nil_or_empty
-    !(first_name.nil? || first_name.empty?)
-  end
-
-  def last_name_isnt_nil_or_empty
-    !(last_name.nil? || last_name.empty?)
-  end
-
-  def entire_name_isnt_nil_or_empty
-    first_name_isnt_nil_or_empty && last_name_isnt_nil_or_empty
-  end
-
-  def country_isnt_nil_or_empty
-    !(country.nil? || country.empty?)
-  end
-
-  def biography_isnt_nil_or_empty
-    !(biography.nil? || biography.empty?)
-  end
-
-  def avatar_isnt_empty
-    #temporary solution
-    /missing.png/ !~ avatar.to_s
-  end
-
-  def has_seen_notifications
-    # look up how to update a bunch of objects at once
-    notifications.each do |notification|
-      notification.update(was_seen: true)
-    end
-  end
-
-  def unseen_notifications
-    notifications.reject { |n| n.was_seen }
-  end
-
   def ensure_token
     self.token ||= User.create_token
   end
@@ -130,11 +138,6 @@ class User < ActiveRecord::Base
     self.token
   end
 
-  def self.find_by_credentials(user_params)
-    user = User.find_by_username(user_params[:username])
-    return user if !!user && user.is_password?(user_params[:password])
-    nil
-  end
 
   def password=(naked_password)
     @password = naked_password
