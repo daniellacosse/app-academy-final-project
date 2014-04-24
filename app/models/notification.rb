@@ -27,7 +27,8 @@ class Notification < ActiveRecord::Base
     foreign_key: :notifier_id,
     primary_key: :id
   )
-  belongs_to :notifiable, polymorphic: true, dependent: :destroy
+  belongs_to :notifiable,
+             polymorphic: true
 
   def message
     return NOTIFICATION_TYPES[self.notification_type]

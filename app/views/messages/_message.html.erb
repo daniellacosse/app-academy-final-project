@@ -3,12 +3,12 @@
     <%= message.title %>
   </h2>
 
-  <span class="_message-metadata">
+  <span class="metadata">
     <date class="_message-post-date">
       <%= time_ago_in_words(message.created_at) %> ago,
     </date>
 
-    <img src="<%= message.author.avatar.url(:icon) %>">
+    <%= render partial: "users/icon", locals: {user: message.author } %>
 
     from ~
     <a href="<%= user_url(message.author) %>">
@@ -20,7 +20,9 @@
     <%= message.body %>
   </p>
 
-  <a href="<%= new_user_message_url(message.author) %>">
-    Reply
-  </a>
+  <% unless message.author.id == current_user.id %>
+    <a href="<%= new_user_message_url(message.author) %>">
+      Reply
+    </a>
+  <% end %>
 </div>

@@ -38,4 +38,4 @@
   id: @deviation.id
 } %>
 
-<%= render @deviation.comments %>
+<%= render @deviation.comments.order("created_at DESC") %>

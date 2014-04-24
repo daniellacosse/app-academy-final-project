@@ -67,7 +67,8 @@ class User < ActiveRecord::Base
     :viewed,
     class_name: "View",
     foreign_key: :user_id,
-    primary_key: :id
+    primary_key: :id,
+    dependent: :destroy
   )
 
   has_many :likes, as: :likeable
@@ -75,7 +76,8 @@ class User < ActiveRecord::Base
     :liked,
     class_name: "Like",
     foreign_key: :user_id,
-    primary_key: :id
+    primary_key: :id,
+    dependent: :destroy
   )
 
   has_many :commented,
@@ -88,7 +90,8 @@ class User < ActiveRecord::Base
     :notified,
     class_name: "Notification",
     foreign_key: :notifier_id,
-    primary_key: :id
+    primary_key: :id,
+    dependent: :destroy
   )
 
   def has_seen_notifications
@@ -117,9 +120,9 @@ class User < ActiveRecord::Base
            source: :likeable,
            source_type: "Gallery"
 
-  has_many :deviations
-  has_many :galleries
-  has_many :journals
+  has_many :deviations, dependent: :destroy
+  has_many :galleries, dependent: :destroy
+  has_many :journals, dependent: :destroy
   has_many :messages
   has_many(
     :authored_messages,

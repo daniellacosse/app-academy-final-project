@@ -6,8 +6,7 @@ class Comment < ActiveRecord::Base
     :commenter,
     class_name: "User",
     foreign_key: :user_id,
-    primary_key: :id,
-    dependent: :destroy
+    primary_key: :id
   )
 
   has_many :comments, as: :commentable, dependent: :destroy
