@@ -20,7 +20,6 @@ class Notification < ActiveRecord::Base
     15 => " was commented on"
   }
 
-  belongs_to :notifiable, polymorphic: true
   belongs_to :user
   belongs_to(
     :notifier,
@@ -28,8 +27,40 @@ class Notification < ActiveRecord::Base
     foreign_key: :notifier_id,
     primary_key: :id
   )
+  belongs_to :notifiable, polymorphic: true, dependent: :destroy
 
   def message
     return NOTIFICATION_TYPES[self.notification_type]
+  end
+
+  def message_url
+    the = Rails.application.routes.url_helpers
+
+    case notification_type
+      when 0
+        return the.message_path(notifiable_id, only_path: true)
+      when 1
+        return
+      when 2
+        return the.deviation_path(notifiable.likeable_id, only_path: true)
+      when 3
+        return the.gallery_path(notifiable.likeable_id, only_path: true)
+      when 4
+        return the.deviation_path(notifiable.commentable_id, only_path: true)
+      when 5
+        return the.journal_path(notifiable.commentable_id, only_path: true)
+      when 6
+        return
+    end
+  end
+
+  def subject
+    if notification_type == 0
+      return notifiable.title
+    elsif notification_type.between?(2, 3)
+      return notifiable.likeable.title
+    elsif notification_type.between?(4, 5)
+      return notifiable.commentable.title
+    end
   end
 end

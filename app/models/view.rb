@@ -6,5 +6,5 @@ class View < ActiveRecord::Base
     primary_key: :id
   )
 
-  belongs_to :viewable, polymorphic: true
+  belongs_to :viewable, polymorphic: true, dependent: :destroy
 end
