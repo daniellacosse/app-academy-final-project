@@ -11,4 +11,3 @@ class CreateComments < ActiveRecord::Migration
     add_index :comments, :user_id
   end
 end
-x
