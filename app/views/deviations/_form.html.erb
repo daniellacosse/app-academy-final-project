@@ -126,3 +126,7 @@
     value="<%= @deviation.persisted? ? "Edit Deviation" : "Create Deviation" %>"
   >
 </form>
+
+<% if @deviation.persisted? %>
+  <%= button_to "DELETE", deviation_url(@deviation), method: :delete %>
+<% end %>

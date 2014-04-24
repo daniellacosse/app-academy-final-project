@@ -39,6 +39,14 @@ class GalleriesController < ApplicationController
     end
   end
 
+  def destroy
+    @gallery = Gallery.find(params[:id])
+
+    @gallery.destroy
+
+    redirect_to user_url(@gallery.user_id)
+  end
+
   private
   def gallery_params
     params.require(:gallery).permit(:title, :description, :user_id, deviation_ids: [])

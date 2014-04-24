@@ -31,3 +31,7 @@
     value="<%= @journal.persisted? ? "Edit Journal" : "Post Journal" %>"
   >
 </form>
+
+<% if @journal.persisted? %>
+  <%= button_to "DELETE", journal_url(@journal), method: :delete %>
+<% end %>

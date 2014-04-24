@@ -51,3 +51,7 @@
     value="<%= @gallery.persisted? ? "Update Gallery" : "Create Gallery" %>"
   >
 </form>
+
+<% if @gallery.persisted? %>
+  <%= button_to "DELETE", gallery_url(@gallery), method: :delete %>
+<% end %>

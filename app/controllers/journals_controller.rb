@@ -36,6 +36,14 @@ class JournalsController < ApplicationController
     end
   end
 
+  def destroy
+    @journal = Journal.find(params[:id])
+
+    @journal.destroy
+
+    redirect_to user_url(@journal.user_id)
+  end
+
   private
   def journal_params
     params.require(:journal).permit(:title, :body, :user_id)

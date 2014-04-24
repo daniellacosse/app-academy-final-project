@@ -44,6 +44,15 @@ class DeviationsController < ApplicationController
     end
   end
 
+  def destroy
+    @deviation = Deviation.find(params[:id])
+
+    @deviation.destroy
+
+    redirect_to user_url(@deviation.user_id)
+  end
+
+
   private
   def deviation_params
     params.require(:deviation).permit(
