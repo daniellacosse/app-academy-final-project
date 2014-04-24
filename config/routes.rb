@@ -7,11 +7,11 @@ DArt::Application.routes.draw do
     resources :users do
       resources :journals
       resources :galleries
+      resources :messages
     end
   end
 
   resources :users do
-    resources :messages
     resources :notifications, only: :index
   end
 

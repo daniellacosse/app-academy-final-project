@@ -5,7 +5,7 @@
 </p>
 
 <%# TEMPORARY SOLUTION: %>
-<% if /missing.png/ !~ @user.avatar.to_s %>
+<% if @user.avatar_isnt_empty %>
   <img src="<%= @user.avatar.url(:thumb) %>">
 <% end %>
 
@@ -36,21 +36,17 @@
   <span><%= @user.views.count %></span>
 </p>
 
-<span>
-  <%= @user.likes.count %> people like you.
-</span>
+<p class="likes">
+  <h3>Likes:</h3>
+  <span><%= @user.likes.count %></span>
+</p>
 
-<% if current_user.followed_users.include?(@user) %>
-  <%= render partial: "likes/destroy", locals: {
+  <%= render partial: "likes/button", locals: {
     type: "User",
-    id: @user.id
+    set: current_user.followed_users,
+    target: @user,
+    owner: @user
   } %>
-<% elsif current_user.id != @user.id %>
-  <%= render partial: "likes/create", locals: {
-    type: "User",
-    id: @user.id
-  } %>
-<% end %>
 
 <% if @user.entire_name_isnt_nil_or_empty  %>
   <p class="name">

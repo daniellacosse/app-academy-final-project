@@ -64,6 +64,11 @@ class User < ActiveRecord::Base
            source: :likeable,
            source_type: "Deviation"
 
+  has_many :liked_galleries,
+           through: :liked,
+           source: :likeable,
+           source_type: "Gallery"
+
   has_many :deviations
   has_many :galleries
   has_many :journals
@@ -97,6 +102,11 @@ class User < ActiveRecord::Base
 
   def biography_isnt_nil_or_empty
     !(biography.nil? || biography.empty?)
+  end
+
+  def avatar_isnt_empty
+    #temporary solution
+    /missing.png/ !~ avatar.to_s
   end
 
   def has_seen_notifications

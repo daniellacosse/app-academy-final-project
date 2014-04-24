@@ -15,7 +15,7 @@
   <input type="hidden" name="deviation[user_id]" value="<%= current_user.id %>">
 
   <div class="file-upload">
-    <label for="deviation_media">Your Artwork</label>
+    <!-- <label for="deviation_media">Your Artwork</label> -->
     <input type="file" name="deviation[media]" id="deviation_media">
   </div>
 
@@ -124,5 +124,5 @@
     class="submit-button"
     type="submit"
     value="<%= @deviation.persisted? ? "Edit Deviation" : "Create Deviation" %>"
-  > 
+  >
 </form>

@@ -1,11 +1,11 @@
 class Notification < ActiveRecord::Base
   NOTIFICATION_TYPES = {
-    0 => " sent you a message.",
-    1 => " followed you.",
-    2 => " liked your deviation.",
-    3 => " liked your gallery.",
-    4 => " commented on your deviation.",
-    5 => " commented on your journal.",
+    0 => " sent you a message",
+    1 => " followed you",
+    2 => " liked your deviation",
+    3 => " liked your gallery",
+    4 => " commented on your deviation",
+    5 => " commented on your journal",
     6 => " replied to your comment.",
     # 'broadcasting' - followed user
     7 => " uploaded a deviation",
@@ -22,11 +22,14 @@ class Notification < ActiveRecord::Base
 
   belongs_to :notifiable, polymorphic: true
   belongs_to :user
-  belongs_to :notifier
+  belongs_to(
+    :notifier,
+    class_name: "User",
+    foreign_key: :notifier_id,
+    primary_key: :id
+  )
 
   def message
-    if (self.notification_type < 7)
-     return User.find(notifier_id) + NOTIFICATION_TYPES[self.notification_type]
-   end
+    return NOTIFICATION_TYPES[self.notification_type]
   end
 end

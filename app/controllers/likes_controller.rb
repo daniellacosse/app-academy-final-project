@@ -6,9 +6,9 @@ class LikesController < ApplicationController
       when "User"
         user_id, type = like.likeable_id, 1
       when "Deviation"
-        user_id, type = Deviation.find(like.likeable_id).user, 2
+        user_id, type = Deviation.find(like.likeable_id).user.id, 2
       when "Gallery"
-        user_id, type = Gallery.find(like.likeable_id).user, 3
+        user_id, type = Gallery.find(like.likeable_id).user.id, 3
     end
 
     Notification.create(

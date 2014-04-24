@@ -1,0 +1,23 @@
+<p>
+  <%= render partial: "users/icon", locals: { user: notification.notifier } %>
+  <a href="<%= user_url(notification.notifier) %>">
+    <%= notification.notifier.username %>
+  </a>
+  <%= notification.message %>
+
+  <% case notification.notification_type %>
+    <% when 0 %>
+      <a href="<%= message_url(notification.notifiable_id) %>">
+        <%= notification.notifiable.title %>
+      </a>
+    <% when 1 %>
+    <% when 2 %>
+      <a href="<%= deviation_url(notification.notifiable.likeable_id) %>">
+        <%= notification.notifiable.likeable.title %>
+      </a>
+  <% end %>
+
+  <span class="metadata">
+    <%= time_ago_in_words(notification.created_at) %> ago
+  </span>
+</p>

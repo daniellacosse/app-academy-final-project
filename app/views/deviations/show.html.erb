@@ -1,29 +1,25 @@
 <img class="deviation-media" src="<%= @deviation.media.url %>">
 
-<span>
-  <%= @deviation.likes.count %>
-</span>
-
-<% if current_user.liked_deviations.include?(@deviation) %>
-  <%= render partial: "likes/destroy", locals: {
-    type: "Deviation",
-    id: @deviation.id
-  } %>
-<% elsif current_user.id != @deviation.id %>
-  <%= render partial: "likes/create", locals: {
-    type: "Deviation",
-    id: @deviation.id
-  } %>
-<% end %>
-
 <h2 class="deviation-title">
   <%= @deviation.title %>
 </h2>
 
+<p>
+  Likes: <%= @deviation.likes.count %>
+</p>
+
+  <%= render partial: "likes/button", locals: {
+    type: "Deviation",
+    set: current_user.liked_deviations,
+    target: @deviation,
+    owner: @deviation.user
+  } %>
+
 <p>Views: <%= @deviation.views.count %></p>
 
 <span class="deviation-author">
-  <img src="<%= @deviation.user.avatar.url(:icon) %>">
+  <%= render partial: "users/icon", locals: {user: @deviation.user } %>
+
   by ~<a href="<%= user_url(@deviation.user) %>">
     <%= @deviation.user.username %>
   </a>

@@ -6,7 +6,8 @@
   </h2>
 
   <span class="metadata">
-    <img src="<%= deviation.user.avatar.url(:icon) %>">
+  <%= render partial: "users/icon", locals: { user: deviation.user } %>
+
     by ~<a href="<%= user_url(deviation.user) %>">
       <%= deviation.user.username %>
     </a>
