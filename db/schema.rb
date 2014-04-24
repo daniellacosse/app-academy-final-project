@@ -104,6 +104,7 @@ ActiveRecord::Schema.define(version: 20140424125413) do
     t.integer  "notification_type"
     t.integer  "notifiable_id"
     t.string   "notifiable_type"
+    t.boolean  "was_seen",          default: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
