@@ -1,20 +1,49 @@
 <p>
   <%= render partial: "users/icon", locals: { user: notification.notifier } %>
+
   <a href="<%= user_url(notification.notifier) %>">
     <%= notification.notifier.username %>
   </a>
-  <%= notification.message %>
+
+  <%= fail; notification.message %>
 
   <% case notification.notification_type %>
     <% when 0 %>
+    <!-- someone sends you a message -->
+
       <a href="<%= message_url(notification.notifiable_id) %>">
         <%= notification.notifiable.title %>
       </a>
+
     <% when 1 %>
+    <!-- someone follows you -->
+
     <% when 2 %>
+    <!-- someone likes your deviation -->
+
       <a href="<%= deviation_url(notification.notifiable.likeable_id) %>">
         <%= notification.notifiable.likeable.title %>
       </a>
+    <% when 3 %>
+    <!-- someone likes your gallery -->
+
+      <a href="<%= gallery_url(notification.notifiable.likeable_id) %>">
+        <%= notification.notifiable.likeable.title %>
+      </a>
+    <% when 4 %>
+    <!-- someone comments on your deviation -->
+
+      <a href="<%= deviation_url(notification.notifiable.commentable_id) %>">
+        <%= notification.notifiable.commentable.title %>
+      </a>
+    <% when 5 %>
+    <!-- someone comments your journal -->
+
+      <a href="<%= deviation_url(notification.notifiable.commentable_id) %>">
+        <%= notification.notifiable.commentable.title %>
+      </a>
+    <% when 6 %>
+    <!-- someone replies to your comment -->
   <% end %>
 
   <span class="metadata">
