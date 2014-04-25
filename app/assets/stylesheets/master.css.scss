@@ -1,10 +1,11 @@
-p, body, html, h1, fieldset, input, div {
+p, body, html, h1, fieldset, input, div, span, header, nav, ul, li {
   padding: 0;
   margin: 0;
   border: 0;
 
   font: inherit;
   font-family: Helvetica,sans-serif;
+	color: white;
 }
 
 body {
@@ -14,8 +15,8 @@ body {
   background: #020703;
 }
 
-.clearfix:after{
-	content: "";
+.group:after{
+	content: " ";
 	clear: both;
 }
 
@@ -31,38 +32,119 @@ ul {
   list-style-type: none;
 }
 
-header {
+a {
+  text-decoration: none;
+  color: #14A046;
+}
+
+a:hover {
+  color: #ED1E31;
+}
+
+header.navbar {
 	box-sizing: border-box;
 	position: fixed;
 	top: 0;
 	width: 100%;
-	padding: 6px 20px;
-  padding-bottom: 0px;
+	height: 75px;
+
 	border-bottom: 5px solid #14A046;
 	background-color: rgba(255, 255, 255, 0.9);
   z-index: 2;
 }
 
-.dArt-logo {
-  font-family: 'open_sansregular';
-	margin: 0;
-  font-size: 30pt;
-}
-
-header > h1 {
-	float: left;
-}
-
-header > ul {
-	margin: 0;
+header.navbar > a.login-signin {
+	font-family: 'open_sansregular';
+	font-size: 12pt;
 	float: right;
+	padding-right: 30px;
 }
 
-header > ul > li {
-	float: left;
-  height: 100%;
-  margin-left: 20px;
+header.navbar > ul.session-nav {
+	float: right;
+	width: auto;
 }
+
+header.navbar > ul.session-nav > li.session-nav-item {
+	font-family: 'open_sansregular';
+	font-size: 12pt;
+	float: right;
+	padding-right: 30px;
+}
+
+header.navbar > div.dropdown-button {
+	position: fixed;
+	width: 125px;
+	height: 75px;
+}
+
+header.navbar > div.dropdown-button > a.dArt {
+  font-family: 'open_sansregular';
+	margin: 10px;
+  font-size: 30pt;
+	padding: 10px 20px;
+	margin: 0;
+	float: left;
+}
+
+header.navbar > div.dropdown-button:hover > a.dArt {
+	color: white;
+	background-color: #14A046;
+}
+
+header.navbar > div.dropdown-button > nav.dropdown-menu {
+	display: block;
+	
+	position: fixed;
+	left: 0;
+	top: 72px;
+	width: 100%;
+
+	padding: 15px 20px;
+	
+  box-sizing: border-box;
+	z-index: 2;
+	
+	background: #14A046;
+}
+
+header.navbar > div.dropdown-button:hover > nav.dropdown-menu {
+	display: block;
+}
+
+header.navbar > div.dropdown-button > nav.dropdown-menu input.text-input {
+	width: 100%;
+  box-sizing: border-box;
+}
+
+header.navbar > div.dropdown-button > nav.dropdown-menu input.text-input:focus {
+	border-color: white;
+}
+
+header.navbar > div.dropdown-button > nav.dropdown-menu > span.width_fix {
+	display: block;
+	
+}
+
+header.navbar > div.dropdown-button > nav.dropdown-menu > span.width_fix  > ul.user-nav {
+	float: left;
+}
+
+header.navbar > div.dropdown-button > nav.dropdown-menu > span.width_fix > ul.user-nav > li.user-nav-item {
+	display: block;
+	text-align: left;
+}
+
+header.navbar > div.dropdown-button > nav.dropdown-menu > span.width_fix > ul.user-nav > li.user-nav-item > a {
+	color: white;
+	padding: 20px 0;
+}
+
+header.navbar > div.dropdown-button > nav.dropdown-menu > span.width_fix > ul.user-nav > li.user-nav-item > a:hover {
+	color: black;
+}
+
+
 
 h1 {
   font-family: 'open_sansbold';
@@ -98,7 +180,7 @@ input, .textarea-input {
   color: white;
 }
 
-.text-input, .textarea-input {
+.text-input, .textarea-input, select, input[type="date"] {
   display: block;
   margin: 5px auto;
   width: 300px;
@@ -124,35 +206,6 @@ input:focus, select:focus, textarea:focus {
   border: 5px solid #14A046;
 }
 
-input.liker {
-  border-width: 0;
-}
-
-p, span {
-  color: white;
-}
-
-a {
-  text-decoration: none;
-  color: #14A046;
-}
-
-a:hover {
-  color: #ED1E31;
-}
-
-.error {
-  color: #ED1E31;
-  font-weight: bold;
-}
-
-img._deviation-media {
-  margin-top: 80px;
-  margin-bottom: 5px;
-  border: 1px solid #122313;
-  box-shadow: 0 0 3px 3px black;
-}
-
 legend {
   display: inline;
   width: 100%;
@@ -169,18 +222,34 @@ div.checkbox {
   color: white;
 }
 
-.metadata {
-  z-index: 1;
-  font-style: italic;
-  opacity: 0.8;
-  font-size: 10pt;
+input.liker {
+  border-width: 0;
+}
+
+.error {
+  color: #ED1E31;
+  font-weight: bold;
+}
+
+._deviation {
+  float: left;
+  margin-left: 40px;
+}
+
+img._deviation-media {
+  margin-top: 80px;
+  margin-bottom: 5px;
+  border: 1px solid #122313;
+  box-shadow: 0 0 3px 3px black;
 }
 
 div.comment-wrapper {
   margin-left: 50px;
 }
 
-._deviation {
-  float: left;
-  margin-left: 40px;
+.metadata {
+  z-index: 1;
+  font-style: italic;
+  opacity: 0.8;
+  font-size: 10pt;
 }

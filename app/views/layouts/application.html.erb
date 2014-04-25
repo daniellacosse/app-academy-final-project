@@ -8,12 +8,39 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-  <header class="clearfix">
-		<h1 class="dArt-logo">
-      <a href="<%= deviations_url %>">dArt</a>
-		</h1>
+  <header class="navbar group">
+		
+		<div class="dropdown-button group">
+	    <a class="dArt" href="<%= root_url %>">
+				dArt
+				<% if logged_in? && has_notifications? %>
+					<span class="notification-counter">
+						<%= current_user.unseen_notifications.count %>
+					 </span>
+				<% end %>
+			</a>
+			
+			<nav class="dropdown-menu">
+				<% if logged_in? %>
+					<span class="width-fix">
+			    <%= render partial: "users/nav" %>
+					</span>
+				<% end %>
+				
+				<!--
+					search
+				-->
+ 				<input class="text-input" type="search" placeholder="search dArt">
+			</nav>
+		</div>
 
-    <%= render partial: "sessions/nav" if logged_in? %>
+		<% if logged_in? %>
+	    <%= render partial: "sessions/nav" %>
+		<% else %>
+		  <a class="login-signin" href="<%= new_session_url %>">
+				login/signup
+			</a>
+		<% end %>
   </header>
 
   <%= render partial: "flash/errors" %>

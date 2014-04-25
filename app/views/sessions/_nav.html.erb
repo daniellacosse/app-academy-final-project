@@ -1,25 +1,12 @@
 <ul class="session-nav">
-
-  <li>
-    <a href="<%= user_notifications_url(current_user) %>">
-      Notifications: <%= current_user.unseen_notifications.count %>
-    </a>
-  </li>
-
-	<li>
+	<li class="session-nav-item">
     <a href="<%= user_url(current_user) %>">
 			<%= current_user.username %>
 		</a>
 	</li>
-
-	<li>
+	<li class="session-nav-item">
     <a href="<%= new_deviation_url %>">
       + Art
     </a>
 	</li>
-
-	<li>
-    <%= button_to "Log out", session_url, method: :delete %>
-	</li>
-
 </ul>

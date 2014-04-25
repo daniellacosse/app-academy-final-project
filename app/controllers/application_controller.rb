@@ -1,7 +1,7 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
-  helper_method :current_user, :logged_in?
+  helper_method :current_user, :logged_in?, :has_notifications?
 
   def current_user
     User.find_by(token: session[:token])
@@ -9,6 +9,12 @@ class ApplicationController < ActionController::Base
 
   def logged_in?
     !!current_user
+  end
+  
+  def has_notifications?
+    return false unless logged_in?
+    
+    current_user.unseen_notifications.count > 0 ? true : false
   end
 
   def login(user)
