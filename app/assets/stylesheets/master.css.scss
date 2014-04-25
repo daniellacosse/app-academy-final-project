@@ -93,18 +93,18 @@ header.navbar > div.dropdown-button:hover > a.dArt {
 }
 
 header.navbar > div.dropdown-button > nav.dropdown-menu {
-	display: block;
-	
+	display: hidden;
+
 	position: fixed;
 	left: 0;
 	top: 72px;
 	width: 100%;
 
 	padding: 15px 20px;
-	
+
   box-sizing: border-box;
 	z-index: 2;
-	
+
 	background: #14A046;
 }
 
@@ -112,39 +112,37 @@ header.navbar > div.dropdown-button:hover > nav.dropdown-menu {
 	display: block;
 }
 
-header.navbar > div.dropdown-button > nav.dropdown-menu input.text-input {
+header.navbar > div.dropdown-button:hover > nav.dropdown-menu input.text-input {
 	width: 100%;
   box-sizing: border-box;
 }
 
-header.navbar > div.dropdown-button > nav.dropdown-menu input.text-input:focus {
+header.navbar > div.dropdown-button:hover > nav.dropdown-menu input.text-input:focus {
 	border-color: white;
 }
 
-header.navbar > div.dropdown-button > nav.dropdown-menu > span.width_fix {
-	display: block;
-	
-}
+//header.navbar > div.dropdown-button > nav.dropdown-menu > span.width_fix {
+//  display: block;
+//
+//}
 
-header.navbar > div.dropdown-button > nav.dropdown-menu > span.width_fix  > ul.user-nav {
+header.navbar > div.dropdown-button:hover > nav.dropdown-menu ul.user-nav {
 	float: left;
 }
 
-header.navbar > div.dropdown-button > nav.dropdown-menu > span.width_fix > ul.user-nav > li.user-nav-item {
+header.navbar > div.dropdown-button:hover > nav.dropdown-menu ul.user-nav > li.user-nav-item {
 	display: block;
 	text-align: left;
 }
 
-header.navbar > div.dropdown-button > nav.dropdown-menu > span.width_fix > ul.user-nav > li.user-nav-item > a {
+header.navbar > div.dropdown-button:hover > nav.dropdown-menu ul.user-nav > li.user-nav-item > a {
 	color: white;
 	padding: 20px 0;
 }
 
-header.navbar > div.dropdown-button > nav.dropdown-menu > span.width_fix > ul.user-nav > li.user-nav-item > a:hover {
+header.navbar > div.dropdown-button:hover > nav.dropdown-menu ul.user-nav > li.user-nav-item > a:hover {
 	color: black;
 }
-
-
 
 h1 {
   font-family: 'open_sansbold';
