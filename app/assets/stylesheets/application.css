@@ -11,3 +11,54 @@
  *= require_self
  *= require_tree .
  */
+
+/* COLOR SCHEME:
+  BLACK GREEN: #020703 <background color>
+  DARK GREEN: ???
+  SHARP GREEN: #14A046 <a color>
+*/
+
+/* ///\\\///\\\reset///\\\///\\\ */
+body, html,
+h1, h2, h3, p,
+input, textarea,
+select, fieldset, legend,
+div, span,
+header, footer,
+nav, ul, li {
+  padding: 0;
+  margin: 0;
+  border: 0;
+
+  font: inherit;
+  font-family: 'open_sansregular';
+  font-size: 14pt;
+	color: white;
+}
+
+body, html {
+  width: 100%;
+  height: 100%;
+}
+
+ul { list-style-type: none; }
+
+/* ///\\\///\\\clearfix///\\\///\\\ */
+.group:after {
+  content: " ";
+  clear: both;
+}
+
+/* ///\\\///\\\site-wide styles///\\\///\\\ */
+body {
+  background: #020703;
+  margin: 150px 0;
+}
+
+a {
+  text-decoration: none;
+  color: #14A046;
+}
+
+a:hover { color: white; }
+}

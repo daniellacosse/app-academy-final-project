@@ -1,0 +1,51 @@
+input, select, .textarea-input, label {
+  margin: 5px;
+  border: 5px solid white;
+  padding: 5px 10px;
+
+  font-family: 'open_sanslight';
+  font-size: 14pt;
+
+  color: white;
+  background: transparent;
+}
+
+.text-input, .textarea-input, select, label {
+  display: block;
+  width: 300px;
+}
+
+input.liker { border-width: 0; }
+
+.textarea-input { height: 150px; }
+
+.submit-button,
+input[type="submit"] {
+  cursor: pointer;
+  display: inline-block;
+  margin: 5px;
+}
+
+.submit-button:hover,
+input[type="submit"]:hover {
+  border-color: #14A046;
+  color: #14A046;
+}
+
+input:focus, select:focus, textarea:focus {
+  outline: none;
+  border: 5px solid #14A046;
+}
+
+legend, label {
+  display: inline;
+  font-family: 'open_sanssemibold';
+}
+
+.radio-button, .checkbox {
+  margin-left: 20px;
+  display: inline;
+  color: white;
+}
+
+

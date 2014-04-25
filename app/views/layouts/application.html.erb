@@ -9,42 +9,39 @@
 </head>
 <body>
   <header class="navbar group">
-		
 		<div class="dropdown-button group">
 	    <a class="dArt" href="<%= root_url %>">
 				dArt
+
 				<% if logged_in? && has_notifications? %>
 					<span class="notification-counter">
 						<%= current_user.unseen_notifications.count %>
 					 </span>
 				<% end %>
 			</a>
-			
+
 			<nav class="dropdown-menu">
-				<% if logged_in? %>
-					<span class="width-fix">
-			    <%= render partial: "users/nav" %>
-					</span>
-				<% end %>
-				
-				<!--
-					search
-				-->
- 				<input class="text-input" type="search" placeholder="search dArt">
-			</nav>
+			  <%= render partial: "users/nav" if logged_in? %>
+
+        <form class="dArt-searchbar">
+   				<input class="text-input" type="search" placeholder="search dArt">
+			  </form>
+      </nav>
 		</div>
 
-		<% if logged_in? %>
-	    <%= render partial: "sessions/nav" %>
-		<% else %>
+    <%= render partial: "sessions/nav" if logged_in?  %>
+
+    <% unless logged_in? %>
 		  <a class="login-signin" href="<%= new_session_url %>">
 				login/signup
 			</a>
-		<% end %>
+    <% end %>
   </header>
 
   <%= render partial: "flash/errors" %>
+
   <%= yield %>
+
 
 </body>
 </html>

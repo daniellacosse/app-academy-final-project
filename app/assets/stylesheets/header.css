@@ -1,0 +1,71 @@
+/* ///\\\///\\\header///\\\///\\\ */
+header.navbar { /* +clearfix */
+  width: 100%;
+  box-sizing: border-box;
+
+  position: fixed;
+  z-index: 2;
+  top: 0;
+
+  color: #14A046;
+  background-color: rgba(255, 255, 255, 0.9);
+  border-bottom: 5px solid #14A046;
+}
+
+/* ///\\\///\\\lefthand dropdown searchbar & menu///\\\///\\\ */
+header.navbar > .dropdown-button { float: left; }
+
+.dropdown-button > a.dArt {
+  padding: 0 20px;
+
+  font-family: 'open_sansregular';
+  font-size: 30pt;
+}
+
+.dropdown-button:hover > a.dArt {
+  color: white;
+  background: #0B1A0E;
+}
+
+.dropdown-button > nav.dropdown-menu { /* +clearfix */
+  display: none;
+
+  position: absolute;
+  top: 100%;
+  width: 100%;
+
+  background: #0B1A0E;
+}
+
+.dropdown-button:hover > nav.dropdown-menu { display: block; }
+
+nav.dropdown-menu > .user-nav {
+  float: left;
+  padding: 20px 0;
+}
+
+.user-nav .user-nav-item {
+  padding: 0 15px;
+}
+
+nav.dropdown-menu > form.dArt-searchbar {
+  overflow: hidden;
+  padding: 15px 20px;
+}
+
+.dArt-searchbar > .text-input {
+  width: 100%;
+}
+
+/* ///\\\///\\\righthand nav///\\\///\\\ */
+header.navbar > .session-nav,
+.navbar > .login-signin {
+  float: right;
+}
+
+.session-nav > .session-nav-item,
+.navbar > .login-signin {
+  padding-right: 30px;
+}
+
+.session-nav > .session-nav-item { float: left; }
