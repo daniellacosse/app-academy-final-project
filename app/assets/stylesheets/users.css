@@ -1,0 +1,17 @@
+section.user-info{
+  margin-left: 20px;
+  left: 0;
+  position: fixed;
+  height: 100%;
+}
+
+section.journals-and-galleries{
+  margin-right: 20px;
+  text-align: right;
+
+}
+
+h2.username{
+  font-family: 'open_sanslight';
+  font-size: 25pt;
+}

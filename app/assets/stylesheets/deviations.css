@@ -1,0 +1,15 @@
+section.deviations {
+  width: 75%;
+}
+
+._deviation {
+ float: left;
+ margin-left: 40px;
+}
+
+img._deviation-media {
+ margin-top: 80px;
+ margin-bottom: 5px;
+ border: 1px solid #122313;
+ box-shadow: 0 0 3px 3px black;
+}

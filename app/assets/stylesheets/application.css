@@ -13,9 +13,9 @@
  */
 
 /* COLOR SCHEME:
+  HIGHLIGHT GREEN: #14A046 <a color>
+  DARK GREEN: #122313 image highlight/nav dropdown
   BLACK GREEN: #020703 <background color>
-  DARK GREEN: ???
-  SHARP GREEN: #14A046 <a color>
 */
 
 /* ///\\\///\\\reset///\\\///\\\ */
@@ -52,7 +52,13 @@ ul { list-style-type: none; }
 /* ///\\\///\\\site-wide styles///\\\///\\\ */
 body {
   background: #020703;
-  margin: 150px 0;
+
+  margin: 100px 0;
+}
+
+.main-content{
+  display: block;
+  margin: auto;
 }
 
 a {
@@ -61,4 +67,12 @@ a {
 }
 
 a:hover { color: white; }
-}
+
+/* ///\\\///\\\files 'index'///\\\///\\\ */
+
+/*
+
+  forms.css -- all the form styles
+  header.css -- the header.navbar styles
+
+*/

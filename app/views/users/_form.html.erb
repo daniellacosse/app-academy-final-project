@@ -24,14 +24,6 @@
     value="<%= @user.email %>"
     placeholder="Email">
 
-  <div class="date-input">
-    <label for="dob">Date of Birth:</label>
-    <input
-      id="dob"
-      type="date"
-      name="user[date_of_birth]"
-      value="<%= @user.date_of_birth %>">
-  </div>
 
   <% unless @user.persisted? %>
 
@@ -48,6 +40,15 @@
       placeholder="Confirm Password">
 
   <% end %>
+
+  <div class="date-input">
+    <label for="dob">Date of Birth:</label>
+    <input
+      id="dob"
+      type="date"
+      name="user[date_of_birth]"
+      value="<%= @user.date_of_birth %>">
+  </div>
 
   <% if @user.persisted? %>
 

@@ -1,12 +1,17 @@
 <ul class="user-nav">
 	<li>
-		<a class="user-nav-item" href="">
-			Messages
-		</a>
+    <a class="user-nav-item" href="<%= user_notifications_url(current_user) %>">
+      Notifications (<%= current_user.notifications.count %>)
+    </a>
 	</li>
 	<li>
-		<a class="user-nav-item" href="">
-			Edit Profile
+    <a class="user-nav-item" href="<%= user_messages_url(current_user) %>">
+      Messages (<%= current_user.messages.count %>)
+    </a>
+	</li>
+	<li>
+		<a class="user-nav-item" href="<%= edit_user_url(current_user) %>">
+      Edit My Info
 		</a>
 	</li>
 	<li class="user-nav-item">

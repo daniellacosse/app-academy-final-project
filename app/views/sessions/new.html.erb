@@ -1,32 +1,35 @@
-<h1 class="login-header">
-  Log In
-</h1>
+<section class="form main-content">
 
-<form
-  class="login-form"
-  action="<%= session_url %>"
-  method="post">
+  <h1 class="form-header">
+    Log In
+  </h1>
 
-  <%= auth_token %>
+  <form
+    class="login-form"
+    action="<%= session_url %>"
+    method="post">
 
-  <input
-    class="text-input"
-    type="text"
-    name="user[username]"
-    placeholder="Username">
+    <%= auth_token %>
 
-  <input
-    class="text-input"
-    type="password"
-    name="user[password]"
-    placeholder="Password">
+    <input
+      class="text-input"
+      type="text"
+      name="user[username]"
+      placeholder="Username">
 
-  <input
-    class="submit-button"
-    type="submit"
-    value="Log In">
-</form>
+    <input
+      class="text-input"
+      type="password"
+      name="user[password]"
+      placeholder="Password">
 
-<a class="sign-up-link" href="<%= new_user_url %>">
-  | Sign Up
-</a>
+    <input
+      class="submit-button"
+      type="submit"
+      value="Log In">
+  </form>
+
+  <a class="sign-up-link" href="<%= new_user_url %>">
+    | Sign Up
+  </a>
+</section>

@@ -1,6 +1,21 @@
+section.form {
+  width: 340px;
+}
+
+section.form > form {
+  display: inline;
+}
+
+h1.form-header {
+  display: block;
+  text-align: center;
+  padding-bottom: 10px;
+  font-size: 43pt;
+  font-family: 'open_sansbold';
+}
+
 input, select, .textarea-input, label {
   margin: 5px;
-  border: 5px solid white;
   padding: 5px 10px;
 
   font-family: 'open_sanslight';
@@ -10,9 +25,21 @@ input, select, .textarea-input, label {
   background: transparent;
 }
 
+input, select, .textarea-input {
+  border: 5px solid white;
+}
+
 .text-input, .textarea-input, select, label {
   display: block;
   width: 300px;
+}
+
+.date-input > #dob, .file-upload {
+  width: 300px;
+}
+
+.date-input, .dropdown-input .file-upload, fieldset {
+  padding: 20px 0;
 }
 
 input.liker { border-width: 0; }
@@ -46,6 +73,7 @@ legend, label {
   margin-left: 20px;
   display: inline;
   color: white;
+  float: left;
 }
 
 

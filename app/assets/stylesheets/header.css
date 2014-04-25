@@ -24,7 +24,7 @@ header.navbar > .dropdown-button { float: left; }
 
 .dropdown-button:hover > a.dArt {
   color: white;
-  background: #0B1A0E;
+  background: #122313;
 }
 
 .dropdown-button > nav.dropdown-menu { /* +clearfix */
@@ -34,7 +34,7 @@ header.navbar > .dropdown-button { float: left; }
   top: 100%;
   width: 100%;
 
-  background: #0B1A0E;
+  background: #122313;
 }
 
 .dropdown-button:hover > nav.dropdown-menu { display: block; }

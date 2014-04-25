@@ -1,45 +1,13 @@
-<section class="user-profile">
-<p class="username">
-  <h3>Username:</h3>
-  <span><%= @user.username %></span>
-</p>
+<section class="user-info">
 
-<%# TEMPORARY SOLUTION: %>
-<% if @user.avatar_isnt_empty %>
-  <img src="<%= @user.avatar.url(:thumb) %>">
-<% end %>
+  <%# TEMPORARY SOLUTION: %>
+  <% if @user.avatar_isnt_empty %>
+    <img src="<%= @user.avatar.url(:thumb) %>">
+  <% end %>
 
-<p class="journals-and-galleries">
-  <a href="<%= user_journals_url(@user) %>">
-
-    <% if @user.first_name_isnt_nil_or_empty %>
-      <%= @user.first_name %>'s
-    <% elsif @user.last_name_isnt_nil_or_empty %>
-      <%= @user.last_name %>'s
-    <% end %>
-
-    Journals: (<%= @user.journals.count %>)
-
-  </a> | <a href="<%= user_galleries_url(@user) %>">
-    <% if @user.first_name_isnt_nil_or_empty %>
-      <%= @user.first_name %>'s
-    <% elsif @user.last_name_isnt_nil_or_empty %>
-      <%= @user.last_name %>'s
-    <% end %>
-
-    Galleries
-  </a>
-</p>
-
-<p class="views">
-  <h3>Views:</h3>
-  <span><%= @user.views.count %></span>
-</p>
-
-<p class="likes">
-  <h3>Likes:</h3>
-  <span><%= @user.likes.count %></span>
-</p>
+  <h2 class="username">
+    <%= @user.username %>
+  </h2>
 
   <%= render partial: "likes/button", locals: {
     type: "User",
@@ -48,55 +16,76 @@
     owner: @user
   } %>
 
-<% if @user.entire_name_isnt_nil_or_empty  %>
-  <p class="name">
-    <h3> Name: </h3>
-    <span>
+  <%= link_to 'write message', new_user_message_url(@user) %>
+
+  <p class="views-and-likes">
+    <%= @user.views.count %> views | <%= @user.likes.count %> likes
+  </p>
+
+  <% if @user.entire_name_isnt_nil_or_empty  %>
+    <p class="name">
       <%= @user.first_name if @user.first_name %>
       <%= @user.last_name if @user.last_name %>
-    </span>
-  </p>
-<% end %>
-
-<p class="email">
-  <h3>Email:</h3>
-  <span><%= @user.email %></span>
-</p>
-
-<% if @user.gender  %>
-  <p class="gender">
-    <h3>Gender:</h3>
-    <span><%= @user.gender %></span>
-  </p>
-<% end %>
-
-<p class="dob">
-  <h3>Date of birth:</h3>
-  <span><%= @user.date_of_birth %></span>
-</p>
-
-<% if @user.country_isnt_nil_or_empty %>
-  <p class="location">
-    <h3>Location:</h3>
-    <span><%= @user.country %></span>
-  </p>
-<% end %>
-
-<% if @user.biography_isnt_nil_or_empty %>
-  <p class="biography">
-    <h3>Biography:</h3>
-    <span><%= @user.biography %></span>
-  </p>
-<% end %>
-
-<p class="user-options">
-  <% if @user.id == current_user.try(:id) %>
-    <a href="<%= user_messages_url(@user) %>">Messages (<%= @user.messages.count %>) </a> |
-    <%= link_to 'Edit My Info', edit_user_url(@user) %>
-  <% else %>
-    <%= link_to 'Message Me', new_user_message_url(@user) %>
+    </p>
   <% end %>
-</p>
+
+  <p class="email">
+    <%= @user.email %>
+  </p>
+
+  <% if @user.gender  %>
+    <p class="gender">
+      <%= @user.gender %>
+    </p>
+  <% end %>
+
+  <p class="dob">
+    <%= @user.date_of_birth %>
+  </p>
+
+  <% if @user.country_isnt_nil_or_empty %>
+    <p class="location">
+      <%= @user.country %>
+    </p>
+  <% end %>
+
+  <% if @user.biography_isnt_nil_or_empty %>
+    <p class="biography">
+      <h3>About:</h3>
+      <%= @user.biography %>
+    </p>
+  <% end %>
 </section>
 
-<%= render @user.deviations %>
+<section class="journals-and-galleries">
+  <ul>
+    <li>
+      <a href="<%= user_journals_url(@user) %>">
+        <% if @user.first_name_isnt_nil_or_empty %>
+          <%= @user.first_name %>'s
+        <% elsif @user.last_name_isnt_nil_or_empty %>
+          <%= @user.last_name %>'s
+        <% end %>
+
+        Journals: (<%= @user.journals.count %>)
+
+      </a>
+    </li>
+
+    <li>
+      <a href="<%= user_galleries_url(@user) %>">
+        <% if @user.first_name_isnt_nil_or_empty %>
+          <%= @user.first_name %>'s
+        <% elsif @user.last_name_isnt_nil_or_empty %>
+          <%= @user.last_name %>'s
+        <% end %>
+
+        Galleries
+      </a>
+    </li>
+  </ul>
+</section>
+
+<section class="deviations main-content">
+  <%= render @user.deviations %>
+</section>
