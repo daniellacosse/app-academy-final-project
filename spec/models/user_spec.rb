@@ -34,10 +34,6 @@ describe User do
       expect(incomplete_user).to have(1).error_on(:email)
     end
 
-    it "validates presence of country" do
-      expect(incomplete_user).to have(1).error_on(:country)
-    end
-
     it "validates presence of date_of_birth" do
       expect(incomplete_user).to have(1).error_on(:date_of_birth)
     end

@@ -9,4 +9,4 @@
   id: @journal.id
 } %>
 
-<%= render @journal.comments %>
+<%= render @journal.comments.order("created_at DESC") %>

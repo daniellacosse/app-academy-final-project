@@ -3,13 +3,36 @@
     <%= @gallery.title %>
   </h2>
 
-  <% if @gallery.user_id == current_user.id %>
-    <a href="<%= edit_gallery_url(@gallery) %>">Edit</a>
-  <% end %>
+  <p>
+    Likes: <%= @gallery.likes.count %>
+  </p>
+
+  <!-- <%# if current_user.liked_galleries.include?(@gallery) %>
+    <%#= render partial: "likes/destroy", locals: {
+      type: "Gallery",
+      id: @gallery.id
+    } %>
+  <%# elsif current_user.id != @gallery.user.id %>
+    <%#= render partial: "likes/create", locals: {
+      type: "Gallery",
+      id: @gallery.id
+    } %>
+  <%# end %> -->
+
+  <%= render partial: "likes/button", locals: {
+    type: "Gallery",
+    set: current_user.liked_galleries,
+    target: @gallery,
+    owner: @gallery.user
+  } %>
 
   <p class="_gallery-description">
     <%= @gallery.description %>
   </p>
+
+  <% if @gallery.user_id == current_user.id %>
+    <a href="<%= edit_gallery_url(@gallery) %>">Edit</a>
+  <% end %>
 
   <%= render @gallery.deviations %>
 </div>

@@ -8,37 +8,15 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-
   <header class="clearfix">
-
-		<h1 class="dArt-header">
+		<h1 class="dArt-logo">
       <a href="<%= deviations_url %>">dArt</a>
 		</h1>
 
-    <% if logged_in? %>
-			<ul class="header-nav">
-				<li class="current-user-header">
-	        <a href="<%= user_url(current_user) %>">
-						<%= current_user.username %>
-					</a>
-				</li>
-				<li>
-		      <%= button_to "+ Art", new_deviation_url, method: :get %>
-				</li>
-				<li>
-		      <%= button_to "Log out", session_url, method: :delete %>
-				</li>
-			</ul>
-		<% end %>
-
+    <%= render partial: "sessions/nav" if logged_in? %>
   </header>
 
-  <% if flash[:errors] %>
-    <% flash[:errors].each do |error| %>
-      <p class="error"><%= error %></p>
-    <% end %>
-  <% end %>
-
+  <%= render partial: "flash/errors" %>
   <%= yield %>
 
 </body>

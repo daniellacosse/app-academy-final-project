@@ -1,4 +1,6 @@
 class Comment < ActiveRecord::Base
+  validates :body, presence: true
+
   belongs_to :commentable, polymorphic: true
   belongs_to(
     :commenter,
@@ -7,5 +9,6 @@ class Comment < ActiveRecord::Base
     primary_key: :id
   )
 
-  has_many :comments, as: :commentable
+  has_many :comments, as: :commentable, dependent: :destroy
+  has_many :notifications, as: :notifiable, dependent: :destroy
 end

@@ -1,0 +1,7 @@
+<% if @user.notifications.length > 0 %>
+	<%= render @user.notifications %>
+<% else %>
+	<p class="notice">
+		No notifications to be found!
+	</p>
+<% end %>

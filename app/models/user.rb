@@ -1,6 +1,16 @@
 class User < ActiveRecord::Base
   attr_reader :password, :password_confirmation
 
+  def self.find_by_credentials(user_params)
+    user = User.find_by_username(user_params[:username])
+    return user if !!user && user.is_password?(user_params[:password])
+    nil
+  end
+
+  def self.create_token
+    SecureRandom::urlsafe_base64(16)
+  end
+
   before_validation :ensure_token
 
   has_attached_file :avatar, styles: {
@@ -12,7 +22,6 @@ class User < ActiveRecord::Base
   validates :username,
             :email,
             :password_digest,
-            :country,
             :date_of_birth,
             presence: true
 
@@ -22,19 +31,44 @@ class User < ActiveRecord::Base
             uniqueness: true
 
   validates_confirmation_of :password
-  validates :password, length:
+  validates :password, length: { minimum: 7,
+                                 allow_nil: true,
+                                 message: "Password length must be at least 7" }
 
-                              { minimum: 7,
-                                allow_nil: true,
-                                message: "Password length must be at least 7" }
+ # <- HANG THIS OUT:
+  def first_name_isnt_nil_or_empty
+    !(first_name.nil? || first_name.empty?)
+  end
 
+  def last_name_isnt_nil_or_empty
+    !(last_name.nil? || last_name.empty?)
+  end
+
+  def entire_name_isnt_nil_or_empty
+    first_name_isnt_nil_or_empty && last_name_isnt_nil_or_empty
+  end
+
+  def country_isnt_nil_or_empty
+    !(country.nil? || country.empty?)
+  end
+
+  def biography_isnt_nil_or_empty
+    !(biography.nil? || biography.empty?)
+  end
+
+  def avatar_isnt_empty
+    #temporary solution
+    /missing.png/ !~ avatar.to_s
+  end
+ # ->
 
   has_many :views, as: :viewable
   has_many(
     :viewed,
     class_name: "View",
     foreign_key: :user_id,
-    primary_key: :id
+    primary_key: :id,
+    dependent: :destroy
   )
 
   has_many :likes, as: :likeable
@@ -42,15 +76,34 @@ class User < ActiveRecord::Base
     :liked,
     class_name: "Like",
     foreign_key: :user_id,
-    primary_key: :id
+    primary_key: :id,
+    dependent: :destroy
   )
 
+  has_many :commented,
+           class_name: "Comment",
+           foreign_key: :user_id,
+           primary_key: :id
+
+  has_many :notifications
   has_many(
-    :commented,
-    class_name: "Comment",
-    foreign_key: :user_id,
-    primary_key: :id
+    :notified,
+    class_name: "Notification",
+    foreign_key: :notifier_id,
+    primary_key: :id,
+    dependent: :destroy
   )
+
+  def has_seen_notifications
+    # look up how to update a bunch of objects at once
+    notifications.each do |notification|
+      notification.update(was_seen: true)
+    end
+  end
+
+  def unseen_notifications
+    notifications.reject { |n| n.was_seen }
+  end
 
   has_many :followed_users,
            through: :liked,
@@ -62,9 +115,14 @@ class User < ActiveRecord::Base
            source: :likeable,
            source_type: "Deviation"
 
-  has_many :deviations
-  has_many :galleries
-  has_many :journals
+  has_many :liked_galleries,
+           through: :liked,
+           source: :likeable,
+           source_type: "Gallery"
+
+  has_many :deviations, dependent: :destroy
+  has_many :galleries, dependent: :destroy
+  has_many :journals, dependent: :destroy
   has_many :messages
   has_many(
     :authored_messages,
@@ -72,10 +130,6 @@ class User < ActiveRecord::Base
     foreign_key: :author_id,
     primary_key: :id
   )
-
-  def self.create_token
-    SecureRandom::urlsafe_base64(16)
-  end
 
   def ensure_token
     self.token ||= User.create_token
@@ -87,11 +141,6 @@ class User < ActiveRecord::Base
     self.token
   end
 
-  def self.find_by_credentials(user_params)
-    user = User.find_by_username(user_params[:username])
-    return user if !!user && user.is_password?(user_params[:password])
-    nil
-  end
 
   def password=(naked_password)
     @password = naked_password

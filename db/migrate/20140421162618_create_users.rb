@@ -6,12 +6,12 @@ class CreateUsers < ActiveRecord::Migration
       t.string :password_digest, null: false
       t.string :token,           null: false
 
+      t.date :date_of_birth,     null: false
       t.string :first_name
       t.string :last_name
 
+      t.string :country
       t.string :gender
-      t.string :country,         null: false
-      t.date :date_of_birth,     null: false
 
       t.text :biography
       t.attachment :avatar

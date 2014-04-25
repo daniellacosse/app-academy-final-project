@@ -1,0 +1,17 @@
+<p>
+  <%= render partial: "users/icon", locals: { user: notification.notifier } %>
+
+  <a href="<%= user_url(notification.notifier) %>">
+    <%= notification.notifier.username %>
+  </a>
+
+  <%= notification.message %>
+
+  <a href="<%= notification.message_url %>">
+    <%= notification.subject %>
+  </a>
+
+  <span class="metadata">
+    <%= time_ago_in_words(notification.created_at) %> ago
+  </span>
+</p>

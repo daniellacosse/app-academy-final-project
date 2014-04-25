@@ -24,9 +24,16 @@
     value="<%= @user.email %>"
     placeholder="Email">
 
+  <div class="date-input">
+    <label for="dob">Date of Birth:</label>
+    <input
+      id="dob"
+      type="date"
+      name="user[date_of_birth]"
+      value="<%= @user.date_of_birth %>">
+  </div>
+
   <% unless @user.persisted? %>
-
-
 
     <input
       class="text-input"
@@ -42,38 +49,14 @@
 
   <% end %>
 
-  <div class="date-input">
-    <label for="dob">Date of Birth:</label>
-    <input
-      id="dob"
-      type="date"
-      name="user[date_of_birth]"
-      value="<%= @user.date_of_birth %>">
-  </div>
-
-  <div class="dropdown-input">
-    <label for="user_country">Place of Origin:</label>
-    <select id="user_country" name="user[country]">
-      <option></option>
-
-      <% ApplicationHelper::COUNTRIES.each do |country_name| %>
-        <option
-          value="<%= country_name %>"
-          <%= "selected" if @user.country == country_name %>
-        >
-          <%= country_name %>
-        </option>
-      <% end %>
-
-    </select>
-  <div>
-
   <% if @user.persisted? %>
+
+    <!-- link_to "change password" -->
 
     <img class="image-upload-preview" src="<%= @user.avatar.url(:thumb) %>">
 
     <div class="file-upload">
-      <label for="user_avatar">Profile Picture:</label>
+      <!-- <label for="user_avatar">Profile Picture:</label> -->
       <input type="file" name="user[avatar]" id="user_avatar">
     </div>
 
@@ -137,8 +120,24 @@
           <%= "checked" if @user.gender == "n/a" || !@user.persisted? %>
         >
       </div>
-
     </fieldset>
+
+    <div class="dropdown-input">
+      <label for="user_country">Place of Origin:</label>
+      <select id="user_country" name="user[country]">
+        <option></option>
+
+        <% ApplicationHelper::COUNTRIES.each do |country_name| %>
+          <option
+            value="<%= country_name %>"
+            <%= "selected" if @user.country == country_name %>
+          >
+            <%= country_name %>
+          </option>
+        <% end %>
+
+      </select>
+    </div>
 
     <textarea
       class="textarea-input"

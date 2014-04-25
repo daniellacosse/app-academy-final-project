@@ -1,0 +1,33 @@
+  <!--
+  type: "Gallery"
+  set: current_user.liked_galleries
+  target: @gallery
+  owner: @gallery.user
+  -->
+<% unless current_user.id == owner.id %>
+  <% exists = set.include?(target) %>
+
+  <form action="<%= exists ? like_url(
+    Like.find_by(
+      user_id: current_user.id,
+      likeable_id: target.id,
+      likeable_type: type
+    )) : likes_url %>" method="post">
+
+    <% if exists %>
+      <input type="hidden" name="_method" value="delete">
+    <% end %>
+
+    <%= auth_token %>
+
+    <input type="hidden" name="like[user_id]" value="<%= current_user.id %>">
+    <input type="hidden" name="like[likeable_id]" value="<%= target.id %>">
+    <input type="hidden" name="like[likeable_type]" value="<%= type %>">
+
+    <input
+      class="liker <%= "half-opacity" unless exists %>"
+      type="submit"
+      value="❤">
+
+  </form>
+<% end %>

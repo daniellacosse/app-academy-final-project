@@ -20,4 +20,12 @@ class ApplicationController < ActionController::Base
     current_user.reset_token!
     session[:token] = nil
   end
+
+  def require_logged_in!
+    unless logged_in?
+      flash[:errors] = ["Until I make it smarter, you have to log in first!"]
+
+      redirect_to :root
+    end
+  end
 end

@@ -19,6 +19,14 @@ class JournalsController < ApplicationController
   def create
     @journal = Journal.new(journal_params)
     if @journal.save
+      tag_params[:tags].split(/ |,/).reject{ |el| el.empty? }.each do |tag|
+        Tag.create({
+          tag: tag,
+          taggable_id: @journal.id,
+          taggable_type: "Journal"
+        })
+      end
+
       render :show
     else
       flash.now[:errors] = @journal.errors.full_messages
@@ -36,8 +44,20 @@ class JournalsController < ApplicationController
     end
   end
 
+  def destroy
+    @journal = Journal.find(params[:id])
+
+    @journal.destroy
+
+    redirect_to user_url(@journal.user_id)
+  end
+
   private
   def journal_params
     params.require(:journal).permit(:title, :body, :user_id)
+  end
+
+  def tag_params
+    params.require(:journal).permit(:tags)
   end
 end

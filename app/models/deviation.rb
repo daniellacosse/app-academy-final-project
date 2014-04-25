@@ -14,8 +14,9 @@ class Deviation < ActiveRecord::Base
               :can_remix,
               inclusion: { in: [true, false], message: "something's up" }
 
-    has_many :views, as: :viewable
-    has_many :likes, as: :likeable
-    has_many :comments, as: :commentable
-    belongs_to :user, dependent: :destroy
+    has_many :views, as: :viewable, dependent: :destroy
+    has_many :likes, as: :likeable, dependent: :destroy
+    has_many :tags, as: :taggable, dependent: :destroy
+    has_many :comments, as: :commentable, dependent: :destroy
+    belongs_to :user
 end

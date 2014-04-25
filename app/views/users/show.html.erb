@@ -4,25 +4,26 @@
   <span><%= @user.username %></span>
 </p>
 
-<% if @user.avatar %>
+<%# TEMPORARY SOLUTION: %>
+<% if @user.avatar_isnt_empty %>
   <img src="<%= @user.avatar.url(:thumb) %>">
 <% end %>
 
 <p class="journals-and-galleries">
   <a href="<%= user_journals_url(@user) %>">
 
-    <% if @user.last_name.nil? || !@user.first_name.empty? %>
+    <% if @user.first_name_isnt_nil_or_empty %>
       <%= @user.first_name %>'s
-    <% elsif @user.last_name.nil? || !@user.last_name.empty? %>
+    <% elsif @user.last_name_isnt_nil_or_empty %>
       <%= @user.last_name %>'s
     <% end %>
 
     Journals: (<%= @user.journals.count %>)
 
   </a> | <a href="<%= user_galleries_url(@user) %>">
-    <% if @user.first_name.nil? || !@user.first_name.empty? %>
+    <% if @user.first_name_isnt_nil_or_empty %>
       <%= @user.first_name %>'s
-    <% elsif @user.last_name.nil? || !@user.last_name.empty? %>
+    <% elsif @user.last_name_isnt_nil_or_empty %>
       <%= @user.last_name %>'s
     <% end %>
 
@@ -35,23 +36,19 @@
   <span><%= @user.views.count %></span>
 </p>
 
-<span>
-  <%= @user.likes.count %>
-</span>
+<p class="likes">
+  <h3>Likes:</h3>
+  <span><%= @user.likes.count %></span>
+</p>
 
-<% if current_user.followed_users.include?(@user) %>
-  <%= render partial: "likes/destroy", locals: {
+  <%= render partial: "likes/button", locals: {
     type: "User",
-    id: @user.id
+    set: current_user.followed_users,
+    target: @user,
+    owner: @user
   } %>
-<% elsif current_user.id != @user.id %>
-  <%= render partial: "likes/create", locals: {
-    type: "User",
-    id: @user.id
-  } %>
-<% end %>
 
-<% if !@user.first_name.try(:empty?) || !@user.last_name.try(:empty?)  %>
+<% if @user.entire_name_isnt_nil_or_empty  %>
   <p class="name">
     <h3> Name: </h3>
     <span>
@@ -78,12 +75,14 @@
   <span><%= @user.date_of_birth %></span>
 </p>
 
-<p class="location">
-  <h3>Location:</h3>
-  <span><%= @user.country %></span>
-</p>
+<% if @user.country_isnt_nil_or_empty %>
+  <p class="location">
+    <h3>Location:</h3>
+    <span><%= @user.country %></span>
+  </p>
+<% end %>
 
-<% if @user.biography %>
+<% if @user.biography_isnt_nil_or_empty %>
   <p class="biography">
     <h3>Biography:</h3>
     <span><%= @user.biography %></span>

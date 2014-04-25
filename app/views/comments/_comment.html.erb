@@ -1,13 +1,16 @@
 <div class="comment-wrapper">
   <span class="metadata">
-    <date class="_comment-post-date">
+    <date>
       <%= time_ago_in_words(comment.created_at) %> ago,
     </date>
 
-   <img src="<%= comment.commenter.avatar.url(:icon) %>">
-   by ~<a href="<%= user_url(comment.commenter) %>"><%= comment.commenter.username %></a>
-  </span>
+    <%= render partial: "users/icon", locals: {user: comment.commenter } %>
 
+    by ~
+    <a href="<%= user_url(comment.commenter) %>">
+      <%= comment.commenter.username %>
+    </a>
+  </span>
 
   <p>
     <%= comment.body %>

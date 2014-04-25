@@ -1,4 +1,6 @@
 class DeviationsController < ApplicationController
+  before_action :require_logged_in!, except: [ :index ]
+
   def index
     @deviations = Deviation.all(order: "created_at DESC")
   end
@@ -24,7 +26,17 @@ class DeviationsController < ApplicationController
 
   def create
     @deviation = Deviation.new(deviation_params)
+
     if @deviation.save
+
+      tag_params[:tags].split(/ |,/).reject{ |el| el.empty? }.each do |tag|
+        Tag.create({
+          tag: tag,
+          taggable_id: @deviation.id,
+          taggable_type: "Deviation"
+        })
+      end
+
       render :show
     else
       flash.now[:errors] = @deviation.errors.full_messages
@@ -42,6 +54,14 @@ class DeviationsController < ApplicationController
     end
   end
 
+  def destroy
+    @deviation = Deviation.find(params[:id])
+
+    @deviation.destroy
+
+    redirect_to user_url(@deviation.user_id)
+  end
+
   private
   def deviation_params
     params.require(:deviation).permit(
@@ -57,5 +77,9 @@ class DeviationsController < ApplicationController
       :is_DRM,
       :can_remix
     )
+  end
+
+  def tag_params
+    params.require(:deviation).permit(:tags)
   end
 end
