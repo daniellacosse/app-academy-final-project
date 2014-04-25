@@ -22,6 +22,12 @@ header.navbar > .dropdown-button { float: left; }
   font-size: 30pt;
 }
 
+a.dArt > span.notification-counter {
+  background: #020703;
+  border-radius: 100%;
+  padding: 3px 10px;
+}
+
 .dropdown-button:hover > a.dArt {
   color: white;
   background: #122313;

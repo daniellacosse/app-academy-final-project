@@ -1,38 +1,28 @@
-<div class="_gallery" data-id="<%= @gallery.id %>">
-  <h2 class="_gallery-header">
-    <%= @gallery.title %>
-  </h2>
+<section class="gallery main-content">
+  <div class="_gallery" data-id="<%= @gallery.id %>">
+    <h2 class="_gallery-header">
+      <%= @gallery.title %>
+    </h2>
 
-  <p>
-    Likes: <%= @gallery.likes.count %>
-  </p>
+    <p>
+      <%= @gallery.likes.count %> likes
+    </p>
 
-  <!-- <%# if current_user.liked_galleries.include?(@gallery) %>
-    <%#= render partial: "likes/destroy", locals: {
+    <%= render partial: "likes/button", locals: {
       type: "Gallery",
-      id: @gallery.id
+      set: current_user.liked_galleries,
+      target: @gallery,
+      owner: @gallery.user
     } %>
-  <%# elsif current_user.id != @gallery.user.id %>
-    <%#= render partial: "likes/create", locals: {
-      type: "Gallery",
-      id: @gallery.id
-    } %>
-  <%# end %> -->
 
-  <%= render partial: "likes/button", locals: {
-    type: "Gallery",
-    set: current_user.liked_galleries,
-    target: @gallery,
-    owner: @gallery.user
-  } %>
+    <p class="_gallery-description">
+      <%= @gallery.description %>
+    </p>
 
-  <p class="_gallery-description">
-    <%= @gallery.description %>
-  </p>
+    <% if @gallery.user_id == current_user.id %>
+      <a href="<%= edit_gallery_url(@gallery) %>">Edit</a>
+    <% end %>
 
-  <% if @gallery.user_id == current_user.id %>
-    <a href="<%= edit_gallery_url(@gallery) %>">Edit</a>
-  <% end %>
-
-  <%= render @gallery.deviations %>
-</div>
+    <%= render @gallery.deviations %>
+  </div>
+</section>

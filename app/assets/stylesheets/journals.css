@@ -1,0 +1,9 @@
+section.journals {
+  width: 75%;
+  text-align: center;
+}
+
+h2._journal-title, h2.journal-title {
+
+  font-family: "open_sansbold";
+}

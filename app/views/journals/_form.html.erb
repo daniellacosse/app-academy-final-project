@@ -25,6 +25,8 @@
     placeholder="Write Your Journal Here"
   ><%= @journal.body %></textarea>
 
+  <input type="text" name="journal[tags]" id="tags" placeholder="Tags" value="<%= @journal.tags.pluck(:tag).join(", ") %>">
+
   <input
     class
     type="submit"

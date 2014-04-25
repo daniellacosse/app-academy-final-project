@@ -3,6 +3,7 @@ section.deviations {
 }
 section.deviation-sidebar {
   float: right;
+  margin-right: 50px;
   width: 300px;
 }
 
