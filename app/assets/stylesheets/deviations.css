@@ -1,15 +1,36 @@
 section.deviations {
   width: 75%;
 }
+section.deviation-sidebar {
+  float: right;
+  width: 300px;
+}
+
+section.deviation-lightbox {
+  float: left;
+  position: fixed;
+  margin-left: 50px;
+}
 
 ._deviation {
  float: left;
  margin-left: 40px;
 }
 
-img._deviation-media {
- margin-top: 80px;
- margin-bottom: 5px;
+img._deviation-media, img.deviation-media {
  border: 1px solid #122313;
  box-shadow: 0 0 3px 3px black;
+}
+
+h2._deviation-title, h2.deviation-title {
+
+  font-family: "open_sansbold";
+}
+
+h2._deviation-title {
+  font-size: 16pt;
+}
+
+h2.deviation-title {
+  font-size: 20pt;
 }

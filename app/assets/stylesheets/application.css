@@ -68,6 +68,17 @@ a {
 
 a:hover { color: white; }
 
+.error {
+  color: #ED1E31;
+  font-weight: bold;
+}
+
+.metadata {
+  font-style: italic;
+  font-size: 12pt;
+  opacity: 0.5;
+}
+
 /* ///\\\///\\\files 'index'///\\\///\\\ */
 
 /*

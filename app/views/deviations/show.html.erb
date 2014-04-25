@@ -1,43 +1,47 @@
-<img class="deviation-media" src="<%= @deviation.media.url %>">
+<section class="deviation-lightbox">
+  <img class="deviation-media" src="<%= @deviation.media.url %>">
+</section>
 
-<h2 class="deviation-title">
-  <%= @deviation.title %>
-</h2>
+<section class="deviation-sidebar">
+  <h2 class="deviation-title">
+    <%= @deviation.title %>
+  </h2>
 
-<p>
-  Likes: <%= @deviation.likes.count %>
-</p>
+    <%= render partial: "likes/button", locals: {
+      type: "Deviation",
+      set: current_user.liked_deviations,
+      target: @deviation,
+      owner: @deviation.user
+    } %>
 
-  <%= render partial: "likes/button", locals: {
+  <span class="deviation-author">
+    <%= render partial: "users/icon", locals: {user: @deviation.user } %>
+
+    by ~<a href="<%= user_url(@deviation.user) %>">
+      <%= @deviation.user.username %>
+    </a>
+  </span>
+
+  <p>
+    <%= @deviation.views.count %> views | <%= @deviation.likes.count %> likes
+  </p>
+
+
+
+  <p class="deviation-description">
+    <%= @deviation.description %>
+  </p>
+
+  <%= render @deviation.tags %>
+
+  <% if @deviation.user.id == current_user.try(:id) %>
+    <%= link_to 'Edit', edit_deviation_url(@deviation) %>
+  <% end %>
+
+  <%= render partial: "comments/form", locals: {
     type: "Deviation",
-    set: current_user.liked_deviations,
-    target: @deviation,
-    owner: @deviation.user
+    id: @deviation.id
   } %>
 
-<p>Views: <%= @deviation.views.count %></p>
-
-<span class="deviation-author">
-  <%= render partial: "users/icon", locals: {user: @deviation.user } %>
-
-  by ~<a href="<%= user_url(@deviation.user) %>">
-    <%= @deviation.user.username %>
-  </a>
-</span>
-
-<p class="deviation-description">
-  <%= @deviation.description %>
-</p>
-
-<%= render @deviation.tags %>
-
-<% if @deviation.user.id == current_user.try(:id) %>
-  <%= link_to 'Edit', edit_deviation_url(@deviation) %>
-<% end %>
-
-<%= render partial: "comments/form", locals: {
-  type: "Deviation",
-  id: @deviation.id
-} %>
-
-<%= render @deviation.comments.order("created_at DESC") %>
+  <%= render @deviation.comments.order("created_at DESC") %>
+</section>
