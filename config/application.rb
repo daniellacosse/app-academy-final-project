@@ -27,5 +27,6 @@ module DArt
     # }
 
     config.initialize_on_precompile = false
+    config.assets.paths << "#{Rails.root}/app/assets/fonts"
   end
 end
