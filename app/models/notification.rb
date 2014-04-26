@@ -8,16 +8,14 @@ class Notification < ActiveRecord::Base
     5 => " commented on your journal",
     6 => " replied to your comment",
     # 'broadcasting' - followed user
-    7 => " uploaded a deviation",
-    8 => " wrote a new journal",
-    9 => " created a new gallery",
-    10 => " liked a deviation",
-    11 => " liked a gallery",
-    12 => " commented on a deviation",
-    13 => " commented on a journal",
-    14 => " replied to a comment",
+    7 => " uploaded",
+    8 => " wrote",
+    9 => " showcased",
+    # i don't really know so much about these
+    10 => " liked",
+    11 => " commented on",
     # 'broadcasting' - liked deviation/comment
-    15 => " was commented on"
+    12 => " was commented on"
   }
 
   belongs_to :user
@@ -52,6 +50,12 @@ class Notification < ActiveRecord::Base
         return the.journal_path(notifiable.commentable_id, only_path: true)
       when 6
         return
+      when 7
+        return the.deviation_path(notifiable_id, only_path: true)
+      when 8
+        return the.journal_path(notifiable_id, only_path: true)
+      when 9
+        return the.gallery_path(notifiable_id, only_path: true)
     end
   end
 
@@ -62,6 +66,8 @@ class Notification < ActiveRecord::Base
       return notifiable.likeable.title
     elsif notification_type.between?(4, 5)
       return notifiable.commentable.title
+    elsif notification_type.between?(7, 9)
+      return notifiable.title
     end
   end
 end

@@ -20,6 +20,16 @@ class GalleriesController < ApplicationController
   def create
     @gallery = Gallery.new(gallery_params)
     if @gallery.save
+      current_user.followers.each do |follower|
+        Notification.create(
+          notification_type: 9,
+          notifier_id: current_user.id,
+          user_id: follower.id,
+          notifiable_id: @gallery.id,
+          notifiable_type: "Gallery"
+        )
+      end
+
       render :show
     else
       flash.now[:errors] = @gallery.errors.full_messages

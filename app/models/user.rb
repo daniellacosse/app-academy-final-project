@@ -105,6 +105,10 @@ class User < ActiveRecord::Base
     notifications.reject { |n| n.was_seen }
   end
 
+  has_many :followers,
+           through: :likes,
+           source: :liker
+
   has_many :followed_users,
            through: :liked,
            source: :likeable,
@@ -140,7 +144,6 @@ class User < ActiveRecord::Base
     self.save!
     self.token
   end
-
 
   def password=(naked_password)
     @password = naked_password

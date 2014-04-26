@@ -28,13 +28,22 @@ class DeviationsController < ApplicationController
     @deviation = Deviation.new(deviation_params)
 
     if @deviation.save
-
       tag_params[:tags].split(/ |,/).reject{ |el| el.empty? }.each do |tag|
         Tag.create({
           tag: tag,
           taggable_id: @deviation.id,
           taggable_type: "Deviation"
         })
+      end
+
+      current_user.followers.each do |follower|
+        Notification.create(
+          notification_type: 7,
+          notifier_id: current_user.id,
+          user_id: follower.id,
+          notifiable_id: @deviation.id,
+          notifiable_type: "Deviation"
+        )
       end
 
       render :show

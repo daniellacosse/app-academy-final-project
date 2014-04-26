@@ -27,6 +27,16 @@ class JournalsController < ApplicationController
         })
       end
 
+      current_user.followers.each do |follower|
+        Notification.create(
+          notification_type: 8,
+          notifier_id: current_user.id,
+          user_id: follower.id,
+          notifiable_id: @journal.id,
+          notifiable_type: "Journal"
+        )
+      end
+
       render :show
     else
       flash.now[:errors] = @journal.errors.full_messages
