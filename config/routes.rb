@@ -1,6 +1,8 @@
 DArt::Application.routes.draw do
   root to: "deviations#index"
 
+  get "/search", controller: "pages", action: "search"
+
   resource :session, only: [:new, :create, :destroy]
 
   resources :deviations

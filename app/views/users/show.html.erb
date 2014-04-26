@@ -16,7 +16,9 @@
     owner: @user
   } %>
 
-  <%= link_to 'write message', new_user_message_url(@user) %>
+  <% unless current_user.id == @user.id %>
+    <%= link_to 'write message', new_user_message_url(@user) %>
+  <% end %>
 
   <p class="views-and-likes">
     <%= @user.views.count %> views | <%= @user.likes.count %> likes
@@ -30,7 +32,7 @@
   <% end %>
 
   <p class="email">
-    <%= @user.email %>
+    <a href="mailto:<%= @user.email %>"><%= @user.email %></a>
   </p>
 
   <% if @user.gender  %>
@@ -39,8 +41,8 @@
     </p>
   <% end %>
 
-  <p class="dob">
-    <%= @user.date_of_birth %>
+  <p class="metadata dob">
+    <%= @user.date_of_birth.strftime("%B %e, %Y") %>
   </p>
 
   <% if @user.country_isnt_nil_or_empty %>

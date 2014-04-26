@@ -132,6 +132,7 @@ GEM
     mail (2.5.4)
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
+    marked-rails (0.2.10.1)
     method_source (0.8.2)
     mime-types (1.25.1)
     mini_portile (0.5.3)
@@ -146,6 +147,10 @@ GEM
       cocaine (~> 0.5.3)
       mime-types
     pg (0.17.1)
+    pg_search (0.7.3)
+      activerecord (>= 3.1)
+      activesupport (>= 3.1)
+      arel
     polyglot (0.3.4)
     pry (0.9.12.6)
       coderay (~> 1.0)
@@ -255,8 +260,10 @@ DEPENDENCIES
   jbuilder (~> 1.2)
   jquery-rails
   launchy
+  marked-rails
   paperclip
   pg
+  pg_search
   pry-rails
   rails (= 4.0.4)
   rails_12factor

@@ -45,7 +45,7 @@
         type="checkbox"
         name="deviation[is_commentable]"
         value="true"
-        <%= "checked" if @deviation.is_commentable %>
+        <%= "checked" if @deviation.is_commentable || !@deviation.persisted? %>
       >
     </div>
 
@@ -57,7 +57,7 @@
         type="checkbox"
         name="deviation[is_shareable]"
         value="true"
-        <%= "checked" if @deviation.is_shareable %>
+        <%= "checked" if @deviation.is_shareable || !@deviation.persisted? %>
       >
     </div>
 
@@ -69,7 +69,7 @@
         type="checkbox"
         name="deviation[is_likeable]"
         value="true"
-        <%= "checked" if @deviation.is_likeable %>
+        <%= "checked" if @deviation.is_likeable || !@deviation.persisted? %>
       >
     </div>
 
@@ -126,7 +126,7 @@
   <input
     class="submit-button"
     type="submit"
-    value="<%= @deviation.persisted? ? "Edit Deviation" : "Create Deviation" %>"
+    value="<%= @deviation.persisted? ? "Update" : "Create Deviation" %>"
   >
 </form>
 

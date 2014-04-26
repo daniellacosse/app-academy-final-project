@@ -1,4 +1,13 @@
 div.comment-wrapper {
  margin-left: 50px;
+ cursor: pointer;
+}
+
+div.comment-wrapper:hover > .respond {
+  display: block;
+
+}
+.respond {
+  display: none;
 }
 

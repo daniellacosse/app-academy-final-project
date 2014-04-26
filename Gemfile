@@ -14,6 +14,8 @@ gem 'paperclip'
 gem 'aws-sdk'
 gem 'figaro'
 gem 'turbolinks'
+gem 'pg_search'
+gem 'marked-rails'
 
 group :doc do
   gem 'sdoc', require: false

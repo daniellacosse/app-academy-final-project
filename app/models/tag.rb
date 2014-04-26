@@ -6,10 +6,11 @@ class Tag < ActiveRecord::Base
     }
   }
 
+  include PgSearch
+  multisearchable against: [:tag]
 
   validates :tag, presence: true
   belongs_to :taggable, polymorphic: true
-
 
   def match_possible_standard_tags(string, tags = TAG_HIERARCHY)
 

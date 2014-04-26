@@ -53,6 +53,10 @@ input[type="submit"] {
   margin: 5px;
 }
 
+.implicit-submit {
+  display: none;
+}
+
 .submit-button:hover,
 input[type="submit"]:hover {
   border-color: #14A046;

@@ -7,12 +7,18 @@
     <%= @deviation.title %>
   </h2>
 
+  <% if @deviation.user.id == current_user.try(:id) %>
+    <p><%= link_to 'Edit', edit_deviation_url(@deviation) %></p>
+  <% end %>
+
+  <% if @deviation.is_likeable %>
     <%= render partial: "likes/button", locals: {
       type: "Deviation",
       set: current_user.liked_deviations,
       target: @deviation,
       owner: @deviation.user
     } %>
+  <% end %>
 
   <span class="deviation-author">
     <%= render partial: "users/icon", locals: {user: @deviation.user } %>
@@ -23,10 +29,11 @@
   </span>
 
   <p>
-    <%= @deviation.views.count %> views | <%= @deviation.likes.count %> likes
+    <%= @deviation.views.count %> views
+    <% if @deviation.is_likeable %>
+    | <%= @deviation.likes.count %> likes
+    <% end %>
   </p>
-
-
 
   <p class="deviation-description">
     <%= @deviation.description %>
@@ -34,14 +41,16 @@
 
   <%= render @deviation.tags %>
 
-  <% if @deviation.user.id == current_user.try(:id) %>
-    <%= link_to 'Edit', edit_deviation_url(@deviation) %>
+
+  <% if @deviation.is_commentable %>
+    <%= render partial: "comments/form", locals: {
+      type: "Deviation",
+      id: @deviation.id
+    } %>
+
+    <%= render @deviation.comments.order("created_at DESC") %>
+
+  <% else %>
+    Comments have been disabled.
   <% end %>
-
-  <%= render partial: "comments/form", locals: {
-    type: "Deviation",
-    id: @deviation.id
-  } %>
-
-  <%= render @deviation.comments.order("created_at DESC") %>
 </section>

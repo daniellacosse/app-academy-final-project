@@ -53,11 +53,12 @@
   <% if @user.persisted? %>
 
     <!-- link_to "change password" -->
-
+    <% if @user.avatar_isnt_empty %>
     <img class="image-upload-preview" src="<%= @user.avatar.url(:thumb) %>">
+    <% end %>
 
     <div class="file-upload">
-      <!-- <label for="user_avatar">Profile Picture:</label> -->
+      <label for="user_avatar">Profile Picture:</label>
       <input type="file" name="user[avatar]" id="user_avatar">
     </div>
 
@@ -80,7 +81,6 @@
       <legend>Gender:</legend>
 
       <div class="radio-button">
-        <label for="male_gender">Male</label>
         <input
           id="male_gender"
           type="radio"
@@ -88,10 +88,10 @@
           value="M"
           <%= "checked" if @user.gender == "M"%>
         >
+        <label for="male_gender">Male</label>
       </div>
 
       <div class="radio-button">
-        <label for="female_gender">Female</label>
         <input
           id="female_gender"
           type="radio"
@@ -99,10 +99,10 @@
           value="F"
           <%= "checked" if @user.gender == "F"%>
         >
+        <label for="female_gender">Female</label>
       </div>
 
       <div class="radio-button">
-        <label for="other_gender">Other</label>
         <input
           id="other_gender"
           type="radio"
@@ -110,10 +110,10 @@
           value="O"
           <%= "checked" if @user.gender == "O"%>
         >
+        <label for="other_gender">Other</label>
       </div>
 
       <div class="radio-button">
-        <label for="no_gender">None/Prefer not to say</label>
         <input
           type="radio"
           name="user[gender]"
@@ -121,6 +121,7 @@
           <%= "checked" if @user.gender == "n/a" || !@user.persisted? %>
         >
       </div>
+        <label for="no_gender">None/Prefer not to say</label>
     </fieldset>
 
     <div class="dropdown-input">

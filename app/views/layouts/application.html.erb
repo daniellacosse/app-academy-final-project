@@ -23,9 +23,16 @@
 			<nav class="dropdown-menu">
 			  <%= render partial: "users/nav" if logged_in? %>
 
-        <form class="dArt-searchbar">
-   				<input class="text-input" type="search" placeholder="search dArt">
-			  </form>
+        <form action="/search" class="dArt-searchbar">
+   				<input
+            class="text-input"
+            type="search"
+            name="query"
+            value="<%= params[:query] %>"
+            placeholder="search dArt"
+          >
+	        <input class="implicit-submit" type="submit">
+  		  </form>
       </nav>
 		</div>
 
