@@ -2,18 +2,34 @@ section.deviations {
   width: 75%;
 }
 
-section.deviation-sidebar {
+section.deviation-info {
   float: right;
   margin-right: 50px;
-  width: 300px;
+  margin-top: 50px;
+  width: 400px;
+  height: 100%;
 }
 
-section.deviation-lightbox {
-  float: left;
-  position: fixed;
-  margin-left: 50px;
+section.media {
+  box-sizing: border-box;
+  height: 100%;
+  padding: 50px;
+  margin-right: 450px;
 }
 
+section.media table,
+section.media tr,
+section.media td {
+  width: 100%;
+  height: 100%;
+}
+
+img.deviation-media{
+  max-width: 100%;
+  max-height: 100%;
+}
+
+/* deviation preview partial: */
 ._deviation {
  float: left;
 }

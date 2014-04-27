@@ -105,15 +105,25 @@ nav.dropdown-menu > .menu {
 
 
 /* ///\\\///\\\righthand nav///\\\///\\\ */
-.new-deviation, .new-session {
-  float: left;
+.new-session {
+  float: right;
   display: block;
   font-size: 18pt;
-  margin-left: 120px;
+  margin-right: 20px;
   padding-top: 23px;
   padding-left: 20px;
-  padding-right: 25px;
+  padding-right: 20px;
   padding-bottom: 5px;
+}
+.new-deviation {
+  float: right;
+  display: block;
+  font-size: 30pt;
+  font-family: "open_sansbold";
+  padding-left: 30px;
+  padding-right: 30px;
+  padding-bottom: 4px;
+
 }
 
 .new-deviation:hover, .new-session:hover {

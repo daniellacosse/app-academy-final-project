@@ -11,3 +11,6 @@ div.comment-wrapper:hover > .respond {
   display: none;
 }
 
+.comment-form > .submit-button {
+  display: none;
+}
