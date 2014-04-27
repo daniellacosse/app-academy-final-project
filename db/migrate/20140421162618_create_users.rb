@@ -5,6 +5,8 @@ class CreateUsers < ActiveRecord::Migration
       t.string :email,           null: false
       t.string :password_digest, null: false
       t.string :token,           null: false
+      t.string :verification_key
+      t.string :is_verified, default: false
 
       t.date :date_of_birth,     null: false
       t.string :first_name

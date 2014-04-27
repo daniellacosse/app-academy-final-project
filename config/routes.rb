@@ -5,6 +5,7 @@ DArt::Application.routes.draw do
 
   resource :session, only: [:new, :create, :destroy]
   get 'auth/facebook/callback', to: 'sessions#fb_create'
+  get '/verify', controller: 'pages', action: 'verify'
 
   resources :deviations
 

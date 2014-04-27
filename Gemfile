@@ -39,3 +39,4 @@ group :test do
 end
 
 gem 'rails_12factor', group: :production
+gem 'letter_opener', group: :development

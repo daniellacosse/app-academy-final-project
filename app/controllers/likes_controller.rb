@@ -1,4 +1,6 @@
 class LikesController < ApplicationController
+  before_action :require_logged_in!
+  
   def create
     like = Like.create(like_params)
 

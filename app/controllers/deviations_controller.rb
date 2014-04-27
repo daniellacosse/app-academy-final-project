@@ -1,5 +1,5 @@
 class DeviationsController < ApplicationController
-  before_action :require_logged_in!, except: [ :index ]
+  before_action :require_logged_in!, except: [ :index, :show ]
 
   def index
     @deviations = Deviation.all(order: "created_at DESC")

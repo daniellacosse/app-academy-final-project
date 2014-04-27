@@ -137,6 +137,7 @@ class User < ActiveRecord::Base
 
   def ensure_token
     self.token ||= User.create_token
+    self.verification_key ||= User.create_token
   end
 
   def reset_token!

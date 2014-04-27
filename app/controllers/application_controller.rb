@@ -28,8 +28,8 @@ class ApplicationController < ActionController::Base
   end
 
   def require_logged_in!
-    unless logged_in?
-      flash[:errors] = ["Until I make it smarter, you have to log in first!"]
+    unless logged_in? && current_user.is_verified
+      flash[:errors] = ["You gotta be a valid user to do that!"]
 
       redirect_to :root
     end
