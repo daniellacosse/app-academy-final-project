@@ -4,6 +4,7 @@ DArt::Application.routes.draw do
   get "/search", controller: "pages", action: "search"
 
   resource :session, only: [:new, :create, :destroy]
+  get 'auth/facebook/callback', to: 'sessions#fb_create'
 
   resources :deviations
 

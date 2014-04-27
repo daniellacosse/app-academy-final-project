@@ -32,4 +32,10 @@
   <a class="sign-up-link" href="<%= new_user_url %>">
     | Sign Up
   </a>
+	
+	<form action="<%= auth_facebook_callback_url %>" method="get">
+		<%= auth_token %>
+	
+		<input class="facebook-login" type="submit" value="facebook">
+	</form>
 </section>

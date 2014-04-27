@@ -16,6 +16,7 @@ gem 'figaro'
 gem 'turbolinks'
 gem 'pg_search'
 gem 'marked-rails'
+gem 'omniauth-facebook'
 
 group :doc do
   gem 'sdoc', require: false

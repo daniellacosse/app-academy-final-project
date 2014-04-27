@@ -46,6 +46,25 @@ input.liker { border-width: 0; }
 
 .textarea-input { height: 150px; }
 
+.facebook-login {
+	color: white;
+	
+  margin: 5px;
+  padding: 10px 15px;
+	
+  font-family: 'open_sansbold';
+	font-size: 16pt;
+	
+	border-radius: 8px;
+	background: linear-gradient(to bottom, #3f4c6b 0%, #283049 100%);
+	
+
+}
+
+.facebook-login:hover {
+	background: linear-gradient(to bottom, #252D44 0%, #20263A 100%);
+}
+
 .submit-button,
 input[type="submit"] {
   cursor: pointer;

@@ -153,4 +153,19 @@ class User < ActiveRecord::Base
   def is_password?(naked_password)
     BCrypt::Password.new(self.password_digest) == naked_password
   end
+  
+  def self.find_or_create_by_auth_hash(auth_hash)
+    user = User.find_by(provider: auth_hash[:provider], uid: auth_hash[:uid])
+
+    return user if user
+
+    User.create!(provider: auth_hash[:provider],
+                 uid: auth_hash[:uid],
+                 email: auth_hash[:info][:email],
+                 username: auth_hash[:info][:nickname],
+                 avatar: auth_hash[:info][:image],
+                 first_name: auth_hash[:info][:first_name],
+                 last_name: auth_hash[:info][:last_name],
+                 date_of_birth: auth_hash[:info][:user_birthday])
+  end
 end
