@@ -1,5 +1,5 @@
 /* ///\\\///\\\header///\\\///\\\ */
-header.navbar { /* +clearfix */
+header.site-header { /* +clearfix */
   width: 100%;
   box-sizing: border-box;
 
@@ -13,28 +13,34 @@ header.navbar { /* +clearfix */
 }
 
 /* ///\\\///\\\lefthand dropdown searchbar & menu///\\\///\\\ */
-header.navbar > .dropdown-button { float: left; }
+header.site-header > .dropdown-button { float: left; }
 
-.dropdown-button > a.dArt {
+.dropdown-button h1 { /* +reveal-content */
   padding: 0 20px;
 
   font-family: 'open_sansregular';
   font-size: 30pt;
+  color: #14A046;
 }
 
-a.dArt > span.notification-counter {
+.notification-counter {
   background: #020703;
   border-radius: 100%;
   padding: 3px 10px;
 }
 
-.dropdown-button:hover > a.dArt {
-  color: white;
+.dropdown-button a {
+  color: #E6E6E6;
+}
+
+.dropdown-button:hover table,
+.dropdown-button:hover a,
+.dropdown-button:hover h1 {
+  color: #E6E6E6;
   background: #122313;
 }
 
-.dropdown-button > nav.dropdown-menu { /* +clearfix */
-  display: none;
+nav.dropdown-menu { /* +clearfix */
 
   position: absolute;
   top: 100%;
@@ -43,35 +49,75 @@ a.dArt > span.notification-counter {
   background: #122313;
 }
 
-.dropdown-button:hover > nav.dropdown-menu { display: block; }
-
-nav.dropdown-menu > .user-nav {
+nav.dropdown-menu > .menu {
   float: left;
+  display: block;
+
   padding: 20px 0;
 }
 
-.user-nav .user-nav-item {
-  padding: 0 15px;
+.logout-form > .submit-button {
+  border: 0;
+  padding: 0;
+  margin: 0;
+
+  width: 100%;
+  text-align: left;
 }
 
-nav.dropdown-menu > form.dArt-searchbar {
+.logout-form > .submit-button:hover {
+  color: #E6E6E6;
+}
+
+.logout-form {
+  display: block;
+}
+
+.menu .menu-item {
+  display: block;
+  padding: 5px 20px;
+
+  font-family: 'open_sanslight';
+  font-size: 11pt;
+}
+
+.menu .menu-item:hover {
+  background: rgba(255, 255, 255, 0.15);
+}
+
+.menu-item .submit-button {
+  font: 'open_sanslight';
+  font-size: 11pt;
+}
+
+.searchbar {
   overflow: hidden;
   padding: 15px 20px;
 }
 
-.dArt-searchbar > .text-input {
+.searchbar > .text-input {
   width: 100%;
 }
 
+.searchbar > .submit-button {
+  display: none;
+}
+
+
 /* ///\\\///\\\righthand nav///\\\///\\\ */
-header.navbar > .session-nav,
-.navbar > .login-signin {
-  float: right;
+.new-deviation, .new-session {
+  float: left;
+  display: block;
+  font-size: 18pt;
+  margin-left: 120px;
+  padding-top: 23px;
+  padding-left: 20px;
+  padding-right: 25px;
+  padding-bottom: 5px;
 }
 
-.session-nav > .session-nav-item,
-.navbar > .login-signin {
-  padding-right: 30px;
+.new-deviation:hover, .new-session:hover {
+  color: #E6E6E6;
+  background: #122313;
+  box-shadow: inset 0 0 2px 2px #000;
 }
-
-.session-nav > .session-nav-item { float: left; }

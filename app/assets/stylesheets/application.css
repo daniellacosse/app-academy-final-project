@@ -4,9 +4,11 @@
  */
 
 /* COLOR SCHEME:
-  HIGHLIGHT GREEN: #14A046 <a color>
-  DARK GREEN: #122313 image highlight/nav dropdown
-  BLACK GREEN: #020703 <background color>
+  OFFWHITE: #E6E6E6           text, a:hover
+  HIGHLIGHT GREEN: #14A046    a
+  HIGHTLIGHT RED: #ED1E31     .error
+  DARK GREEN: #122313         image highlight/nav dropdown
+  BLACK GREEN: #020703        background
 */
 
 /* ///\\\///\\\reset///\\\///\\\ */
@@ -24,8 +26,9 @@ nav, ul, li {
   font: inherit;
   font-family: 'open_sansregular';
   font-size: 14pt;
-	color: white;
+	color: #E6E6E6;
 }
+
 
 body, html {
   width: 100%;
@@ -34,22 +37,38 @@ body, html {
 
 ul { list-style-type: none; }
 
+/* ///\\\///\\\center///\\\///\\\ */
+.center, .shrinkwrap-center { margin: 0 auto; }
+.center { display: block; }
+.shrinkwrap-center { display: table; }
+
 /* ///\\\///\\\clearfix///\\\///\\\ */
 .group:after {
   content: " ";
   clear: both;
 }
 
+/* ///\\\///\\\reveal-content-on-hover///\\\///\\\ */
+.reveal-content-on-hover { cursor: pointer; }
+.reveal-content-on-hover > .hidden-content{ display: none; }
+.reveal-content-on-hover:hover > .hidden-content{ display: block; }
+
 /* ///\\\///\\\site-wide styles///\\\///\\\ */
 body {
   background: #020703;
-
-  margin: 100px 0;
+  min-width: 800px;
+  padding-top: 100px;
+  box-sizing: border-box;
 }
 
 .main-content{
-  display: block;
-  margin: auto;
+  width: 100%;
+  height: 100%;
+}
+
+p {
+  font-family: 'open_sanslight';
+  font-size: 11pt;
 }
 
 a {
@@ -57,12 +76,14 @@ a {
   color: #14A046;
 }
 
-a:hover { color: white; }
+a:hover { color: #E6E6E6; }
 
 .error {
   color: #ED1E31;
   font-weight: bold;
 }
+
+/* table.metadata */
 
 .metadata {
   font-style: italic;
@@ -73,8 +94,81 @@ a:hover { color: white; }
 /* ///\\\///\\\files 'index'///\\\///\\\ */
 
 /*
-
-  forms.css -- all the form styles
-  header.css -- the header.navbar styles
-
+    /todo
 */
+
+/* ///\\\///\\\NOTES///\\\///\\\ */
+
+/*
+
+  2.5 arrangements:
+    1 user
+    2 lightbox
+    .5 .deviation-grid
+
+  section.deviation-grid
+    bunch of left-floated figcaption.deviation-preview(s) wrapped in a margin-auto
+    section.deviation-grid
+
+    -------- section.main-content ---------
+    | <----- section.deviation-grid ----> |
+            | width of figcaptions |
+
+  user
+    comprised of three sections:
+      .user-profile (#1)
+      .main-content (#2)
+      .user-content (#3)
+
+    #1 & #3 are sidebars, floated left and right. left width 320, right width 250
+    #1 is a ul li with a 'more info' tacked on at the bottom
+    #2 has content based on the page (selected li in #3)
+      -- a .deviation-grid for "art"
+      -- buncha journal partials for "journal"
+      -- buncha gallery partials for "gallery"
+    #3 double nested ul li. reveal inner ul lis on hover (usually names of user content in that category)
+
+
+  lightbox
+    fixed 100% 100% with semi-transparent background
+    float-right .deviation-profile with ul li of
+      title, favorite
+      table.metadata
+      blockquote description
+      ul tags
+      comment partials
+    figcaption expands to remaining width and height
+    img is vertically centered
+
+
+  site-header
+    session-nav (x)
+    searchbar (x)
+  body
+    search, root
+      pages/content
+        deviations/grid (x)
+
+    user
+      users/profile
+      pages/content
+        deviation/grid, journal/index, gallery/index, etc
+      users/content
+
+    show deviation, etc
+      pages/lightbox
+        fig
+        deviation/profile
+
+
+  TODO order:
+    header
+    deviation/grid
+    lightbox ***
+    user
+      main
+      journal
+      galleries
+*/
+
+

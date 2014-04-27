@@ -1,54 +1,19 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>dArt</title>
+
   <meta charset='utf-8'>
+  <title>dArt</title>
 
   <%= stylesheet_link_tag "application" %>
   <%= csrf_meta_tags %>
+
 </head>
 <body>
-  <header class="navbar group">
-		<div class="dropdown-button group">
-	    <a class="dArt" href="<%= root_url %>">
-				dArt
 
-				<% if logged_in? && has_notifications? %>
-					<span class="notification-counter">
-						<%= current_user.unseen_notifications.count %>
-					 </span>
-				<% end %>
-			</a>
-
-			<nav class="dropdown-menu">
-			  <%= render partial: "users/nav" if logged_in? %>
-
-        <form action="/search" class="dArt-searchbar">
-   				<input
-            class="text-input"
-            type="search"
-            name="query"
-            value="<%= params[:query] %>"
-            placeholder="search dArt"
-          >
-	        <input class="implicit-submit" type="submit">
-  		  </form>
-      </nav>
-		</div>
-
-    <%= render partial: "sessions/nav" if logged_in?  %>
-
-    <% unless logged_in? %>
-		  <a class="login-signin" href="<%= new_session_url %>">
-				login/signup
-			</a>
-    <% end %>
-  </header>
-
-  <%= render partial: "flash/errors" %>
+  <%= render partial: "pages/header"  %>
 
   <%= yield %>
-
 
 </body>
 </html>

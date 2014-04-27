@@ -1,19 +1,46 @@
 section.user-info{
-  margin-left: 20px;
-  left: 0;
-  position: fixed;
+  float: left;
+}
+
+section.user-content{
+  float: right;
+  width: 200px;
+}
+section.user-info, section.user-content {
   height: 100%;
+  margin: 0 20px;
 }
 
-section.journals-and-galleries{
-  margin-right: 20px;
-  text-align: right;
-  float:right;
-
-}
-
-h2.username{
+.username {
   font-family: 'open_sanslight';
   font-size: 25pt;
   width: 100%;
+}
+
+.content-item {
+  font-family: 'open_sanslight';
+  font-size: 23pt;
+  line-height: 35px;
+}
+
+.content-link {
+  color: #E6E6E6;
+}
+
+.current-page {
+  list-style-type: disc;
+}
+
+.content-submenu {
+  margin-left: 20px;
+  font-size: 12pt;
+}
+
+.content-subitem {
+  font-size: 12pt;
+  line-height: 25px;
+}
+
+.content-subitem:hover {
+  list-style-type: disc;
 }

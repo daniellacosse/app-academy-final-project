@@ -1,0 +1,62 @@
+<section class="user-content">
+  <ul>
+    <li class="content-item current-page">
+      <a class="content-link" href="<%= user_url(user) %>">
+        Art
+      </a>
+    </li>
+    <li class="content-item">
+      <a class="content-link" href=#>
+        Activity
+      </a>
+    </li>
+    <li class="content-item reveal-content-on-hover">
+      <a class="content-link" href="<%= user_journals_url(user) %>">
+        Journals
+      </a>
+
+      <ul class="content-submenu hidden-content">
+        <% if current_user == user %>
+          <li class="content-subitem">
+            <a
+              class="content-link"
+              href="<%= new_user_journal_url(current_user) %>">
+              + New
+            </a>
+          </li class="content-subitem">
+        <% end %>
+        <% user.journals.each do |journal| %>
+          <li class="content-subitem">
+            <a class="content-link" href="<%= journal_url(journal) %>">
+              <%= journal.title %>
+            </a>
+          </li>
+        <% end %>
+      </ul>
+    </li>
+    <li class="content-item reveal-content-on-hover">
+      <a class="content-link" href="<%= user_galleries_url(user) %>">
+        Galleries
+      </a>
+
+      <ul class="content-submenu hidden-content">
+        <% if current_user == user %>
+          <li class="content-subitem">
+            <a
+              class="content-link"
+              href="<%= new_user_gallery_url(current_user) %>">
+              + New
+            </a>
+          </li>
+        <% end %>
+        <% user.galleries.each do |gallery| %>
+          <li class="content-subitem">
+            <a class="content-link" href="<%= gallery_url(gallery) %>">
+              <%= gallery.title %>
+            </a>
+          </li>
+        <% end %>
+      </ul>
+    </li>
+  </ul>
+</section>

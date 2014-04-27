@@ -1,5 +1,4 @@
-<section class="form main-content">
-
+<section class="form main-content center">
   <h1 class="form-header">
     Log In
   </h1>
@@ -32,10 +31,10 @@
   <a class="sign-up-link" href="<%= new_user_url %>">
     | Sign Up
   </a>
-	
+
 	<form action="<%= auth_facebook_callback_url %>" method="get">
 		<%= auth_token %>
-	
+
 		<input class="facebook-login" type="submit" value="facebook" disabled>
 	</form>
 </section>

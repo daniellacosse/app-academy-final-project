@@ -1,12 +1,35 @@
-<ul class="session-nav">
-	<li class="session-nav-item">
-    <a href="<%= new_deviation_url %>">
-      + Art
+<ul class="menu">
+  <li>
+    <a
+      class="menu-item"
+      href="<%= user_url(current_user) %>">
+      My Profile
+    </a>
+  </li>
+	<li>
+    <a
+      class="menu-item"
+      href="<%= user_notifications_url(current_user) %>">
+      Notifications (<%= current_user.unseen_notifications.count %>)
     </a>
 	</li>
-	<li class="session-nav-item">
-    <a href="<%= user_url(current_user) %>">
-			<%= current_user.username %>
+	<li>
+		<a
+      class="menu-item"
+      href="<%= edit_user_url(current_user) %>">
+      Edit My Info
 		</a>
+	</li>
+	<li>
+    <form
+      class="logout-form"
+      method="post"
+      action="<%= session_url %>"
+    >
+      <input type="hidden" name="_method" value="delete">
+      <%= auth_token %>
+
+      <input class="menu-item submit-button" type="submit" value="Log Out">
+    </form>
 	</li>
 </ul>

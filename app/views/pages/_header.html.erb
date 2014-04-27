@@ -1,0 +1,56 @@
+<header class="site-header group">
+	<div class="dropdown-button reveal-content-on-hover group">
+
+    <a href="<%= root_url %>">
+      <table>
+        <tr>
+          <td class="dArt-sprite">
+          </td>
+          <td>
+            <h1>
+              dArt
+            </h1>
+          </td>
+          <% if logged_in? && has_notifications? %>
+            <td>
+      				<span class="notification-counter">
+      					<%= current_user.unseen_notifications.count %>
+      				</span>
+            </td>
+          <% elsif logged_in? %>
+            <td class="dropdown-sprite">
+            </td>
+          <% else %>
+            <td class="search-sprite">
+            </td>
+          <% end %>
+      </table>
+    </a>
+
+		<nav class="dropdown-menu hidden-content">
+		  <%= render partial: "sessions/nav" if logged_in? %>
+
+      <form action="/search" class="searchbar">
+ 				<input
+          class="text-input"
+          type="search"
+          name="query"
+          value="<%= params[:query] %>"
+          placeholder="search dArt"
+        >
+
+        <input class="submit-button" type="submit">
+		  </form>
+    </nav>
+	</div>
+
+  <% if logged_in? %>
+    <a class="new-deviation" href="<%= new_deviation_url %>">
+      + Art
+    </a>
+  <% else %>
+	  <a class="new-session" href="<%= new_session_url %>">
+			login/signup
+		</a>
+  <% end %>
+</header>
