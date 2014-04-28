@@ -1,14 +1,26 @@
-<div class="_journal" data-id="<%= journal.id %>">
-  <h2 class="_journal-title">
-    <%= journal.title %>
-  </h2>
+<article class="journal" data-id="<%#= journal.id %>">
 
-  <span class="metadata">
-    <date class="_journal-post-date">
-      <%= time_ago_in_words(journal.created_at) %> ago,
+  <header class="group">
+    <h2 class="journal-title">
+      <%= journal.title %>
+    </h2>
+    <date>
+      Posted on <%= journal.created_at.strftime("%B %e, %Y") %>
     </date>
+  </header>
+  <p class="journal-body">
+    <%= journal.body %>
+  </p>
+  <footer class="group">
+    <div class="journal-tags">
+      <%= render journal.tags %>
+    </div>
+    <div class="journal-comments">
+      <%= render partial: "comments/form", locals: {
+        type: "Journal",
+        id: journal.id
+      } %>
+    </div>
+  </footer>
 
-    <%= render partial: "users/icon", locals: {user: journal.user } %>
-    by ~<a href="<%= user_url(journal.user) %>"><%= journal.user.username %></a>
-  </span>
-</div>
+</article>

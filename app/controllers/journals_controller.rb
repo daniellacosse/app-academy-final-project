@@ -38,7 +38,7 @@ class JournalsController < ApplicationController
         )
       end
 
-      render :show
+      redirect_to journal_url(@journal.id)
     else
       flash.now[:errors] = @journal.errors.full_messages
       render :new

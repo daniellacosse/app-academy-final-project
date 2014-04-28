@@ -1,9 +1,50 @@
-section.journals {
-  width: 75%;
-  text-align: center;
+article.journal {
+  border: 1px solid gray;
+  margin-bottom: 20px;
+  min-width: 480px;
 }
 
-h2._journal-title, h2.journal-title {
+article.journal > table {
+  width: 100%;
+  border-collapse: collapse;
+}
 
+article.journal header {
+  padding: 10px 15px;
+}
+
+article.journal .journal-title {
   font-family: "open_sansbold";
+  float: left;
+
 }
+
+article.journal date {
+  float: right;
+  font-style: italic;
+  font-size: 10pt;
+  color: gray;
+}
+
+.journal-body {
+  text-indent: 2em;
+  text-align: left;
+  padding: 10px 15px;
+  color: #CCC;
+  font-size: 10pt;
+}
+
+article.journal footer {
+  padding: 10px 15px;
+}
+
+
+.journal-tags {
+  float: left;
+  font-size: 10pt;
+}
+
+.journal-comments {
+  float: right;
+}
+

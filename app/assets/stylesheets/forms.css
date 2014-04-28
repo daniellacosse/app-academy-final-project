@@ -46,6 +46,11 @@ input.liker { border-width: 0; }
 
 .textarea-input { height: 150px; }
 
+.text-input.title, .textarea-input.description {
+  width: 100%;
+  box-sizing: border-box;
+}
+
 .facebook-login {
 	color: #E6E6E6;
 

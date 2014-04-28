@@ -21,9 +21,10 @@ class User < ActiveRecord::Base
 
   validates :username,
             :email,
-            :password_digest,
             :date_of_birth,
             presence: true
+
+  validate :password_digest_xor_uid_and_provider
 
   validates :username,
             :email,
@@ -154,19 +155,40 @@ class User < ActiveRecord::Base
   def is_password?(naked_password)
     BCrypt::Password.new(self.password_digest) == naked_password
   end
-  
+
   def self.find_or_create_by_auth_hash(auth_hash)
     user = User.find_by(provider: auth_hash[:provider], uid: auth_hash[:uid])
 
     return user if user
 
+    dob = User.parse_fb_date(auth_hash[:extra][:raw_info][:birthday])
+
     User.create!(provider: auth_hash[:provider],
                  uid: auth_hash[:uid],
                  email: auth_hash[:info][:email],
                  username: auth_hash[:info][:nickname],
-                 avatar: auth_hash[:info][:image],
+                 avatar: User.process_uri(auth_hash[:info][:image]),
                  first_name: auth_hash[:info][:first_name],
                  last_name: auth_hash[:info][:last_name],
-                 date_of_birth: auth_hash[:info][:user_birthday])
+                 date_of_birth: dob)
+  end
+
+  private
+  def self.process_uri(uri)
+    avatar_url = URI.parse(uri)
+    avatar_url.scheme = 'https'
+    avatar_url.query = 'type=large'
+    avatar_url.to_s
+  end
+
+  def self.parse_fb_date(date_string)
+    t = Date._strptime(date_string, '%m/%d/%Y')
+    Date.new(t[:year], t[:mon], t[:mday])
+  end
+
+  def password_digest_xor_uid_and_provider
+    unless password_digest.blank? ^ (uid.blank? && provider.blank?)
+      errors.add(:base, "Must provide authentication")
+    end
   end
 end

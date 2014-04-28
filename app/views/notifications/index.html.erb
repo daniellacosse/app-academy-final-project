@@ -1,4 +1,6 @@
-<section class="notifications main-content center">
+<%= render partial: "users/content", locals: {user: @user} %>
+<%= render partial: "users/info", locals: {user: @user} %>
+<section class="main-content">
   <% if @user.notifications.length > 0 %>
   	<%= render @user.notifications %>
   <% else %>

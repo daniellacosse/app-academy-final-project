@@ -1,19 +1,17 @@
-<section class="gallery main-content center">
-  <% if galleries.count > 0 %>
-  	<% galleries.each do |gallery| %>
-    <p>
-      <a href="<%= gallery_url(gallery) %>"><%= gallery.title %></a>
-    </p>
-    <% end %>
-  <% else %>
-  	<p class="notice">
-  		No galleries to be found!
-  	</p>
+<% if galleries.count > 0 %>
+	<% galleries.each do |gallery| %>
+  <p>
+    <a href="<%= gallery_url(gallery) %>"><%= gallery.title %></a>
+  </p>
   <% end %>
+<% else %>
+	<p class="notice">
+		No galleries to be found!
+	</p>
+<% end %>
 
-  <% if current_user.try(:id) == user.id %>
-    <a class="+link" href="<%= new_user_gallery_url(user) %>">
-      + Gallery
-    </a>
-  <% end %>
-</section>
+<% if current_user.try(:id) == user.id %>
+  <a class="+link" href="<%= new_user_gallery_url(user) %>">
+    + Gallery
+  </a>
+<% end %>

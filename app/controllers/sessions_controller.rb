@@ -14,11 +14,11 @@ class SessionsController < ApplicationController
       render :new
     end
   end
-  
+
   def fb_create
     @user = User.find_or_create_by_auth_hash(request.env['omniauth.auth'])
 
-    log_in(@user)
+    login(@user)
     redirect_to user_url(@user)
   end
 

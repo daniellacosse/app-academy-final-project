@@ -15,13 +15,13 @@
 
   <input type="hidden" name="deviation[user_id]" value="<%= current_user.id %>">
 
-  <div class="file-upload">
+  <div class="file-upload center">
     <!-- <label for="deviation_media">Your Artwork</label> -->
     <input type="file" name="deviation[media]" id="deviation_media">
   </div>
 
   <input
-    class="text-input"
+    class="text-input title"
     type="text"
     name="deviation[title]"
     value="<%= @deviation.title %>"
@@ -29,14 +29,12 @@
   >
 
   <textarea
-    class="textarea-input"
+    class="textarea-input description"
     name="deviation[description]"
     placeholder="Description"
   ><%= @deviation.description %></textarea>
 
   <fieldset class="checkbox-input-set">
-    <legend>Options:</legend>
-
     <div class="checkbox">
       <label for="can_comment">Can Comment?</label>
       <input type="hidden" name="deviation[is_commentable]" value="false">
@@ -72,7 +70,9 @@
         <%= "checked" if @deviation.is_likeable || !@deviation.persisted? %>
       >
     </div>
+  </fieldset>
 
+  <fieldset>
     <div class="checkbox">
       <label for="mature_content">Mature Content?</label>
       <input type="hidden" name="deviation[is_mature]" value="false">

@@ -40,6 +40,16 @@ header.site-header > .dropdown-button { float: left; }
   background: #122313;
 }
 
+td.dArt-sprite {
+  background: url("spritesheet.png");
+  width: 50px;
+  height: 50px;
+}
+
+td.search-sprite {
+  background: url("spritesheet.png");
+}
+
 nav.dropdown-menu { /* +clearfix */
 
   position: absolute;

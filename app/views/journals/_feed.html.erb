@@ -1,15 +1,7 @@
-<section class="journals main-content center">
-  <% if journals.count > 0 %>
-  	<%= render journals %>
-  <% else %>
-  	<p class="notice">
-  		No journals to be found!
-  	</p>
-  <% end %>
-
-  <% if current_user.try(:id) == user.id %>
-    <a class="+link" href="<%= new_user_journal_url(user) %>">
-      + Journal
-    </a>
-  <% end %>
-</section>
+<% if journals.count > 0 %>
+	<%= render journals %>
+<% else %>
+	<p class="notice">
+		No journals to be found!
+	</p>
+<% end %>

@@ -1,27 +1,78 @@
-section.user-info{
-  float: left;
+section.user-info {
+  left: 0;
+  padding-left: 20px;
+  width: 250px;
+  min-height: 560px;
+
+  text-align: center;
 }
 
-section.user-content{
-  float: right;
-  width: 200px;
+section.user-content {
+  right: 0;
+  padding-right: 40px;
+  width: 250px;
+
 }
+
 section.user-info, section.user-content {
+  position: fixed;
+  top: 0;
+
+  box-sizing: border-box;
   height: 100%;
-  margin: 0 20px;
+  padding-top: 80px;
+
+  background: #020703;
 }
 
-.user-info > footer {
-  position: absolute;
-  bottom: 0;
+.user-avatar {
+  margin: auto;
 
+  width: 160px;
+  height: 160px;
+  overflow: hidden;
+}
+
+.user-avatar > img {
+  width: 160px;
 }
 
 .username {
+  margin-top: 10px;
+
   font-family: 'open_sanslight';
-  font-size: 25pt;
-  width: 100%;
+  font-size: 22pt;
+  line-height: 19pt;
 }
+
+.name-and-country {
+  font-family: 'open_sansitalic';
+  font-size: 10pt;
+}
+
+.views-and-likes {
+  margin-top: 35px;
+  color: #ccc;
+}
+
+.biography {
+  position: absolute;
+  bottom: 100px;
+
+  border: 1px solid gray;
+  padding: 10px;
+  text-align: left;
+
+  text-indent: 2em;
+}
+
+.user-info > footer {
+  text-align: left;
+  position: absolute;
+  bottom: 0;
+}
+
+
 
 .content-item {
   font-family: 'open_sanslight';

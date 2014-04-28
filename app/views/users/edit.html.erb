@@ -1,4 +1,6 @@
-<section class="form main-content center">
+<%= render partial: "users/content", locals: {user: current_user} %>
+<%= render partial: "users/info", locals: {user: current_user} %>
+<section class="main-content">
 <%= render 'form', locals: {user: @user} %>
 
 <%= link_to 'Back', @user %>

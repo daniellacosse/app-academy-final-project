@@ -1,16 +1,18 @@
-<section class="user-info">
+<section class="user-info group">
 
   <%# TEMPORARY SOLUTION: %>
-  <% if @user.avatar_isnt_empty %>
-    <img class="user-avatar center" src="<%= user.avatar.url(:thumb) %>">
+  <% if user.avatar_isnt_empty %>
+    <figure class="user-avatar">
+      <img class="center" src="<%= user.avatar.url(:thumb) %>">
+    </figure>
   <% end %>
 
-  <table>
+  <table class="shrinkwrap-center">
     <tr>
       <td>
-        <h2 class="username">
+        <p class="username">
           <%= user.username %>
-        </h2>
+        </p>
       </td>
       <td>
         <%= render partial: "likes/button", locals: {
@@ -23,14 +25,19 @@
     </tr>
   </table>
 
-  <% if user.country_isnt_nil_or_empty %>
-    <p class="location">
-      <%= user.country %>
-    </p>
-  <% end %>
+  <p class="name-and-country">
+    <% if user.entire_name_isnt_nil_or_empty  %>
+        <%= user.first_name if user.first_name %>
+        <%= user.last_name if user.last_name %>,
+    <% end %>
+
+    <% if user.country_isnt_nil_or_empty %>
+        <%= user.country %>
+    <% end %>
+  </p>
 
   <% unless current_user.try(:id) == user.id %>
-    <%= link_to 'write message', new_user_message_url(user) %>
+    <%= link_to 'message me', new_user_message_url(user) %>
   <% end %>
 
   <p class="views-and-likes">
@@ -39,19 +46,12 @@
 
   <% if user.biography_isnt_nil_or_empty %>
     <p class="biography">
-      <h3>About:</h3>
       <%= user.biography %>
     </p>
   <% end %>
 
   <footer class="reveal-content-on-hover">
     <div class="hidden-content">
-      <% if user.entire_name_isnt_nil_or_empty  %>
-        <p class="name">
-          <%= user.first_name if user.first_name %>
-          <%= user.last_name if user.last_name %>
-        </p>
-      <% end %>
 
       <p class="email">
         <a href="mailto:<%= user.email %>"><%= user.email %></a>
@@ -64,7 +64,7 @@
       <% end %>
 
       <p class="metadata dob">
-        <%= user.date_of_birth.strftime("%B %e, %Y") %>
+        <%= user.date_of_birth.year %>
       </p>
     </div>
 

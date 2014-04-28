@@ -1,7 +1,15 @@
-<section class="form main-content center">
-  <h1 class="form-header">
-    Create Gallery
-  </h1>
+<%= render partial: "users/content", locals: {user: current_user} %>
+<%= render partial: "users/info", locals: {user: current_user} %>
+<section class="main-content">
+  <% if current_user.deviations.count == 0 %>
+    <p>
+      Try uploading some deviations first, buddy!
+    </p>
+  <% else %>
+    <h1 class="form-header">
+      Create Gallery
+    </h1>
 
-  <%= render 'form', locals: {gallery: @gallery} %>
+    <%= render 'form', locals: {gallery: @gallery} %>
+  <% end %>
 </section>

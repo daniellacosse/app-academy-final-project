@@ -131,7 +131,7 @@ ActiveRecord::Schema.define(version: 20140426171720) do
   create_table "users", force: true do |t|
     t.string   "username",                          null: false
     t.string   "email",                             null: false
-    t.string   "password_digest",                   null: false
+    t.string   "password_digest"
     t.string   "token",                             null: false
     t.string   "verification_key"
     t.string   "is_verified",         default: "f"
