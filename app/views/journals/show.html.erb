@@ -1,21 +1,6 @@
-<section class="journals main-content">
-
-<%= render @journal %>
-
-<p>
-  <%= @journal.body %>
-</p>
-<%= render @journal.tags %>
-<p>
-<% if @journal.user.id == current_user.try(:id) %>
-  <%= link_to 'Edit', edit_journal_url(@journal) %>
-<% end %>
-</p>
-
-<%= render partial: "comments/form", locals: {
-  type: "Journal",
-  id: @journal.id
-} %>
-
-<%= render @journal.comments.order("created_at DESC") %>
-</section>
+<%= render partial: "users/content", locals: {user: @user} %>
+<%= render partial: "users/info", locals: {user: @user} %>
+<%= render partial: "pages/content", locals: {
+    wrapped_partial: "journals/entry",
+    wrapped_partial_params: { user: @user, journal: @journal }
+  } %>

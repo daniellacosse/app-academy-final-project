@@ -1,20 +1,29 @@
 <section class="deviation-info">
-  <h2 class="deviation-title">
-    <%= @deviation.title %>
-  </h2>
 
-  <% if @deviation.user.id == current_user.try(:id) %>
-    <p><%= link_to 'Edit', edit_deviation_url(@deviation) %></p>
-  <% end %>
+  <table>
+    <tr>
+      <td>
+        <h2 class="deviation-title">
+          <%= @deviation.title %>
+        </h2>
+      </td>
+      <td>
+        <% if @deviation.user.id == current_user.try(:id) %>
+          <p><%= link_to 'Edit', edit_deviation_url(@deviation) %></p>
+        <% end %>
 
-  <% if @deviation.is_likeable %>
-    <%= render partial: "likes/button", locals: {
-      type: "Deviation",
-      set: current_user.liked_deviations,
-      target: @deviation,
-      owner: @deviation.user
-    } %>
-  <% end %>
+        <% if @deviation.is_likeable %>
+          <%= render partial: "likes/button", locals: {
+            type: "Deviation",
+            set: current_user.try(:liked_deviations),
+            target: @deviation,
+            owner: @deviation.user
+          } %>
+        <% end %>
+      </td>
+    </tr>
+  </table>
+
 
   <span class="deviation-author">
     <%= render partial: "users/icon", locals: {user: @deviation.user } %>

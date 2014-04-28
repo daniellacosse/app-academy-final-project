@@ -1,28 +1,6 @@
-<section class="gallery main-content">
-  <div class="_gallery" data-id="<%= @gallery.id %>">
-    <h2 class="_gallery-header">
-      <%= @gallery.title %>
-    </h2>
-
-    <p>
-      <%= @gallery.likes.count %> likes
-    </p>
-
-    <%= render partial: "likes/button", locals: {
-      type: "Gallery",
-      set: current_user.liked_galleries,
-      target: @gallery,
-      owner: @gallery.user
-    } %>
-
-    <p class="_gallery-description">
-      <%= @gallery.description %>
-    </p>
-
-    <% if @gallery.user_id == current_user.id %>
-      <a href="<%= edit_gallery_url(@gallery) %>">Edit</a>
-    <% end %>
-
-    <%= render @gallery.deviations %>
-  </div>
-</section>
+<%= render partial: "users/content", locals: {user: @user} %>
+<%= render partial: "users/info", locals: {user: @user} %>
+<%= render partial: "pages/content", locals: {
+    wrapped_partial: "galleries/entry",
+    wrapped_partial_params: { user: @user, gallery: @gallery }
+  } %>

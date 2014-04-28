@@ -1,4 +1,6 @@
 class MessagesController < ApplicationController
+  before_action :require_logged_in!, only: [:new, :create]
+
   def index
     @messages = User.find(params[:user_id]).messages
   end

@@ -48,6 +48,9 @@ ul { list-style-type: none; }
   clear: both;
 }
 
+/* ///\\\///\\\half-opacity///\\\///\\\ */
+.half-opacity { opacity: 0.5; }
+
 /* ///\\\///\\\reveal-content-on-hover///\\\///\\\ */
 .reveal-content-on-hover { cursor: pointer; }
 .reveal-content-on-hover > .hidden-content{ display: none; }

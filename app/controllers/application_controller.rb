@@ -10,10 +10,10 @@ class ApplicationController < ActionController::Base
   def logged_in?
     !!current_user
   end
-  
+
   def has_notifications?
     return false unless logged_in?
-    
+
     current_user.unseen_notifications.count > 0 ? true : false
   end
 
@@ -31,7 +31,7 @@ class ApplicationController < ActionController::Base
     unless logged_in? && current_user.is_verified
       flash[:errors] = ["You gotta be a valid user to do that!"]
 
-      redirect_to :root
+      redirect_to :back
     end
   end
 end

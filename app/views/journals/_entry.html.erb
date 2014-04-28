@@ -1,0 +1,21 @@
+<section class="journals main-content center">
+
+<%= render journal %>
+
+<p>
+  <%= journal.body %>
+</p>
+<%= render journal.tags %>
+<p>
+<% if journal.user.id == current_user.try(:id) %>
+  <%= link_to 'Edit', edit_journal_url(journal) %>
+<% end %>
+</p>
+
+<%= render partial: "comments/form", locals: {
+  type: "Journal",
+  id: journal.id
+} %>
+
+<%= render journal.comments.order("created_at DESC") %>
+</section>

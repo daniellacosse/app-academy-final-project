@@ -1,17 +1,6 @@
-<section class="gallery main-content center">
-  <% if @galleries.count > 0 %>
-  	<% @galleries.each do |gallery| %>
-    <p>
-      <a href="<%= gallery_url(gallery) %>"><%= gallery.title %></a>
-    </p>
-    <% end %>
-  <% else %>
-  	<p class="notice">
-  		No galleries to be found!
-  	</p>
-  <% end %>
-
-  <a class="+link" href="<%= new_user_gallery_url(@user) %>">
-    + Gallery
-  </a>
-</section>
+<%= render partial: "users/content", locals: {user: @user} %>
+<%= render partial: "users/info", locals: {user: @user} %>
+<%= render partial: "pages/content", locals: {
+    wrapped_partial: "galleries/feed",
+    wrapped_partial_params: { user: @user, galleries: @galleries }
+  } %>

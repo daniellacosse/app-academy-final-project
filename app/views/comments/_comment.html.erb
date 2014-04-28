@@ -16,15 +16,10 @@
     <%= comment.body %>
   </p>
 
-  <div class="comment-wrapper">
-    Hover to Respond
-    <div class="respond">
-    <%= render partial: "comments/form", locals: {
-      type: "Comment",
-      id: comment.id
-    } %>
-    </div>
-  </div>
+  <%= render partial: "comments/form", locals: {
+    type: "Comment",
+    id: comment.id
+  } %>
 
   <%= render comment.comments %>
 </div>

@@ -10,6 +10,7 @@ class JournalsController < ApplicationController
 
   def show
     @journal = Journal.find(params[:id])
+    @user = @journal.user
   end
 
   def edit

@@ -11,6 +11,7 @@ class GalleriesController < ApplicationController
 
   def show
     @gallery = Gallery.find(params[:id])
+    @user = @gallery.user
   end
 
   def edit

@@ -1,13 +1,8 @@
-<section class="journals main-content center">
-  <% if @journals.count > 0 %>
-  	<%= render @journals %>
-  <% else %>
-  	<p class="notice">
-  		No journals to be found!
-  	</p>
-  <% end %>
+<%= render partial: "users/content", locals: {user: @user} %>
+<%= render partial: "users/info", locals: {user: @user} %>
+<%= render partial: "pages/content", locals: {
+    wrapped_partial: "journals/feed",
+    wrapped_partial_params: { user: @user, journals: @journals }
+  } %>
 
-  <a class="+link" href="<%= new_user_journal_url(@user) %>">
-    + Journal
-  </a>
-</section>
+

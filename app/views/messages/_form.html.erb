@@ -10,7 +10,7 @@
 
   <%= auth_token %>
 
-  <input type="hidden" name="message[author_id]" value="<%= current_user.id %>">
+  <input type="hidden" name="message[author_id]" value="<%= current_user.try(:id) %>">
   <input type="hidden" name="message[user_id]" value="<%= @user.id %>">
 
   <input

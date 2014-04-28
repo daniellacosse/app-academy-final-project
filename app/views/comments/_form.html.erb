@@ -1,14 +1,18 @@
-<form class="comment-form" action="<%= comments_url %>" method="post">
-  <%= auth_token %>
+<div class="reveal-content-on-hover">
+  comment
+  <form class="comment-form hidden-content center" action="<%= comments_url %>" method="post">
+    <%= auth_token %>
 
-  <input type="hidden" name="comment[user_id]" value="<%= current_user.id %>">
-  <input type="hidden" name="comment[commentable_id]" value="<%= id %>">
-  <input type="hidden" name="comment[commentable_type]" value="<%= type %>">
+    <input type="hidden" name="comment[user_id]" value="<%= current_user.try(:id) %>">
+    <input type="hidden" name="comment[commentable_id]" value="<%= id %>">
+    <input type="hidden" name="comment[commentable_type]" value="<%= type %>">
 
-  <textarea
-    class="textarea-input"
-      placeholder="All comments are final"
-      name="comment[body]"></textarea>
+    <textarea
+      class="textarea-input"
+        placeholder="All comments are final"
+        name="comment[body]"></textarea>
 
-  <input class="submit-button" type="submit" value="...">
-</form>
+    <input class="submit-button" type="submit" value="...">
+  </form>
+
+</div>
