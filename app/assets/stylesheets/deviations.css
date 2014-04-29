@@ -33,7 +33,7 @@ img.deviation-media{
  margin: 2px;
 }
 
-img._deviation-media, img.deviation-media {
+img._deviation-media, img.deviation-media, .deviation-preview > img {
  border: 1px solid #122313;
  box-shadow: 0 0 3px 3px black;
 }

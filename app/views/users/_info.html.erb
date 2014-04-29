@@ -28,9 +28,10 @@
   <p class="name-and-country">
     <% if user.entire_name_isnt_nil_or_empty  %>
         <%= user.first_name if user.first_name %>
-        <%= user.last_name if user.last_name %>,
+        <%= user.last_name if user.last_name %>
     <% end %>
-
+		
+		<% "," if user.entire_name_isnt_nil_or_empty && user.country_isnt_nil_or_empty %>
     <% if user.country_isnt_nil_or_empty %>
         <%= user.country %>
     <% end %>
@@ -40,8 +41,8 @@
     <%= link_to 'message me', new_user_message_url(user) %>
   <% end %>
 
-  <p class="views-and-likes">
-    <%= user.views.count %> views | <%= user.likes.count %> likes
+  <p class="pieces-and-likes">
+    <%= user.deviations.count %> pieces | <%= user.likes.count %> likes
   </p>
 
   <% if user.biography_isnt_nil_or_empty %>

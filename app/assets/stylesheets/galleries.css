@@ -1,4 +1,37 @@
-section.galleries, section.gallery {
-  width: 75%;
-  text-align: center;
+.deviation-preview {
+  margin: auto;
+
+  width: 160px;
+  height: 160px;
+  overflow: hidden;
+}
+
+.deviation-preview > img {
+  width: 160px;
+}
+
+.gallery-preview {
+	width: 100%;
+	border: 1px solid gray;
+	min-width: 450px;
+}
+
+
+.gallery-title > a {
+	display: block;
+	padding: 15px 20px;
+	float: left;
+	font-family: "open_sansbold";
+}
+
+.gallery-title > span {
+	display: block;
+	padding: 15px 20px;
+	float: right;
+	t}
+
+
+.deviation-preview {
+	float: left;
+	margin-left: 20px;
 }

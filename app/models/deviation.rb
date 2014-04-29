@@ -1,5 +1,5 @@
 class Deviation < ActiveRecord::Base
-  has_attached_file :media
+  has_attached_file :media, styles: { thumb: "200x200>" }
 
   include PgSearch
   multisearchable against: [:title]
