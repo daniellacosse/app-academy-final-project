@@ -16,7 +16,7 @@ header.site-header { /* +clearfix */
 header.site-header > .dropdown-button { float: left; }
 
 .dropdown-button h1 { /* +reveal-content */
-  padding: 0 20px;
+  padding: 0 10px;
 
   font-family: 'open_sansregular';
   font-size: 30pt;
@@ -40,15 +40,33 @@ header.site-header > .dropdown-button { float: left; }
   background: #122313;
 }
 
-td.dArt-sprite {
-  background: url("spritesheet.png");
-  width: 50px;
-  height: 50px;
+.dropdown-button table {
+  padding: 0 10px;
 }
 
-td.search-sprite {
-  background: url("spritesheet.png");
+div.dArt-sprite {
+  background: url("spritesheet.png") no-repeat;
+  width: 35px;
+  height: 35px;
+  overflow: hidden;
 }
+
+.dropdown-button:hover div.dArt-sprite {
+  background-position: 0 -35px;
+}
+
+div.search-sprite {
+  background: url("spritesheet.png") no-repeat;
+  width: 35px;
+  height: 35px;
+  overflow: hidden;
+  background-position: -36px 0;
+}
+
+.dropdown-button:hover div.search-sprite {
+  background-position: -36px -35px;
+}
+
 
 nav.dropdown-menu { /* +clearfix */
 

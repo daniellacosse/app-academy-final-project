@@ -34,7 +34,7 @@ class User < ActiveRecord::Base
   validates_confirmation_of :password
   validates :password, length: { minimum: 7,
                                  allow_nil: true,
-                                 message: "Password length must be at least 7" }
+                                 message: "length must be at least 7" }
 
  # <- HANG THIS OUT:
   def first_name_isnt_nil_or_empty
@@ -170,7 +170,8 @@ class User < ActiveRecord::Base
                  avatar: User.process_uri(auth_hash[:info][:image]),
                  first_name: auth_hash[:info][:first_name],
                  last_name: auth_hash[:info][:last_name],
-                 date_of_birth: dob)
+                 date_of_birth: dob,
+                 is_verified: true)
   end
 
   private

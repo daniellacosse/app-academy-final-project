@@ -1,9 +1,22 @@
-section.form {
-  width: 340px;
+form {
+  display: inline;
 }
 
-section.form > form {
-  display: inline;
+form.searchbar {
+  display: block;
+}
+
+.conventional-login {
+  float: left;
+}
+
+.facebook-login {
+  margin-left: 340px;
+}
+
+.login-wrapper {
+  margin-top: 150px;
+  width: 785px;
 }
 
 h1.form-header {
@@ -14,8 +27,12 @@ h1.form-header {
   font-family: 'open_sansbold';
 }
 
+.sign-up{
+  margin-top: 150px;
+}
+
 input, select, .textarea-input, label {
-  margin: 5px;
+  margin: 5px auto;
   padding: 5px 10px;
 
   font-family: 'open_sanslight';
@@ -52,21 +69,51 @@ input.liker { border-width: 0; }
 }
 
 .facebook-login {
+  float: left;
 	color: #E6E6E6;
 
-  margin: 5px;
+  margin: 5px 0;
   padding: 10px 15px;
 
   font-family: 'open_sansbold';
-	font-size: 16pt;
+	font-size: 20pt;
 
 	border-radius: 8px;
 	background: linear-gradient(to bottom, #3f4c6b 0%, #283049 100%);
 
+  cursor: pointer;
+  width: 340px;
+  height: 220px;
+}
+
+.facebook-login > a {
+  display: block;	color: #E6E6E6;
+
+}
+
+.conventional-login {
+  padding-right: 40px;
+  border-right: 1px solid #ccc;
+  margin-right: 40px;
+}
+
+.facebook-login table {
+    width:100%;
+    height: 220px;
+    vertical-align: middle;
 }
 
 .facebook-login:hover {
 	background: linear-gradient(to bottom, #252D44 0%, #20263A 100%);
+}
+
+.facebook-login:active {
+  box-shadow: inset 0 20px 50px 0px rgba(0, 0, 0, 1);
+	background: linear-gradient(to bottom, #1C2237 0%, #111521 100%);
+}
+
+.facebook-login:active > a {
+  color: #999;
 }
 
 .submit-button,
@@ -88,7 +135,8 @@ input:focus, select:focus, textarea:focus {
 }
 
 legend, label {
-  display: inline;
+  display: block;
+  text-align: left;
   font-family: 'open_sanssemibold';
 }
 

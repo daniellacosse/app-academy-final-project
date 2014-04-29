@@ -26,8 +26,9 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     if @user.save
       login(@user)
+      UserMailer.authentication_email(@user).deliver
 
-      render :show
+      redirect_to user_url(@user)
     else
       flash.now[:errors] = @user.errors.full_messages
       render :new

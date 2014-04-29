@@ -4,7 +4,8 @@
     <a href="<%= root_url %>">
       <table>
         <tr>
-          <td class="dArt-sprite">
+          <td>
+            <div class="dArt-sprite"></div>
           </td>
           <td>
             <h1>
@@ -18,10 +19,12 @@
       				</span>
             </td>
           <% elsif logged_in? %>
-            <td class="dropdown-sprite">
+            <td>
+              <div class="dropdown-sprite"></div>
             </td>
           <% else %>
-            <td class="search-sprite">
+            <td>
+              <div class="search-sprite"></div>
             </td>
           <% end %>
       </table>

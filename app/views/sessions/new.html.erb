@@ -1,38 +1,50 @@
-<section class="form main-content center">
-  <h1 class="form-header">
-    Log In
-  </h1>
+<section class="main-content group">
+  <div class="login-wrapper center">
+    <div class="conventional-login">
+    <h1 class="form-header">
+      Log In
+    </h1>
 
-  <form
-    class="login-form"
-    action="<%= session_url %>"
-    method="post">
+    <form
+      class="login-form"
+      action="<%= session_url %>"
+      method="post">
 
-    <%= auth_token %>
+      <%= auth_token %>
 
-    <input
-      class="text-input"
-      type="text"
-      name="user[username]"
-      placeholder="Username">
+      <input
+        class="text-input"
+        type="text"
+        name="user[username]"
+        placeholder="Username">
 
-    <input
-      class="text-input"
-      type="password"
-      name="user[password]"
-      placeholder="Password">
+      <input
+        class="text-input"
+        type="password"
+        name="user[password]"
+        placeholder="Password">
 
-    <input
-      class="submit-button"
-      type="submit"
-      value="Log In">
-  </form>
+      <input
+        class="submit-button"
+        type="submit"
+        value="Log In">
+    </form>
 
-  <a class="sign-up-link" href="<%= new_user_url %>">
-    | Sign Up
-  </a>
+    <a class="sign-up-link" href="<%= new_user_url %>">
+      | Sign Up
+    </a>
+    </div>
 
-  <a href="/auth/facebook">
-    FACEBOOK
-  </a>
+    <div class="facebook-login">
+      <a href="/auth/facebook">
+        <table>
+          <tr>
+            <td>
+              facebook
+            </td>
+          </tr>
+        </table>
+      </a>
+    <div>
+  </div>
 </section>

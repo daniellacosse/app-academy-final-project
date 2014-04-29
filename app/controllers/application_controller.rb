@@ -29,7 +29,7 @@ class ApplicationController < ActionController::Base
 
   def require_logged_in!
     unless logged_in? && current_user.is_verified
-      flash[:errors] = ["You gotta be a valid user to do that!"]
+      flash[:errors] = ["You gotta be a verified user to do that!"]
 
       redirect_to :back
     end

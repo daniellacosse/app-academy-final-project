@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' />
+  </head>
+  <body>
+
+    <h1>Welcome to dArt, <%= @user.username %>!</h1>
+    <p>
+      <a href="<%= user_verification_url(
+        @user, query: @user.verification_key
+      ) %>">
+        Click here to verify your account!
+      </a>
+    </p>
+
+  </body>
+</html>
