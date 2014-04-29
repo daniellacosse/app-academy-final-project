@@ -3,13 +3,18 @@ window.DArt = {
   Collections: {},
   Views: {},
   Routers: {},
-  initialize: function() {
+  initialize: function(user) {
     alert('Hello from Backbone!');
+
+    DArt.user = new DArt.Models.User(user);
+
+    new DArt.Routers.Users({
+      $rootEl: $(".main-content"),
+      $info: $(".user-info"),
+      $contentMenu: $(".user-content")
+    });
+
+    Backbone.history.start();
   }
 };
 
-$(document).ready(function(){
-  //just use backbone for user's page
-  //use ujs to like, comment, and append deivant show page!
-  DArt.initialize();
-});

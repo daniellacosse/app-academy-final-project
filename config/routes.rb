@@ -20,4 +20,16 @@ DArt::Application.routes.draw do
 
   resources :likes, only: [:create, :destroy]
   resources :comments, only: [:create, :destroy]
+
+  namespace :api, defaults: { format: :json } do
+    shallow do
+      resources :users do
+        get '/verification', controller: 'pages', action: 'verify'
+        resources :galleries
+        resources :journals
+        resources :messages, except: [:edit, :update]
+        resources :notifications, only: [:index]
+      end
+    end
+  end
 end

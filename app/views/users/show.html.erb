@@ -4,3 +4,19 @@
     wrapped_partial: "deviations/grid",
     wrapped_partial_params: { deviations: @user.deviations }
   } %>
+
+<script type="application/json" id="user-data">
+  <%= @user.to_json.html_safe %>
+</script>
+
+<script>
+  $(document).ready(function(){
+
+    var $userJson = $("#user-data").html();
+    var data = JSON.parse($userJson);
+
+    //just use backbone for user's page
+    //use ujs to like, comment, and append deivant show page!
+    DArt.initialize(data);
+  });
+</script>

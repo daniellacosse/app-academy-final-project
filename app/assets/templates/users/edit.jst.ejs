@@ -1,0 +1,134 @@
+<form id="user-edit">
+
+  <input type="hidden" name="_method" value="patch">
+
+  <input
+    class="text-input"
+    type="text"
+    name="user[username]"
+    value="<%= user.escape("username") %>"
+    placeholder="Username">
+
+  <input
+    class="text-input"
+    type="email"
+    name="user[email]"
+    value="<%= user.escape("email") %>"
+    placeholder="Email">
+
+  <div class="date-input">
+    <label for="dob">Date of Birth:</label>
+    <input
+      id="dob"
+      type="date"
+      name="user[date_of_birth]"
+      value="<%= user.escape("date_of_birth") %>">
+  </div>
+
+    <img class="image-upload-preview" src="">
+
+    <div class="file-upload">
+      <label for="user_avatar">Profile Picture:</label>
+      <input type="file" name="user[avatar]" id="user_avatar">
+    </div>
+
+    <input
+      class="text-input"
+      type="text"
+      name="user[first_name]"
+      value="<%= user.escape("first_name") %>"
+      placeholder="First Name">
+
+    <input
+      class="text-input"
+      type="text"
+      name="user[last_name]"
+      value="<%= user.escape("last_name") %>"
+      placeholder="Last Name">
+
+
+    <fieldset class="radio-button-input-set">
+      <legend>Gender:</legend>
+
+      <div class="radio-button">
+        <input
+          id="male_gender"
+          type="radio"
+          name="user[gender]"
+          value="M"
+          <% if(user.gender === "M"){ %>
+            <%= "checked" %>
+          <% } %>
+        >
+        <label for="male_gender">Male</label>
+      </div>
+
+      <div class="radio-button">
+        <input
+          id="female_gender"
+          type="radio"
+          name="user[gender]"
+          value="F"
+          <% if(user.gender === "F"){ %>
+            <%= "checked" %>
+          <% } %>
+        >
+        <label for="female_gender">Female</label>
+      </div>
+
+      <div class="radio-button">
+        <input
+          id="other_gender"
+          type="radio"
+          name="user[gender]"
+          value="O"
+          <% if(user.gender === "O"){ %>
+            <%= "checked" %>
+          <% } %>
+        >
+        <label for="other_gender">Other</label>
+      </div>
+
+      <div class="radio-button">
+        <input
+          type="radio"
+          name="user[gender]"
+          value="n/a"
+          <% if(user.gender === "n/a"){ %>
+            <%= "checked" %>
+          <% } %>
+        >
+      </div>
+        <label for="no_gender">None/Prefer not to say</label>
+    </fieldset>
+
+    <div class="dropdown-input">
+      <label for="user_country">Place of Origin:</label>
+      <select id="user_country" name="user[country]">
+        <option></option>
+
+        <% _(window.COUNTRIES).each( function(country_name) { %>
+          <option
+            value="<%= country_name %>"
+            <% if(user.country === country_name){ %>
+              <%= "selected" %>
+            <% } %>
+          >
+            <%= country_name %>
+          </option>
+        <% }) %>
+
+      </select>
+    </div>
+
+    <textarea
+      class="textarea-input"
+      name="user[biography]"
+      placeholder="Biography"><%= user.escape("biography") %></textarea>
+
+  <input
+    class="submit-button"
+    type="submit"
+    value="<%= "Update" %>"
+  >
+</form>
