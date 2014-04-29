@@ -7,23 +7,21 @@ DArt.Routers.Users = Backbone.Router.extend({
   },
 
   routes: {
-    "/api/users/:user_id/journals" : "journals",
-    "/api/users/:user_id/journal/new" : "newJournal",
-    "/api/users/:user_id/galleries" : "galleries",
-    "/api/users/:user_id/gallery/new" : "newGallery",
-    "/api/users/:user_id/deviation/new" : "newDeviation",
-    "/api/users/:id/edit" : "edit",
-    "/api/users/:id" : "show"
+    "users/:user_id/journals" : "journals",
+    "users/:user_id/galleries" : "galleries",
+    "journal/new" : "newJournal",
+    "gallery/new" : "newGallery",
+    "deviation/new" : "newDeviation",
+    "edit" : "edit",
+    "users/:id" : "show"
   },
 
   edit: function (id) {
-    debugger
     var view = new DArt.Views.UsersEdit({
       model: DArt.user
     })
 
-    that._swapView(view)
-
+    this._swapView(view)
   },
 
   show: function (id) {

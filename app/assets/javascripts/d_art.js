@@ -4,7 +4,7 @@ window.DArt = {
   Views: {},
   Routers: {},
   initialize: function(user) {
-    alert('Hello from Backbone!');
+    console.log('Hello from Backbone!');
 
     DArt.user = new DArt.Models.User(user);
 

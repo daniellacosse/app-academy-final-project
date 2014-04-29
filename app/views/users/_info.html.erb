@@ -37,7 +37,7 @@
     <% end %>
   </p>
 
-  <a href="localhost:3000#/api/users/1/edit">temp edit link</a>
+  <a href="#/edit">temp edit link</a>
 
   <% unless current_user.try(:id) == user.id %>
     <%= link_to 'message me', new_user_message_url(user) %>
