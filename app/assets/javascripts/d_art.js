@@ -9,5 +9,7 @@ window.DArt = {
 };
 
 $(document).ready(function(){
+  //just use backbone for user's page
+  //use ujs to like, comment, and append deivant show page!
   DArt.initialize();
 });
