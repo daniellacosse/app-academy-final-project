@@ -1,6 +1,5 @@
-DArt.Views.UsersShow = Backbone.View.extend({
-
-  template: JST['users/show'],
+DArt.Views.UsersNewJournal = Backbone.View.extend({
+  template: JST["users/newJournal"],
 
   render: function () {
     var content = this.template({
@@ -12,5 +11,4 @@ DArt.Views.UsersShow = Backbone.View.extend({
     return this
   }
 
-
-});
+})

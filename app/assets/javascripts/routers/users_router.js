@@ -7,13 +7,13 @@ DArt.Routers.Users = Backbone.Router.extend({
   },
 
   routes: {
-    "users/:user_id/journals" : "journals",
-    "users/:user_id/galleries" : "galleries",
+    "journals" : "journals",
+    "galleries" : "galleries",
     "journal/new" : "newJournal",
     "gallery/new" : "newGallery",
     "deviation/new" : "newDeviation",
     "edit" : "edit",
-    "users/:id" : "show"
+    "" : "show"
   },
 
   edit: function (id) {
@@ -46,7 +46,7 @@ DArt.Routers.Users = Backbone.Router.extend({
 
   newJournal: function (user_id) {
 
-    var view = new DArt.Views.UsersJournalCreate({
+    var view = new DArt.Views.UsersNewJournal({
       model: DArt.user
     })
 
@@ -66,7 +66,7 @@ DArt.Routers.Users = Backbone.Router.extend({
 
   newGallery: function (user_id) {
 
-    var view = new DArt.Views.UsersGalleryCreate({
+    var view = new DArt.Views.UsersNewGallery({
       model: DArt.user
     })
 
@@ -76,7 +76,7 @@ DArt.Routers.Users = Backbone.Router.extend({
 
   newDeviation: function (user_id) {
 
-    var view = new DArt.Views.UsersDeviationCreate({
+    var view = new DArt.Views.UsersNewDeviation({
       model: DArt.user
     })
 

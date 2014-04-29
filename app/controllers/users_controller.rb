@@ -6,7 +6,7 @@ class UsersController < ApplicationController
   end
 
   def show
-    @user = User.includes(:deviations, :galleries).find(params[:id])
+    @user = User.includes(:deviations, :journals, :galleries).find(params[:id])
 
     unless !logged_in? || current_user.id == Integer(params[:id])
       View.create({
@@ -18,7 +18,7 @@ class UsersController < ApplicationController
 
     respond_to do |format|
       format.html { render :show }
-      format.json { sleep(1); render json: @user.to_json }
+      format.json { sleep(1); render json: @user.includes(:deviations, :journals, :galleries).to_json }
     end
   end
 
@@ -31,7 +31,7 @@ class UsersController < ApplicationController
 
     respond_to do |format|
       format.html { render :edit }
-      format.json { sleep(1); render json: @user.to_json }
+      format.json { sleep(1); render json: @user.includes(:deviations, :journals, :galleries).to_json }
     end
   end
 
