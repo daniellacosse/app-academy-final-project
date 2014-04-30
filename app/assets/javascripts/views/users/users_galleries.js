@@ -1,12 +1,19 @@
 DArt.Views.UsersGalleries = Backbone.View.extend({
+
+  tagName: "section",
+
+  className: "galleries",
+
   template: JST["users/galleries"],
 
   render: function () {
-    var content = this.template({
-      user: DArt.user
-    })
-
-    this.$el.html(content)
+    _(DArt.galleries).each(function(gallery){
+        this.$el.append(
+          JST['gallery/preview'].template({
+            model: gallery
+          })
+        )
+      })
 
     return this
   }

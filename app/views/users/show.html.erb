@@ -9,22 +9,45 @@
   <%= @user.to_json.html_safe %>
 </script>
 
- <script type="application/json" id="is-user">
-   <%= (@user == current_user).to_json.html_safe %>
- </script>
+<script type="application/json" id="deviation-data">
+  <%= @user.deviations.to_json.html_safe %>
+</script>
+
+<script type="application/json" id="gallery-data">
+  <%= @user.galleries.to_json.html_safe %>
+</script>
+
+<script type="application/json" id="journal-data">
+  <%= @user.journals.to_json.html_safe %>
+</script>
+
+<script type="application/json" id="is-user">
+ <%= (@user == current_user).to_json.html_safe %>
+</script>
 
 <script>
   $(document).ready(function(){
 
     var $userJson = $("#user-data").html();
+    var $userDeviations = $("#deviation-data").html();
+    var $userGalleries = $("#gallery-data").html();
+    var $userJournals = $("#journal-data").html();
     var $isUser = $("#is-user").html();
 
     var data = JSON.parse($userJson);
     var isUser = JSON.parse($isUser);
+    var userDeviations = JSON.parse($userDeviations);
+    var userGalleries = JSON.parse($userGalleries);
+    var userJournals = JSON.parse($userJournals);
 
+    var options = {
+      user: data,
+      isUser: isUser,
+      userDeviations: userDeviations,
+      userGalleries: userGalleries,
+      userJournals: userJournals
+    }
 
-    //just use backbone for user's page
-    //use ujs to like, comment, and append deivant show page!
-    DArt.initialize(data, isUser);
+    DArt.initialize(options);
   });
 </script>

@@ -31,6 +31,7 @@
         type="checkbox"
         name="deviation[is_commentable]"
         value="true"
+        checked
       >
     </div>
 
@@ -42,6 +43,7 @@
         type="checkbox"
         name="deviation[is_shareable]"
         value="true"
+        checked
       >
     </div>
 
@@ -53,6 +55,7 @@
         type="checkbox"
         name="deviation[is_likeable]"
         value="true"
+        checked
       >
     </div>
   </fieldset>
@@ -109,3 +112,40 @@
     type="submit"
     value="Create Deviation">
 </form>
+
+<script>
+  var files;
+
+  $("input[type=file]").on('change', function(event){
+    files = event.target.files
+  })
+
+  $('form').on('submit', function(event){
+    event.stopPropagation();
+    event.preventDefault();
+
+    var data = new FormData();
+
+    $.each(files, function(k, v){
+      data.append(k, v)
+    });
+
+    $.ajax({
+      url: "/deviations",
+      type: "POST",
+      data: data,
+      dataType: "json",
+      processData: false,
+      contentType: false,
+      success: function (data, textStatus, jqXHR) {
+
+      }
+
+
+    })
+
+
+  })
+
+
+</script>

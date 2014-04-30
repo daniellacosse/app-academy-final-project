@@ -11,13 +11,13 @@ DArt.Views.UsersEdit = Backbone.View.extend({
     event.preventDefault();
     // updating...
 
-    DArt.user.save($(event.target).serializeJSON()// , {
-//       patch: true,
-//       success: function(){
-//         DArt.router.navigate("", {trigger: true});
-//       }
-    // }
-  )
+    DArt.user.save($(event.target).serializeJSON(), {
+        patch: true,
+        success: function(){
+          DArt.router.navigate("", {trigger: true});
+        }
+      }
+    )
   },
 
   render: function () {

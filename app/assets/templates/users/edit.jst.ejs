@@ -51,7 +51,7 @@
           type="radio"
           name="user[gender]"
           value="M"
-          <% if (user.gender === "M") { %>
+          <% if (user.get("gender") === "M") { %>
             <%= "checked" %>
           <% } %>
         >
@@ -64,7 +64,7 @@
           type="radio"
           name="user[gender]"
           value="F"
-          <% if (user.gender === "F") { %>
+          <% if (user.get("gender") === "F") { %>
             <%= "checked" %>
           <% } %>
         >
@@ -77,7 +77,7 @@
           type="radio"
           name="user[gender]"
           value="O"
-          <% if (user.gender === "O") { %>
+          <% if (user.get("gender") === "O") { %>
             <%= "checked" %>
           <% } %>
         >
@@ -89,7 +89,7 @@
           type="radio"
           name="user[gender]"
           value="n/a"
-          <% if (user.gender === "n/a") { %>
+          <% if (user.get("gender") === "n/a") { %>
             <%= "checked" %>
           <% } %>
         >
@@ -105,7 +105,7 @@
         <% _(window.COUNTRIES).each( function (country_name) { %>
           <option
             value="<%= country_name %>"
-            <% if (user.country === country_name) { %>
+            <% if (user.get("country") === country_name) { %>
               <%= "selected" %>
             <% } %>
           >

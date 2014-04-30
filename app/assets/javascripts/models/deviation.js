@@ -1,3 +1,1 @@
-DArt.Models.Deviation = Backbone.Model.extend({
-
-});
+DArt.Models.Deviation = Backbone.Model.extend({});

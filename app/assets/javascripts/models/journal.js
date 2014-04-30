@@ -1,0 +1,1 @@
+DArt.Models.Journal = Backbone.Model.extend({});

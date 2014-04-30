@@ -2,16 +2,7 @@ DArt.Views.UsersNewDeviation = Backbone.View.extend({
   template: JST["users/newDeviation"],
 
   events: {
-    "submit" : "update"
-  },
-
-  update: function (event) {
-
-    event.preventDefault();
-
-    DArt.Model.Deviation.save($(event.target).serializeJSON(), function(){
-
-    })
+    "submit" : "newDeviation"
   },
 
   render: function () {

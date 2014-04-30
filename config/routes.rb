@@ -22,6 +22,7 @@ DArt::Application.routes.draw do
   resources :comments, only: [:create, :destroy]
 
   namespace :api do
+    resources :deviations
     shallow do
       resources :users do
         get '/verification', controller: 'pages', action: 'verify'

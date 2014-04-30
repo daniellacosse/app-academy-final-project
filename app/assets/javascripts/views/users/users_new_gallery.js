@@ -2,16 +2,24 @@ DArt.Views.UsersNewGallery = Backbone.View.extend({
   template: JST["users/newGallery"],
 
   events: {
-    "submit" : "update"
+    "submit" : "newGallery"
   },
 
-  update: function (event) {
+  newGallery: function (event) {
 
     event.preventDefault();
     // updating...
-    DArt.Model.Gallery.save($(event.target).serializeJSON(), function(){
 
-    })
+    model = new DArt.Models.Gallery($(event.target).serializeJSON());
+
+    debugger
+
+    DArt.galleries.create(model, {
+        patch: true,
+        success: function(){
+          DArt.router.navigate("galleries", {trigger: true});
+        }
+      })
   },
 
   render: function () {

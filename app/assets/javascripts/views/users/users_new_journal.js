@@ -1,14 +1,22 @@
 DArt.Views.UsersNewJournal = Backbone.View.extend({
   template: JST["users/newJournal"],
 
-  update: function (event) {
+  events: {
+    "submit" : "newJournal"
+  },
+
+  newJournal: function (event) {
 
     event.preventDefault();
     // updating...
-    DArt.Model.Journal.save($(event.target).serializeJSON(), function(){
 
-    })
+    model = new DArt.Models.Journal($(event.target).serializeJSON());
 
+    DArt.journals.create(model, {
+        success: function(){
+          DArt.router.navigate("journals", {trigger: true});
+        }
+      })
   },
 
   render: function () {
