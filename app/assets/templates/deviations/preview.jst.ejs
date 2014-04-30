@@ -1,0 +1,15 @@
+<div class="_deviation" data-id="<%= deviation.get("id") %>">
+  <img width="300" class="_deviation-media" src="<%= deviation.get("media").url %>">
+
+  <h2 class="_deviation-title">
+    <a href="/deviation/<%= deviation.get("id") %>">
+      <%= deviation.escape("title") %>
+    </a>
+  </h2>
+
+  <!-- <span class="metadata">
+    by ~<a href=#>
+      <%= DArt.user.get("username") %>
+    </a>
+  </span> -->
+</div>

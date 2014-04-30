@@ -1,4 +1,8 @@
 <form id="user-edit">
+    <div class="file-upload center">
+      <label for="user_avatar">Profile Picture:</label>
+      <input type="file" name="user[avatar]" id="user_avatar">
+    </div>
   <input
     class="text-input"
     type="text"
@@ -24,11 +28,6 @@
 
     <img class="image-upload-preview" src="">
 
-    <div class="file-upload">
-      <label for="user_avatar">Profile Picture:</label>
-      <input type="file" name="user[avatar]" id="user_avatar">
-    </div>
-
     <input
       class="text-input"
       type="text"
@@ -44,8 +43,7 @@
       placeholder="Last Name">
 
 
-    <fieldset class="radio-button-input-set">
-      <legend>Gender:</legend>
+    <fieldset class="radio-button-input-set center">
 
       <div class="radio-button">
         <input
@@ -95,8 +93,8 @@
             <%= "checked" %>
           <% } %>
         >
-      </div>
         <label for="no_gender">None/Prefer not to say</label>
+      </div>
     </fieldset>
 
     <div class="dropdown-input">

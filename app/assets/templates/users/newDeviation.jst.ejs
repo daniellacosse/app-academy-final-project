@@ -1,0 +1,111 @@
+<h1 class="form-header">
+  + Art
+</h1>
+
+<form>
+  <input type="hidden" name="deviation[user_id]" value="<%= DArt.user.get("id") %>">
+
+  <div class="file-upload center">
+    <input type="file" name="deviation[media]" id="deviation_media">
+  </div>
+
+  <input
+    class="text-input title"
+    type="text"
+    name="deviation[title]"
+    placeholder="Title"
+  >
+
+  <textarea
+    class="textarea-input description"
+    name="deviation[description]"
+    placeholder="Description"
+  ></textarea>
+
+  <fieldset class="checkbox-input-set center">
+    <div class="checkbox">
+      <label for="can_comment">Can Comment?</label>
+      <input type="hidden" name="deviation[is_commentable]" value="false">
+      <input
+        id="can_comment"
+        type="checkbox"
+        name="deviation[is_commentable]"
+        value="true"
+      >
+    </div>
+
+    <div class="checkbox">
+      <label for="can_share">Can Share?</label>
+      <input type="hidden" name="deviation[is_shareable]" value="false">
+      <input
+        id="can_share"
+        type="checkbox"
+        name="deviation[is_shareable]"
+        value="true"
+      >
+    </div>
+
+    <div class="checkbox">
+      <label for="can_like">Can Like?</label>
+      <input type="hidden" name="deviation[is_likeable]" value="false">
+      <input
+        id="can_like"
+        type="checkbox"
+        name="deviation[is_likeable]"
+        value="true"
+      >
+    </div>
+  </fieldset>
+
+  <fieldset class="checkbox-input-set center">
+    <div class="checkbox">
+      <label for="mature_content">Mature Content?</label>
+      <input type="hidden" name="deviation[is_mature]" value="false">
+      <input
+        id="mature_content"
+        type="checkbox"
+        name="deviation[is_mature]"
+        value="true"
+      >
+    </div>
+
+    <div class="checkbox">
+      <label for="can_remix">Allow Remixes?</label>
+      <input type="hidden" name="deviation[can_remix]" value="false">
+      <input
+        id="can_remix"
+        type="checkbox"
+        name="deviation[can_remix]"
+        value="true"
+      >
+    </div>
+
+    <div class="checkbox">
+      <label for="is_cc">Creative Commons?</label>
+      <input type="hidden" name="deviation[is_CC]" value="false">
+      <input
+        id="is_cc"
+        type="checkbox"
+        name="deviation[is_CC]"
+        value="true"
+      >
+    </div>
+
+    <div class="checkbox">
+      <label for="is_drm">DRM Free?</label>
+      <input type="hidden" name="deviation[is_DRM]" value="true">
+      <input
+        type="checkbox"
+        name="deviation[is_DRM]"
+        value="false"
+      >
+    </div>
+  </fieldset>
+
+  <input type="text" name="deviation[tags]" id="tags" placeholder="Tags">
+
+  <input
+    class="submit-button"
+    type="submit"
+    value="Create Deviation">
+</form>

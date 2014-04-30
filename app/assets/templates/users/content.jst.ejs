@@ -1,0 +1,60 @@
+<section class="user-content group">
+  <ul>
+    <li class="content-item reveal-content-on-hover">
+      <a class="content-link" href=#>
+        Art
+      </a>
+
+      <ul class="content-submenu hidden-content">
+        <% if (DArt.isUser) { %>
+          <li class="content-subitem">
+            <a
+              class="content-link"
+              href="#/deviation/new">
+              + New
+            </a>
+          </li class="content-subitem">
+        <% } %>
+      </ul>
+    </li>
+    <li class="content-item">
+      <a class="content-link" href=#>
+        Activity
+      </a>
+    </li>
+    <li class="content-item reveal-content-on-hover">
+      <a class="content-link" href="#/journals">
+        Journals
+      </a>
+
+      <ul class="content-submenu hidden-content">
+        <% if (DArt.isUser) { %>
+          <li class="content-subitem">
+            <a
+              class="content-link"
+              href="#/journal/new">
+              + New
+            </a>
+          </li class="content-subitem">
+        <% } %>
+      </ul>
+    </li>
+    <li class="content-item reveal-content-on-hover">
+      <a class="content-link" href="#/galleries">
+        Galleries
+      </a>
+
+      <ul class="content-submenu hidden-content">
+        <% if (DArt.isUser) { %>
+          <li class="content-subitem">
+            <a
+              class="content-link"
+              href="#/gallery/new">
+              + New
+            </a>
+          </li>
+        <% } %>
+      </ul>
+    </li>
+  </ul>
+</section>

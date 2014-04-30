@@ -1,0 +1,26 @@
+<h1 class="form-header">
+  Write Journal
+</h1>
+
+<form>
+  <input type="hidden" name="journal[user_id]" value="<%= DArt.user.get("id") %>">
+
+  <input
+    class="text-input title"
+    type="text"
+    name="journal[title]"
+    placeholder="Title">
+
+  <textarea
+    class="textarea-input description"
+    name="journal[body]"
+    placeholder="Write Your Journal Here">
+  </textarea>
+
+  <input type="text" name="journal[tags]" id="tags" placeholder="Tags">
+
+  <input
+    class
+    type="submit"
+  >
+</form>

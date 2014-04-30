@@ -4,6 +4,10 @@ DArt.Routers.Users = Backbone.Router.extend({
     this.$rootEl = options.$rootEl,
     this.$info = options.$info,
     this.$contentMenu = options.$contentMenu
+
+    this.$contentMenu.html(
+      JST["users/content"]()
+    )
   },
 
   routes: {
@@ -16,7 +20,7 @@ DArt.Routers.Users = Backbone.Router.extend({
     "" : "show"
   },
 
-  edit: function (id) {
+  edit: function () {
     var view = new DArt.Views.UsersEdit({
       model: DArt.user
     })
@@ -24,17 +28,17 @@ DArt.Routers.Users = Backbone.Router.extend({
     this._swapView(view)
   },
 
-  show: function (id) {
+  show: function () {
 
     var view = new DArt.Views.UsersShow({
       model: DArt.user
     })
 
-    that._swapView(view)
+    this._swapView(view)
 
   },
 
-  journals: function (user_id) {
+  journals: function () {
 
     var view = new DArt.Views.UsersJournals({
       model: DArt.user
@@ -44,7 +48,7 @@ DArt.Routers.Users = Backbone.Router.extend({
 
   },
 
-  newJournal: function (user_id) {
+  newJournal: function () {
 
     var view = new DArt.Views.UsersNewJournal({
       model: DArt.user
@@ -54,7 +58,7 @@ DArt.Routers.Users = Backbone.Router.extend({
 
   },
 
-  galleries: function (user_id) {
+  galleries: function () {
 
     var view = new DArt.Views.UsersGalleries({
       model: DArt.user
@@ -64,7 +68,7 @@ DArt.Routers.Users = Backbone.Router.extend({
 
   },
 
-  newGallery: function (user_id) {
+  newGallery: function () {
 
     var view = new DArt.Views.UsersNewGallery({
       model: DArt.user
@@ -74,7 +78,7 @@ DArt.Routers.Users = Backbone.Router.extend({
 
   },
 
-  newDeviation: function (user_id) {
+  newDeviation: function () {
 
     var view = new DArt.Views.UsersNewDeviation({
       model: DArt.user
@@ -89,5 +93,4 @@ DArt.Routers.Users = Backbone.Router.extend({
     this._currenView = view;
     this.$rootEl.html(view.render().$el);
   }
-
 });

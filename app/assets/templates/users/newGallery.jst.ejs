@@ -1,0 +1,46 @@
+<h1 class="form-header">
+  Create Gallery
+</h1>
+
+<form>
+  <input type="hidden" name="gallery[user_id]" value="<%= DArt.user.get("id") %>">
+
+  <input
+    class="text-input title"
+    type="text"
+    name="gallery[title]"
+    placeholder="Title">
+
+  <textarea
+    class="textarea-input description"
+    name="gallery[description]"
+    placeholder="Description"
+  ></textarea>
+
+  <input type="hidden" name="gallery[deviations][]" value="">
+
+  <feildset class="checkbox-input-set">
+    <legend>Select Deviations:</legend>
+
+    <% _(DArt.user.get("deviations")).each(function(){ %>
+      <div class="checkbox">
+        <label for="<%= deviation.escape("title") %>">
+          <%= deviation.escape("title") %>
+        </label>
+        <input
+          id="<%= deviation.escape("title") %>"
+          type="checkbox"
+          name="gallery[deviation_ids][]"
+          value="<%= deviation.escape("id") %>"
+        >
+      </div>
+    <% }) %>
+
+  </feildset>
+
+  <input
+    class
+    type="submit"
+    value="Create Gallery"
+  >
+</form>

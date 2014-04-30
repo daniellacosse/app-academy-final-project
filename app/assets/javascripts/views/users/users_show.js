@@ -1,16 +1,23 @@
 DArt.Views.UsersShow = Backbone.View.extend({
 
+  tagName: "section",
+
+  className: "deviation-grid shrinkwrap-center",
+
   template: JST['users/show'],
 
   render: function () {
-    var content = this.template({
-      user: DArt.user
-    })
 
-    this.$el.html(content)
+    _(DArt.user.get("deviations")).each(function(deviation){
+        this.$el.append(
+          JST['deviation/preview'].template({
+            model: deviation
+          })
+        )
+      })
 
     return this
-  }
 
+  }
 
 });

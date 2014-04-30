@@ -9,14 +9,22 @@
   <%= @user.to_json.html_safe %>
 </script>
 
+ <script type="application/json" id="is-user">
+   <%= (@user == current_user).to_json.html_safe %>
+ </script>
+
 <script>
   $(document).ready(function(){
 
     var $userJson = $("#user-data").html();
+    var $isUser = $("#is-user").html();
+
     var data = JSON.parse($userJson);
+    var isUser = JSON.parse($isUser);
+
 
     //just use backbone for user's page
     //use ujs to like, comment, and append deivant show page!
-    DArt.initialize(data);
+    DArt.initialize(data, isUser);
   });
 </script>

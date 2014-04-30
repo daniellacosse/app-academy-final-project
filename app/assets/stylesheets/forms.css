@@ -42,6 +42,14 @@ input, select, .textarea-input, label {
   background: transparent;
 }
 
+.radio-button > label {
+  display: inline;
+}
+
+.radio-button > input {
+  float: right;
+}
+
 input, select, .textarea-input {
   border: 5px solid #E6E6E6;
 }
@@ -59,12 +67,17 @@ input, select, .textarea-input {
   padding: 20px 0;
 }
 
+fieldset{
+  width: 600px;
+}
+
 input.liker { border-width: 0; }
 
 .textarea-input { height: 150px; }
 
 .text-input.title, .textarea-input.description {
   width: 100%;
+  max-width: 800px;
   box-sizing: border-box;
 }
 
@@ -147,6 +160,9 @@ legend, label {
   float: left;
 }
 
+.checkbox > label {
+  display: inline;
+}
 
 .comment-form {
   width: 340px;

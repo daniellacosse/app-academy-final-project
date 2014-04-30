@@ -1,13 +1,9 @@
 DArt.Views.UsersEdit = Backbone.View.extend({
 
-  initialize: function(){
-    console.log("hey girl");
-  },
-
   template: JST['users/edit'],
 
   events: {
-    "submit #user-edit" : "update"
+    "submit" : "update"
   },
 
   update: function (event) {
@@ -15,12 +11,13 @@ DArt.Views.UsersEdit = Backbone.View.extend({
     event.preventDefault();
     // updating...
 
-    dArt.user.save($(event.target).serializeJSON(), {
-      patch: true,
-      success: function(){
-
-    })
-
+    DArt.user.save($(event.target).serializeJSON()// , {
+//       patch: true,
+//       success: function(){
+//         DArt.router.navigate("", {trigger: true});
+//       }
+    // }
+  )
   },
 
   render: function () {
