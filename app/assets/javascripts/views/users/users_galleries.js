@@ -7,9 +7,11 @@ DArt.Views.UsersGalleries = Backbone.View.extend({
   template: JST["users/galleries"],
 
   render: function () {
+    var that = this
+
     _(DArt.galleries).each(function(gallery){
-        this.$el.append(
-          JST['gallery/preview'].template({
+        that.$el.append(
+          JST['gallery/preview']({
             model: gallery
           })
         )

@@ -1,15 +1,15 @@
-<div class="_deviation" data-id="<%= deviation.get("id") %>">
-  <img width="300" class="_deviation-media" src="<%= deviation.get("media").url %>">
+<div class="_deviation" data-id="<%= model.get("id") %>">
+  <img width="300" class="_deviation-media" src="<%= model.get("thumb_url") %>">
 
   <h2 class="_deviation-title">
-    <a href="/deviation/<%= deviation.get("id") %>">
-      <%= deviation.escape("title") %>
+    <a href="/deviation/<%= model.get("id") %>">
+      <%= model.escape("title") %>
     </a>
   </h2>
 
-  <!-- <span class="metadata">
+  <span class="metadata">
     by ~<a href=#>
       <%= DArt.user.get("username") %>
     </a>
-  </span> -->
+  </span>
 </div>

@@ -1,11 +1,11 @@
-<article class="journal" data-id="<%#= journal.id %>">
+<article class="journal" data-id="<%= journal.get("id") %>">
 
   <header class="group">
     <h2 class="journal-title">
       <%= journal.escape("title") %>
     </h2>
     <date>
-      <!-- Posted on <%#= journal.created_at.strftime("%B %e, %Y") %> -->
+      Posted on <%= journal.escape("created_at") %>
     </date>
   </header>
   <p class="journal-body">
@@ -13,14 +13,9 @@
   </p>
   <footer class="group">
     <div class="journal-tags">
-      <!-- <%#= render journal.tags %> -->
+      <%= journal.escape("tags") %>
     </div>
-    <!-- <div class="journal-comments">
-      <%#= render partial: "comments/form", locals: {
-        type: "Journal",
-        id: journal.id
-      } %>
-    </div> -->
+      <%= journal.escape("comments") %>
   </footer>
 
 </article>

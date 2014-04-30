@@ -2,9 +2,7 @@ class Api::UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
 
   def show
-    @user = User.includes(:deviations, :journals, :galleries).find(params[:id])
-
-    render json: @user.to_json
+    render partial: "users/user.json.jbuilder"
   end
 
   def edit

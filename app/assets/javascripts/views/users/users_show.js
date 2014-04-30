@@ -8,10 +8,13 @@ DArt.Views.UsersShow = Backbone.View.extend({
 
   render: function () {
 
+    var that = this
+
     _(DArt.deviations).each(function(deviation){
-        this.$el.append(
-          JST['deviation/preview'].template({
-            model: deviation
+
+        that.$el.append(
+          JST['deviations/preview']({
+            deviation: deviation
           })
         )
       })

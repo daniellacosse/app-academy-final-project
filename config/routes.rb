@@ -21,7 +21,7 @@ DArt::Application.routes.draw do
   resources :likes, only: [:create, :destroy]
   resources :comments, only: [:create, :destroy]
 
-  namespace :api do
+  namespace :api, defaults: {render: :json} do
     resources :deviations
     shallow do
       resources :users do
