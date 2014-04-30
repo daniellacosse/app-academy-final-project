@@ -48,7 +48,7 @@ class Api::JournalsController < ApplicationController
         )
       end
 
-      head :ok
+      render json: @journal
     else
       flash.now[:errors] = @journal.errors.full_messages
     end

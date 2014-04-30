@@ -2,7 +2,7 @@ DArt.Views.UsersJournals = Backbone.View.extend({
 
   tagName: "section",
 
-  className: "journals"
+  className: "journals",
 
   template: JST["users/journals"],
 
@@ -10,9 +10,9 @@ DArt.Views.UsersJournals = Backbone.View.extend({
 
     var that = this
 
-    _(DArt.journals).each(function(journal){
+    DArt.user._journals.each(function(journal){
         that.$el.append(
-          JST['journal/preview']({
+          JST['journals/preview']({
             model: journal
           })
         )

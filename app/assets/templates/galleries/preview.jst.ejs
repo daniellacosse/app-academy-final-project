@@ -1,12 +1,12 @@
 		<div class="gallery-preview group">
 		  <header class="gallery-title group">
-		    <a href="#"><%= gallery.escape("title") %></a>
-        <span class="metadata">Last edited <%= gallery.escape("updated_at")%> </span>
+		    <a href="#"><%= model.escape("title") %></a>
+        <span class="metadata">Last edited <%= model.escape("updated_at")%> </span>
 			</header>
       <p class="group">
-        <% _(gallery.get("deviations")).each( function(deviation) { %>
+        <% _(model.get("deviations")).each( function(deviation) { %>
           <figure class="deviation-preview">
-            <img class="center" src="<%= deviation.get("thumb_url") %>">
+            <img class="center" src="<%= deviation.thumb_url %>">
           </figure>
         <% }) %>
       </p>

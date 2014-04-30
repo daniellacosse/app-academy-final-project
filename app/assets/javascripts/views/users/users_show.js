@@ -10,11 +10,11 @@ DArt.Views.UsersShow = Backbone.View.extend({
 
     var that = this
 
-    _(DArt.deviations).each(function(deviation){
+    DArt.user._deviations.each(function(deviation){
 
         that.$el.append(
           JST['deviations/preview']({
-            deviation: deviation
+            model: deviation
           })
         )
       })

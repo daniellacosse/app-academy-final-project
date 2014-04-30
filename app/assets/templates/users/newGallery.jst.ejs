@@ -22,7 +22,7 @@
   <feildset class="checkbox-input-set">
     <legend>Select Deviations:</legend>
 
-    <% _(DArt.user.get("deviations")).each(function(){ %>
+    <% DArt.user._deviations.each(function(deviation){ %>
       <div class="checkbox">
         <label for="<%= deviation.escape("title") %>">
           <%= deviation.escape("title") %>

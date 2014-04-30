@@ -9,9 +9,9 @@ DArt.Views.UsersGalleries = Backbone.View.extend({
   render: function () {
     var that = this
 
-    _(DArt.galleries).each(function(gallery){
+     DArt.user._galleries.each(function(gallery){
         that.$el.append(
-          JST['gallery/preview']({
+          JST['galleries/preview']({
             model: gallery
           })
         )

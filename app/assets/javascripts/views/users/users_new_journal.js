@@ -12,7 +12,7 @@ DArt.Views.UsersNewJournal = Backbone.View.extend({
 
     model = new DArt.Models.Journal($(event.target).serializeJSON());
 
-    DArt.journals.create(model, {
+    DArt.user._journals.create(model, {
         success: function(){
           DArt.router.navigate("journals", {trigger: true});
         }

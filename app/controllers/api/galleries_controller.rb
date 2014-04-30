@@ -39,7 +39,7 @@ class Api::GalleriesController < ApplicationController
         )
       end
 
-      head :ok
+      render json: @gallery
     else
       flash.now[:errors] = @gallery.errors.full_messages
     end
@@ -48,7 +48,7 @@ class Api::GalleriesController < ApplicationController
   def update
     @gallery = Gallery.find(params[:id])
     if @gallery.update(gallery_params)
-      head :ok
+      render json: @gallery
     else
       flash.now[:errors] = @gallery.errors.full_messages
     end
