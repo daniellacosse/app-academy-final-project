@@ -1,6 +1,6 @@
 DArt.Models.Deviation = Backbone.Model.extend({
 
-  parse: function () {
+  parse: function (jsonResp) {
     if (jsonResp.tags){
       this._tags = new DArt.Collections.Tags(jsonResp.tags);
 

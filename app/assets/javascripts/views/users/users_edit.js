@@ -8,16 +8,22 @@ DArt.Views.UsersEdit = Backbone.View.extend({
 
   update: function (event) {
 
-    event.preventDefault();
-    // updating...
+      event.stopPropagation();
+      event.preventDefault();
 
-    DArt.user.save($(event.target).serializeJSON(), {
-        patch: true,
-        success: function(){
-          DArt.router.navigate("", {trigger: true});
-        }
-      }
-    )
+      var data = new FormData(document.getElementById("user-edit"));
+
+      $.ajax({
+          url: "/api/users/" + DArt.user.get("id"),
+          type: "PATCH",
+          data: data,
+          dataType: "json",
+          processData: false,
+          contentType: false,
+          success: function () {
+            DArt.router.navigate("", {trigger: true})
+          }
+      })
   },
 
   render: function () {

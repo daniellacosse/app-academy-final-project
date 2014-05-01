@@ -18,8 +18,9 @@ class Api::DeviationsController < ApplicationController
   end
 
   def create
+    p deviation_params
+    p deviation_params[:media]
     @deviation = Deviation.new(deviation_params)
-
     if @deviation.save
       tag_params[:tags].split(/ |,/).reject{ |el| el.empty? }.each do |tag|
         Tag.create({

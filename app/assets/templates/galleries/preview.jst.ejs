@@ -6,7 +6,7 @@
       <p class="group">
         <% model._deviations.each(function(deviation) { %>
           <figure class="deviation-preview">
-            <img class="center" src="<%= deviation.thumb_url %>">
+            <img class="center" src="<%= deviation.get("thumb_url") %>">
           </figure>
         <% }) %>
       </p>
