@@ -9,7 +9,7 @@ class UsersController < ApplicationController
     @user = User.includes(:deviations, :journals, :galleries).find(params[:id])
 
     unless !logged_in? || current_user.id == Integer(params[:id])
-      @user.viewable.create({
+      @user.views.create({
         user_id: current_user.id,
       })
     end

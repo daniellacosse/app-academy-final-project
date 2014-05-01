@@ -7,12 +7,16 @@
 <% unless current_user.try(:id) == owner.id %>
   <% exists = set.try(:include?, target) %>
 
-  <form action="<%= exists ? like_url(
+  <form
+    action="<%= exists ? like_url(
     Like.find_by(
       user_id: current_user.id,
       likeable_id: target.id,
       likeable_type: type
-    )) : likes_url %>" method="post">
+    )) : likes_url %>"
+    method="post"
+    data-remote="true"
+    id="like<%= target.id %>">
 
     <% if exists %>
       <input type="hidden" name="_method" value="delete">
@@ -30,4 +34,22 @@
       value="❤">
 
   </form>
+
+  <script type="text/javascript">
+      alert("❤")
+      $target = $("#like<%= target.id %>")
+
+      $target.on("ajax:success", "form", function (event, data) {
+        var $submit = $(event.target).closest("input[type=submit]")
+
+        console.log($submit)
+
+        if ($submit.hasClass("half-opacity")) {
+          $submit.addClass("half-opacity")
+        } else {
+          $submit.removeClass("half-opacity")
+        }
+      })
+  </script>
+
 <% end %>

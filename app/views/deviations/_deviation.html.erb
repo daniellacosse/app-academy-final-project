@@ -2,7 +2,7 @@
   <img width="300" class="_deviation-media" src="<%= deviation.media.url %>">
 
   <h2 class="_deviation-title">
-    <a href="<%= deviation_url(deviation) %>"><%= deviation.title %></a>
+    <a id="dev<%= deviation.id %>" href=#><%= deviation.title %></a>
   </h2>
 
   <span class="metadata">
@@ -13,3 +13,17 @@
     </a>
   </span>
 </div>
+
+<script type="text/javascript">
+  $("#dev<%= deviation.id %>").on("click", function (event) {
+    event.preventDefault();
+
+    $("body").append("<%=
+      escape_javascript(
+        render partial: "deviations/modal",
+               locals: { deviation: deviation }
+      )
+    %>")
+  })
+</script>
+

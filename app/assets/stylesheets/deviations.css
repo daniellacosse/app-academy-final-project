@@ -38,6 +38,10 @@ img._deviation-media, img.deviation-media, .deviation-preview > img {
  box-shadow: 0 0 3px 3px black;
 }
 
+img.deviation-media {
+  box-shadow: 0 0 45px 15px rgba(0, 0, 0, 0.5);
+}
+
 h2._deviation-title, h2.deviation-title {
 
   font-family: "open_sansbold";

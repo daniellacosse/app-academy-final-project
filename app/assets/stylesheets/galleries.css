@@ -14,8 +14,8 @@
 	width: 100%;
 	border: 1px solid gray;
 	min-width: 450px;
+  margin-bottom: 20px;
 }
-
 
 .gallery-title > a {
 	display: block;
@@ -29,7 +29,6 @@
 	padding: 15px 20px;
 	float: right;
 }
-
 
 .deviation-preview {
 	float: left;

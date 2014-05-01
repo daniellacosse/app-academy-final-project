@@ -6,6 +6,7 @@ json.extract! deviation,
 :is_CC, :can_remix
 
 json.author deviation.user.username
+json.author_id deviation.user.id
 json.url deviation.media.url
 json.thumb_url deviation.media.url(:thumb)
 json.tags do

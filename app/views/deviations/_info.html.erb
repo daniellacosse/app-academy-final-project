@@ -4,20 +4,20 @@
     <tr>
       <td>
         <h2 class="deviation-title">
-          <%= @deviation.title %>
+          <%= deviation.title %>
         </h2>
       </td>
       <td>
-        <% if @deviation.user.id == current_user.try(:id) %>
-          <p><%= link_to 'Edit', edit_deviation_url(@deviation) %></p>
+        <% if deviation.user.id == current_user.try(:id) %>
+          <p><%= link_to 'Edit', edit_deviation_url(deviation) %></p>
         <% end %>
 
-        <% if @deviation.is_likeable %>
+        <% if deviation.is_likeable %>
           <%= render partial: "likes/button", locals: {
             type: "Deviation",
             set: current_user.try(:liked_deviations),
-            target: @deviation,
-            owner: @deviation.user
+            target: deviation,
+            owner: deviation.user
           } %>
         <% end %>
       </td>
@@ -26,34 +26,34 @@
 
 
   <span class="deviation-author">
-    <%= render partial: "users/icon", locals: {user: @deviation.user } %>
+    <%= render partial: "users/icon", locals: {user: deviation.user } %>
 
-    by ~<a href="<%= user_url(@deviation.user) %>">
-      <%= @deviation.user.username %>
+    by ~<a href="<%= user_url(deviation.user) %>">
+      <%= deviation.user.username %>
     </a>
   </span>
 
   <p>
-    <%= @deviation.views.count %> views
-    <% if @deviation.is_likeable %>
-    | <%= @deviation.likes.count %> likes
+    <%= deviation.views.count %> views
+    <% if deviation.is_likeable %>
+    | <%= deviation.likes.count %> likes
     <% end %>
   </p>
 
   <p class="deviation-description">
-    <%= @deviation.description %>
+    <%= deviation.description %>
   </p>
 
-  <%= render @deviation.tags %>
+  <%= render deviation.tags %>
 
 
-  <% if @deviation.is_commentable %>
+  <% if deviation.is_commentable %>
     <%= render partial: "comments/form", locals: {
       type: "Deviation",
-      id: @deviation.id
+      id: deviation.id
     } %>
 
-    <%= render @deviation.comments.order("created_at DESC") %>
+    <%= render deviation.comments.order("created_at DESC") %>
 
   <% else %>
     Comments have been disabled.

@@ -13,7 +13,6 @@ DArt.Views.UsersNewGallery = Backbone.View.extend({
     model = new DArt.Models.Gallery($(event.target).serializeJSON());
 
     DArt.user._galleries.create(model, {
-        patch: true,
         success: function(){
           DArt.router.navigate("galleries", {trigger: true});
         }

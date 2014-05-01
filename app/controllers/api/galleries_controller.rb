@@ -39,7 +39,8 @@ class Api::GalleriesController < ApplicationController
         )
       end
 
-      render json: @gallery
+      render partial: "galleries/gallery.json.jbuilder",
+             locals: { gallery: @gallery }
     else
       flash.now[:errors] = @gallery.errors.full_messages
     end
