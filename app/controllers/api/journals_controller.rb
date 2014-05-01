@@ -18,7 +18,8 @@ class Api::JournalsController < ApplicationController
     @journal = Journal.find(params[:id])
     @user = @journal.user
 
-    render json: @journal
+    render partial: "journals/journal.json.jbuilder",
+           locals: { journal: @journal }
   end
 
   def edit
@@ -31,24 +32,20 @@ class Api::JournalsController < ApplicationController
     @journal = Journal.new(journal_params)
     if @journal.save
       tag_params[:tags].split(/ |,/).reject{ |el| el.empty? }.each do |tag|
-        Tag.create({
-          tag: tag,
-          taggable_id: @journal.id,
-          taggable_type: "Journal"
-        })
+        @journal.tags.create({ tag: tag })
       end
 
       current_user.followers.each do |follower|
-        Notification.create(
+        follower.notifications.create(
           notification_type: 8,
           notifier_id: current_user.id,
-          user_id: follower.id,
           notifiable_id: @journal.id,
           notifiable_type: "Journal"
         )
       end
 
-      render json: @journal
+      render partial: "journals/journal.json.jbuilder",
+             locals: { journal: @journal }
     else
       flash.now[:errors] = @journal.errors.full_messages
     end

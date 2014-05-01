@@ -13,9 +13,17 @@
   </p>
   <footer class="group">
     <div class="journal-tags">
-      <%= model.escape("tags") %>
+      <% if(model._tags){ %>
+        <% model._tags.each(function(tag) {%>
+          <a href="<%= tag.get("url") %>">*<%= tag.escape("tag") %></a>
+        <% }) %>
+      <% } %>
     </div>
-      <%= model.escape("comments") %>
+    <% if(model._comments){ %>
+      <% model._comments.each( function(comment){ %>
+        <%= JST["comments/comment"]({ model: comment }) %>
+      <% }) %>
+    <% } %>
   </footer>
 
 </article>

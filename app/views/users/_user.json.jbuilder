@@ -12,24 +12,13 @@ json.deviations do
                 collection: @user.deviations,
                 as: :deviation
 end
-json.journals @user.journals.each do |journal|
-  json.extract! journal,
-  :id, :title,
-  :body, :created_at
-
-  json.author journal.user.username
-  json.tags journal.tags
-  json.comments journal.comments
+json.journals do
+  json.partial! 'journals/journal.json.jbuilder',
+                collection: @user.journals,
+                as: :journal
 end
-json.galleries @user.galleries.each do |gallery|
-  json.extract! gallery,
-  :id, :title,
-  :description, :updated_at
-
-  json.author gallery.user.username
-  json.deviations do
-    json.partial! 'deviations/deviation.json.jbuilder',
-                  collection: gallery.deviations,
-                  as: :deviation
-  end
+json.galleries do
+  json.partial! 'galleries/gallery.json.jbuilder',
+                collection: @user.galleries,
+                as: :gallery
 end

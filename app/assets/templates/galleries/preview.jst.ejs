@@ -4,7 +4,7 @@
         <span class="metadata">Last edited <%= model.escape("updated_at")%> </span>
 			</header>
       <p class="group">
-        <% _(model.get("deviations")).each( function(deviation) { %>
+        <% model._deviations.each(function(deviation) { %>
           <figure class="deviation-preview">
             <img class="center" src="<%= deviation.thumb_url %>">
           </figure>

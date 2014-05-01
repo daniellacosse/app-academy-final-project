@@ -8,5 +8,13 @@ json.extract! deviation,
 json.author deviation.user.username
 json.url deviation.media.url
 json.thumb_url deviation.media.url(:thumb)
-json.tags deviation.tags
-json.comments deviation.comments
+json.tags do
+  json.partial! 'tags/tag.json.jbuilder',
+                collection: deviation.tags,
+                as: :tag
+end
+json.comments do
+  json.partial! 'comments/comment.json.jbuilder',
+                collection: deviation.comments,
+                as: :tag
+end

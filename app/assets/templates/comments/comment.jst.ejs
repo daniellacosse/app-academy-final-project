@@ -1,0 +1,19 @@
+<div class="comment-wrapper">
+  <span class="metadata">
+    <date>
+      <%= model.escape("created_at") %>
+    </date>
+    by ~
+    <a href="users/<%= model.escape("author_id") %>">
+      <%= model.escape("author") %>
+    </a>
+  </span>
+
+  <p>
+    <%= model.escape("body") %>
+  </p>
+
+  <% model._comments.each( function(comment){ %>
+    <%= JST["comments/comment"]({ model: comment }) %>
+  <% }) %>
+</div>

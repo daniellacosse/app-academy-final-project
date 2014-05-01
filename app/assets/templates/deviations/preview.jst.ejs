@@ -8,8 +8,8 @@
   </h2>
 
   <span class="metadata">
-    by ~<a href=#>
-      <%= DArt.user.get("username") %>
+    by ~<a href="/users/<%= model.get("author_id") %>">
+      <%= model.get("author") %>
     </a>
   </span>
 </div>
