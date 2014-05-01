@@ -19,7 +19,6 @@ DArt.Models.User = Backbone.Model.extend({
       delete jsonResp.journals;
     }
 
-    debugger
     if (jsonResp.galleries){
       this._galleries = new DArt.Collections.Galleries(jsonResp.galleries,
         {parse: true}
