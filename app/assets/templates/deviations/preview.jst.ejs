@@ -1,15 +1,22 @@
 <div class="_deviation" data-id="<%= model.get("id") %>">
-  <img width="300" class="_deviation-media" src="<%= model.get("thumb_url") %>">
+  <a id="dev<%= model.get("id") %>" href=# class="deviation-show" data-id="<%= model.get("id") %>">
+    <img width="300" class="_deviation-media" src="<%= model.get("thumb_url") %>">
 
-  <h2 class="_deviation-title">
-    <a href=# class="deviation-show" data-id="<%= model.get("id") %>">
-      <%= model.escape("title") %>
-    </a>
-  </h2>
+    <h2 class="_deviation-title">
+        <%= model.escape("title") %>
+    </h2>
 
-  <span class="metadata">
-    by ~<a href="/users/<%= model.get("author_id") %>">
-      <%= model.get("author") %>
-    </a>
-  </span>
+    <span class="metadata">
+      by ~<a href="/users/<%= model.get("author_id") %>">
+        <%= model.get("author") %>
+      </a>
+    </span>
+  </a>
 </div>
+
+<script type="text/javascript">
+  $("#dev<%= model.escape("id") %>").on("click", function (event) {
+    event.preventDefault();
+
+  })
+</script>

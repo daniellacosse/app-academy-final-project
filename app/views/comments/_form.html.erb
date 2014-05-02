@@ -30,6 +30,15 @@
         $target.siblings(".comment-form").hide()
       }
     })
+
+    $target.on("ajax:success", "form", function (event, data) {
+      var $submit = $(event.target).closest("input[type=submit]")
+
+      console.log($submit)
+
+      // append commentkero
+    })
+
   </script>
 
 </div>

@@ -40,20 +40,20 @@ class Api::DeviationsController < ApplicationController
         )
       end
 
-      render :show
+      render partial: "deviations/deviation.json.jbuilder",
+             locals: { deviation: @deviation }
     else
       flash.now[:errors] = @deviation.errors.full_messages
-      render :new
     end
   end
 
   def update
     @deviation = Deviation.find(params[:id])
     if @deviation.update_attributes(deviation_params)
-      render :show
+      render partial: "deviations/deviation.json.jbuilder",
+             locals: { deviation: @deviation }
     else
       flash.now[:errors] = @deviation.errors.full_messages
-      render :edit
     end
   end
 

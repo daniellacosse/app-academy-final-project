@@ -33,8 +33,6 @@
     <%= user.country if user.country_isnt_nil_or_empty %>
   </p>
 
-  <a href="#/edit">temp edit link</a>
-
   <% unless current_user.try(:id) == user.id %>
     <%= link_to 'message me', new_user_message_url(user) %>
   <% end %>

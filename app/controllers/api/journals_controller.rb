@@ -54,7 +54,8 @@ class Api::JournalsController < ApplicationController
   def update
     @journal = Journal.find(params[:id])
     if @journal.update_attributes(journal_params)
-      head :ok
+      render partial: "journals/journal.json.jbuilder",
+             locals: { journal: @journal }
     else
       flash.now[:errors] = @journal.errors.full_messages
     end
