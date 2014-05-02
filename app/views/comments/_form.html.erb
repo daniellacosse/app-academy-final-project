@@ -22,26 +22,5 @@
     <input class="submit-button" type="submit" value="...">
   </form>
 
-  <script>
-    $(".comment-form").hide();
-    $(".comment-wrapper").on("click", ".comment-icon", function (event) {
-      var $target = $(event.target);
-      console.log(event.target)
-
-      if($target.hasClass("half-opacity")){
-        console.log(event.target)
-
-        $target.removeClass("half-opacity");
-        $target.siblings(".comment-form").show();
-      } else {
-        $target.addClass("half-opacity");
-        $target.siblings(".comment-form").hide();
-      }
-    });
-
-    $("body").on("ajax:success", ".comment-form", function (event, data) {
-      $(event.target).closest($(".comments-wrapper")).prepend(data);
-    });
-  </script>
 
 </div>
