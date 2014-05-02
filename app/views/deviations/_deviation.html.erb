@@ -1,17 +1,18 @@
 <div class="_deviation" data-id="<%= deviation.id %>">
-  <img width="300" class="_deviation-media" src="<%= deviation.media.url %>">
+  <a id="dev<%= deviation.id %>" class="img-link" href=#>
+    <img width="300" class="_deviation-media" src="<%= deviation.media.url(:thumb) %>">
+  </a>
+    <h2 class="_deviation-title">
+      <%= deviation.title %>
+    </h2>
 
-  <h2 class="_deviation-title">
-    <a id="dev<%= deviation.id %>" href=#><%= deviation.title %></a>
-  </h2>
+    <span class="metadata">
+      <%= render partial: "users/icon", locals: { user: deviation.user } %>
 
-  <span class="metadata">
-  <%= render partial: "users/icon", locals: { user: deviation.user } %>
-
-    by ~<a href="<%= user_url(deviation.user) %>">
-      <%= deviation.user.username %>
-    </a>
-  </span>
+      by ~<a href="<%= user_url(deviation.user) %>">
+        <%= deviation.user.username %>
+      </a>
+    </span>
 </div>
 
 <script type="text/javascript">

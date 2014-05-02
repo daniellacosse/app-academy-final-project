@@ -18,6 +18,7 @@ gem 'pg_search'
 gem 'marked-rails'
 gem 'omniauth-facebook'
 gem 'faker'
+gem 'dimensions'
 
 group :doc do
   gem 'sdoc', require: false

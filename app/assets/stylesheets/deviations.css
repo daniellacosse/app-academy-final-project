@@ -12,6 +12,7 @@ section.media {
   height: 100%;
   padding: 50px;
   margin-right: 450px;
+  cursor: crosshair;
 }
 
 section.media table,
@@ -47,10 +48,59 @@ h2._deviation-title, h2.deviation-title {
   font-family: "open_sansbold";
 }
 
-h2._deviation-title {
-  font-size: 16pt;
+.img-link {
+  display: block;
 }
+
+._deviation .metadata {
+  display: none;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  padding: 10px;
+  opacity: 0.7;
+}
+
+h2._deviation-title {
+  display: none;
+  text-shadow: 0 0 10px rgba( 0, 0, 0, 0.5);
+  font-size: 16pt;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: rgba(0, 0, 0, 0.3);
+  width: 300px;
+  text-align: center;
+}
+._deviation:hover .metadata, ._deviation:hover ._deviation-title {
+  display: block;
+}
+
 
 h2.deviation-title {
   font-size: 20pt;
+}
+
+.close-button {
+  position: absolute;
+  top: 50px;
+  left: 50px;
+  font-size: 40pt;
+  font-family: "open_sanslight";
+  color: rgba(255, 255, 255, 0.8);
+  cursor: pointer;
+}
+
+.close-button:hover {
+  color: rgba(255, 255, 255, 1);
+  text-shadow: 0 0 10px rgba(255, 255, 255, 1);
+}
+
+.deviation-description {
+  border: 1px solid gray;
+  padding: 10px;
+  text-align: left;
+
+  text-indent: 2em;
+  margin: 20px 0;
 }

@@ -1,5 +1,13 @@
 <%= render partial: "deviations/info", locals: { deviation: deviation } %>
 <section class="media">
+  <div class="close-button">
+    X
+  </div>
+  <script>
+    $(".close-button").on("click", function(event) {
+      $(event.target).closest(".lightbox").remove()
+    })
+  </script>
   <table>
     <tr>
       <td>

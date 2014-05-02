@@ -14,7 +14,7 @@ class User < ActiveRecord::Base
   before_validation :ensure_token
 
   has_attached_file :avatar, styles: {
-    thumb: "200x200>", icon: "25x25>"
+    thumb: "200x200>", icon: "20x20>"
   }
 
   validates_attachment_content_type :avatar, content_type: /\Aimage\/.*\Z/

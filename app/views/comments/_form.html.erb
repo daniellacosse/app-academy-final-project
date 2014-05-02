@@ -1,6 +1,8 @@
 <div class="reveal-content-on-hover">
-  comment
-  <form class="comment-form hidden-content center" action="<%= comments_url %>" method="post">
+  <span class="form-header half-opacity">
+    <span class="comment-icon"></span> comment
+  </span>
+  <form class="comment-form hidden-content center" action="<%= comments_url %>" method="post" data-remote="true">
     <%= auth_token %>
 
     <input type="hidden" name="comment[user_id]" value="<%= current_user.try(:id) %>">
@@ -14,5 +16,20 @@
 
     <input class="submit-button" type="submit" value="...">
   </form>
+
+  <script>
+    $(".comment-form").hide();
+    $(".form-header").on("click", function (event) {
+      var $target = $(event.target)
+
+      if($target.hasClass("half-opacity")){
+        $target.removeClass("half-opacity")
+        $target.siblings(".comment-form").show()
+      } else {
+        $target.addClass("half-opacity")
+        $target.siblings(".comment-form").hide()
+      }
+    })
+  </script>
 
 </div>

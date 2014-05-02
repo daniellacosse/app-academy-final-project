@@ -125,6 +125,23 @@ p.error {
   opacity: 0.5;
 }
 
+.index-page {
+  width: 100%;
+  padding-top: 100px;
+  padding-bottom: 150px;
+}
+
+.index-page > h1 {
+  font-family: "open_sansbold";
+  font-size: 60pt;
+}
+
+.index-page > h2 {
+  font-family: "open_sanslight";
+  font-size: 40pt;
+}
+
+
 /* ///\\\///\\\files 'index'///\\\///\\\ */
 
 /*
