@@ -11,10 +11,6 @@ div.comment-wrapper:hover > .respond {
   display: none;
 }
 
-.comment-form > .submit-button {
-  display: none;
-}
-
 span.comment-icon {
   display: inline-block;
   background: url("comment.png") no-repeat;
