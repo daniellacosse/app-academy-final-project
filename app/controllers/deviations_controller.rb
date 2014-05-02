@@ -28,6 +28,7 @@ class DeviationsController < ApplicationController
     @deviation = Deviation.new(deviation_params)
 
     if @deviation.save
+      puts tag_params[:tags]
       tag_params[:tags].split(/ |,/).reject{ |el| el.empty? }.each do |tag|
         Tag.create({
           tag: tag,

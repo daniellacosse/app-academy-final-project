@@ -17,6 +17,7 @@ gem 'turbolinks'
 gem 'pg_search'
 gem 'marked-rails'
 gem 'omniauth-facebook'
+gem 'faker'
 
 group :doc do
   gem 'sdoc', require: false
@@ -34,7 +35,6 @@ group :test do
   gem 'guard-rspec'
   gem 'launchy'
   gem 'capybara'
-  gem 'faker'
   gem 'shoulda-matchers'
 end
 

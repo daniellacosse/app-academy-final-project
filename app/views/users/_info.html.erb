@@ -28,13 +28,9 @@
   <p class="name-and-country">
     <% if user.entire_name_isnt_nil_or_empty  %>
         <%= user.first_name if user.first_name %>
-        <%= user.last_name if user.last_name %>
-    <% end %>
-
-		<% "," if user.entire_name_isnt_nil_or_empty && user.country_isnt_nil_or_empty %>
-    <% if user.country_isnt_nil_or_empty %>
-        <%= user.country %>
-    <% end %>
+        <%= user.last_name if user.last_name %><% end %>
+		<%= ", " if user.entire_name_isnt_nil_or_empty && user.country_isnt_nil_or_empty %>
+    <%= user.country if user.country_isnt_nil_or_empty %>
   </p>
 
   <a href="#/edit">temp edit link</a>
