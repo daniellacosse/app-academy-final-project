@@ -13,7 +13,7 @@ Journal.delete_all
 Tag.delete_all
 Comment.delete_all
 View.delete_all
-Norification.delete_all
+Notification.delete_all
 Message.delete_all
 
 20.times do
