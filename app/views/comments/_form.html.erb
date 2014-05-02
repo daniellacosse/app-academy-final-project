@@ -1,8 +1,8 @@
-<div class="reveal-content-on-hover">
+<div>
   <span class="form-header half-opacity">
     <span class="comment-icon"></span> comment
   </span>
-  <form class="comment-form hidden-content center" action="<%= comments_url %>" method="post" data-remote="true">
+  <form class="comment-form center" action="<%= comments_url %>" method="post" data-remote="true">
     <%= auth_token %>
 
     <input type="hidden" name="comment[user_id]" value="<%= current_user.try(:id) %>">
