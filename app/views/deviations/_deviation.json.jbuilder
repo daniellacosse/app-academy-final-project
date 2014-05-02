@@ -17,5 +17,5 @@ end
 json.comments do
   json.partial! 'comments/comment.json.jbuilder',
                 collection: deviation.comments,
-                as: :tag
+                as: :comment
 end

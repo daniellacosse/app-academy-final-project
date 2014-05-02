@@ -2,7 +2,12 @@
   <span class="form-header half-opacity">
     <span class="comment-icon"></span> comment
   </span>
-  <form class="comment-form center" action="<%= comments_url %>" method="post" data-remote="true">
+  <form
+    class="comment-form center"
+    action="<%= comments_url %>"
+    method="post"
+    data-remote="true">
+
     <%= auth_token %>
 
     <input type="hidden" name="comment[user_id]" value="<%= current_user.try(:id) %>">
@@ -19,26 +24,24 @@
 
   <script>
     $(".comment-form").hide();
-    $(".form-header").on("click", function (event) {
-      var $target = $(event.target)
+    $(".comment-wrapper").on("click", ".comment-icon", function (event) {
+      var $target = $(event.target);
+      console.log(event.target)
 
       if($target.hasClass("half-opacity")){
-        $target.removeClass("half-opacity")
-        $target.siblings(".comment-form").show()
+        console.log(event.target)
+
+        $target.removeClass("half-opacity");
+        $target.siblings(".comment-form").show();
       } else {
-        $target.addClass("half-opacity")
-        $target.siblings(".comment-form").hide()
+        $target.addClass("half-opacity");
+        $target.siblings(".comment-form").hide();
       }
-    })
+    });
 
-    $target.on("ajax:success", "form", function (event, data) {
-      var $submit = $(event.target).closest("input[type=submit]")
-
-      console.log($submit)
-
-      // append commentkero
-    })
-
+    $("body").on("ajax:success", ".comment-form", function (event, data) {
+      $(event.target).closest($(".comments-wrapper")).prepend(data);
+    });
   </script>
 
 </div>

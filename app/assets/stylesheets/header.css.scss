@@ -45,7 +45,7 @@ header.site-header > .dropdown-button { float: left; }
 }
 
 div.dArt-sprite {
-  background: url("spritesheet.png") no-repeat;
+  background: image-url("spritesheet.png") no-repeat;
   width: 35px;
   height: 35px;
   overflow: hidden;
@@ -56,7 +56,7 @@ div.dArt-sprite {
 }
 
 div.search-sprite {
-  background: url("spritesheet.png") no-repeat;
+  background: image-url("spritesheet.png") no-repeat;
   width: 35px;
   height: 35px;
   overflow: hidden;
@@ -66,7 +66,6 @@ div.search-sprite {
 .dropdown-button:hover div.search-sprite {
   background-position: -36px -35px;
 }
-
 
 nav.dropdown-menu { /* +clearfix */
 
@@ -130,7 +129,6 @@ nav.dropdown-menu > .menu {
 .searchbar > .submit-button {
   display: none;
 }
-
 
 /* ///\\\///\\\righthand nav///\\\///\\\ */
 .new-session {

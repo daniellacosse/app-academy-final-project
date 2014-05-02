@@ -9,9 +9,13 @@ section.deviation-info {
 
 section.media {
   box-sizing: border-box;
+
   height: 100%;
   padding: 50px;
   margin-right: 450px;
+}
+
+section.media img {
   cursor: crosshair;
 }
 

@@ -1,3 +1,14 @@
-<section class="deviation-grid js-masonry" data-masonry-options='{ "columnWidth": 1, "itemSelector": "._deviation", "transitionDuration" : 0, "isFitWidth" : "true"}'>
+<section class="deviation-grid">
   <%= render deviations %>
 </section>
+
+<script type="text/javascript">
+  imagesLoaded( document.querySelector(".deviation-grid"), function(instance){
+    $(".deviation-grid").masonry({
+      "columnWidth": 1,
+      "itemSelector": "._deviation",
+      "transitionDuration" : 0,
+      "isFitWidth" : "true"
+    })
+  })
+</script>

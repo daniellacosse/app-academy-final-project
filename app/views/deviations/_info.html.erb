@@ -42,10 +42,9 @@
 
   <p class="deviation-description">
     <%= deviation.description %>
+    <br><br>
+    <%= render deviation.tags %>
   </p>
-
-  <%= render deviation.tags %>
-
 
   <% if deviation.is_commentable %>
     <%= render partial: "comments/form", locals: {

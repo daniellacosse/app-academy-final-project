@@ -1,6 +1,6 @@
 class CommentsController < ApplicationController
   before_action :require_logged_in!
-  
+
   def create
     @comment = Comment.new(comment_params)
 
@@ -27,11 +27,11 @@ class CommentsController < ApplicationController
 
         # @comment.notification.create(owner/follower, author, event_index)
         end
-    else
-      flash[:errors] << @comment.errors.full_messages
-    end
 
-    redirect_to :back
+        render partial: "comments/comment", locals: {comment: @comment}
+    else
+      flash.now[:errors] << @comment.errors.full_messages
+    end
   end
 
   private

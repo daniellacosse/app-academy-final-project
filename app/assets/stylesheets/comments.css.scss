@@ -13,7 +13,11 @@ div.comment-wrapper:hover > .respond {
 
 span.comment-icon {
   display: inline-block;
-  background: url("comment.png") no-repeat;
+  background: image-url("comment.png") no-repeat;
   width: 16px;
   height: 16px;
+}
+
+span.form-header {
+  cursor: pointer;
 }
