@@ -1,11 +1,14 @@
 <section class="user-info group">
 
   <%# TEMPORARY SOLUTION: %>
-  <% if user.avatar_isnt_empty %>
-    <figure class="user-avatar">
-      <img class="center" src="<%= user.avatar.url(:thumb) %>">
-    </figure>
-  <% end %>
+  <figure class="user-avatar">
+    <% if user.avatar_isnt_empty %>
+        <img class="center" src="<%= user.avatar.url(:thumb) %>">
+    <% else %>
+        <%= image_tag "default-profile.png", class: "center" %>
+    <% end %>
+  </figure>
+
 
   <table class="shrinkwrap-center">
     <tr>

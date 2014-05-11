@@ -13,15 +13,21 @@ class LikesController < ApplicationController
         user_id, type = Gallery.find(like.likeable_id).user.id, 3
     end
 
-    Notification.create(
+    user = User.find(user_id)
+
+    user.notification.create(
       notification_type: type,
       notifier_id: like.liker.id,
-      user_id: user_id,
       notifiable_id: like.id,
       notifiable_type: "Like"
     )
 
-    redirect_to :back
+    render partial: "likes/button", locals: {
+      type: type,
+      set: current_user.try(:liked_deviations),
+      target: Object.const_get(like.likeable_type).find(like.likeable_id),
+      owner: user
+    }
   end
 
   def destroy
@@ -29,7 +35,12 @@ class LikesController < ApplicationController
 
     like.destroy
 
-    redirect_to :back
+    render partial: "likes/button", locals: {
+      type: like.type,
+      set: current_user.try(:liked_deviations),
+      target: Object.const_get(like.likeable_type).find(like.likeable_id),
+      owner: Object.const_get(like.likeable_type).find(like.likeable_id).user
+    }
   end
 
   private

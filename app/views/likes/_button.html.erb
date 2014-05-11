@@ -36,9 +36,10 @@
   </form>
 
   <script type="text/javascript">
+
       $target = $("#like<%= target.id %>")
 
-      $target.on("ajax:success", "form", function (event, data) {
+      $target.on("ajax:success", function (event, data) {
         var $submit = $(event.target).closest("input[type=submit]")
 
         console.log($submit)

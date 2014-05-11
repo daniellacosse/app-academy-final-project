@@ -128,7 +128,7 @@ p.error {
 .index-page {
   width: 100%;
   padding-top: 100px;
-  padding-bottom: 150px;
+  padding-bottom: 210px;
 }
 
 .index-page > h1 {
@@ -139,6 +139,18 @@ p.error {
 .index-page > h2 {
   font-family: "open_sanslight";
   font-size: 40pt;
+}
+
+.index-page .guest {
+  position: relative;
+  top: 60px;
+  margin-top: 40px;
+  padding: 15px 20px;
+  border: 2px solid #14A046;
+}
+
+.index-page .guest:hover {
+  border: 2px solid #E6E6E6;
 }
 
 
@@ -221,5 +233,3 @@ p.error {
       journal
       galleries
 */
-
-

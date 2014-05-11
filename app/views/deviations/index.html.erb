@@ -6,8 +6,10 @@
     <h2>
       ( a modernized deviantArt clone )
     </h2>
+    <a href="<%= guest_url %>" class="guest">
+      Guest Account
+    </a>
   </header>
-
-
-  <%= render partial: "deviations/grid", locals: {deviations: @deviations} %>
 </section>
+
+<%= render partial: "deviations/grid", locals: {deviations: @deviations} %>

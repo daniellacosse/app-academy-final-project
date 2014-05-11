@@ -135,12 +135,12 @@ nav.dropdown-menu > .menu {
   float: right;
   display: block;
   font-size: 18pt;
-  margin-right: 20px;
   padding-top: 23px;
-  padding-left: 20px;
-  padding-right: 20px;
+  padding-left: 40px;
+  padding-right: 40px;
   padding-bottom: 5px;
 }
+
 .new-deviation {
   float: right;
   display: block;
@@ -155,5 +155,8 @@ nav.dropdown-menu > .menu {
 .new-deviation:hover, .new-session:hover {
   color: #E6E6E6;
   background: #122313;
-  box-shadow: inset 0 0 2px 2px #000;
+  box-shadow: inset 0 0 5px 2px #000;
+  position: absolute;
+  right: 0;
+  padding-bottom: 13px;
 }

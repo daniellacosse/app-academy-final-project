@@ -1,3 +1,6 @@
+section.deviation-grid {
+  margin: auto;
+}
 
 section.deviation-info {
   float: right;
@@ -35,12 +38,17 @@ img.deviation-media{
 /* deviation preview partial: */
 ._deviation {
  float: left;
- margin: 2px;
+ margin: 3px;
 }
 
 img._deviation-media, img.deviation-media, .deviation-preview > img {
  border: 1px solid #122313;
  box-shadow: 0 0 3px 3px black;
+
+}
+
+img._deviation-media {
+  display: block;
 }
 
 img.deviation-media {
