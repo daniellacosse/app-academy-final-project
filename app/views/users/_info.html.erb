@@ -18,12 +18,14 @@
         </p>
       </td>
       <td>
-        <%= render partial: "likes/button", locals: {
-          type: "User",
-          set: current_user.try(:followed_users),
-          target: user,
-          owner: user
-        } %>
+        <% if current_user.try(:is_verified)  %>
+          <%= render partial: "likes/button", locals: {
+            type: "User",
+            set: current_user.try(:followed_users),
+            target: user,
+            owner: user
+          } %>
+        <% end %>
       </td>
     </tr>
   </table>

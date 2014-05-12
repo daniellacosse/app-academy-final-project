@@ -7,48 +7,42 @@
 <% unless current_user.try(:id) == owner.id %>
   <% exists = set.try(:include?, target) %>
 
-  <form
-    action="<%= exists ? like_url(
-    Like.find_by(
-      user_id: current_user.id,
-      likeable_id: target.id,
-      likeable_type: type
-    )) : likes_url %>"
-    method="post"
-    data-remote="true"
-    id="like<%= target.id %>">
+  <div class="like-button">
+    <form
+      action="<%= exists ? like_url(
+      Like.find_by(
+        user_id: current_user.id,
+        likeable_id: target.id,
+        likeable_type: type
+      )) : likes_url %>"
+      method="post"
+      data-remote="true"
+      id="like<%= target.id %>">
 
-    <% if exists %>
-      <input type="hidden" name="_method" value="delete">
-    <% end %>
+      <% if exists %>
+        <input type="hidden" name="_method" value="delete">
+      <% end %>
 
-    <%= auth_token %>
+      <%= auth_token %>
 
-    <input type="hidden" name="like[user_id]" value="<%= current_user.try(:id) %>">
-    <input type="hidden" name="like[likeable_id]" value="<%= target.id %>">
-    <input type="hidden" name="like[likeable_type]" value="<%= type %>">
+      <input type="hidden" name="like[user_id]" value="<%= current_user.try(:id) %>">
+      <input type="hidden" name="like[likeable_id]" value="<%= target.id %>">
+      <input type="hidden" name="like[likeable_type]" value="<%= type %>">
 
-    <input
-      class="liker <%= "half-opacity" unless exists %>"
-      type="submit"
-      value="❤">
+      <input
+        class='liker <%= "half-opacity" unless exists %>'
+        type="submit"
+        value="❤">
 
-  </form>
+    </form>
+  </div>
 
-  <script type="text/javascript">
-
+  <script>
       $target = $("#like<%= target.id %>")
 
       $target.on("ajax:success", function (event, data) {
-        var $submit = $(event.target).closest("input[type=submit]")
-
-        console.log($submit)
-
-        if ($submit.hasClass("half-opacity")) {
-          $submit.addClass("half-opacity")
-        } else {
-          $submit.removeClass("half-opacity")
-        }
+        var $newButton = $(event.target).closest(".like-button")
+        $newButton.html(data);
       })
   </script>
 

@@ -15,7 +15,7 @@ class LikesController < ApplicationController
 
     user = User.find(user_id)
 
-    user.notification.create(
+    user.notifications.create(
       notification_type: type,
       notifier_id: like.liker.id,
       notifiable_id: like.id,
@@ -23,7 +23,7 @@ class LikesController < ApplicationController
     )
 
     render partial: "likes/button", locals: {
-      type: type,
+      type: like.likeable_type,
       set: current_user.try(:liked_deviations),
       target: Object.const_get(like.likeable_type).find(like.likeable_id),
       owner: user
@@ -36,7 +36,7 @@ class LikesController < ApplicationController
     like.destroy
 
     render partial: "likes/button", locals: {
-      type: like.type,
+      type: like.likeable_type,
       set: current_user.try(:liked_deviations),
       target: Object.const_get(like.likeable_type).find(like.likeable_id),
       owner: Object.const_get(like.likeable_type).find(like.likeable_id).user

@@ -12,7 +12,7 @@
           <p><%= link_to 'Edit', edit_deviation_url(deviation) %></p>
         <% end %>
 
-        <% if deviation.is_likeable %>
+        <% if deviation.is_likeable && current_user.try(:is_verified) %>
           <%= render partial: "likes/button", locals: {
             type: "Deviation",
             set: current_user.try(:liked_deviations),
@@ -47,13 +47,30 @@
   </p>
 
   <% if deviation.is_commentable %>
-    <%= render partial: "comments/form", locals: {
-      type: "Deviation",
-      id: deviation.id
-    } %>
+    <section id="comments">
+      <%= render partial: "comments/form", locals: {
+        type: "Deviation",
+        id: deviation.id
+      } %>
 
-    <%= render deviation.comments.order("created_at DESC") %>
+      <%= render deviation.comments.order("created_at DESC") %>
+    </section>
 
+    <script>
+      $(".comment-form").hide();
+      $("#comments").on("click", ".form-header", function (event) {
+        var $target = $(event.target)
+
+        $target.toggleClass("half-opacity")
+        $target.siblings(".comment-form").toggle()
+      });
+
+      $(".comment-form").on("ajax:success", function (event, data) {
+        $(event.target).closest(".comment-wrapper").append(data)
+        $(".comment-form").hide();
+        $(".form-header").addClass("half-opacity")
+      });
+    </script>
   <% else %>
     Comments have been disabled.
   <% end %>

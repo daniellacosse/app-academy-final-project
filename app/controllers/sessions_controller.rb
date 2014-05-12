@@ -30,7 +30,8 @@ class SessionsController < ApplicationController
       username: "guest_user",
       email: "guest@user.com",
       date_of_birth: Time.now,
-      password: "password"
+      password: "password",
+      is_verified: true
     )
 
     login(@user)

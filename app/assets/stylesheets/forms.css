@@ -71,7 +71,7 @@ fieldset{
   width: 600px;
 }
 
-input.liker { border-width: 0; }
+input.liker, input.liker:active { border-width: 0; }
 
 .textarea-input { height: 150px; }
 
