@@ -4,13 +4,11 @@ designed and built by muah
 
 [go to it](http://serene-bastion-5104.herokuapp.com/)
 
-NB: LIKING AND COMMENTING IS CURRENTLY BROKEN!
-
 TODOS:
 ===
 
 1. Add Ease of Access to help guide people through the app remotely
-2. Fix UJS implementation of liking and commenting!
-3. SQL Cleanup. Create objects through their associations!
-4. Polish up icons.
-5. Drag and drop for image upload (via filepicker.io)
+2. SQL Cleanup & general optimization; Create objects through their associations!
+3. Redo icon.
+4. Drag and drop for image upload (via filepicker.io)
+5. Allow users to scroll through comments sections
