@@ -13,3 +13,40 @@
 </section>
 
 <%= render partial: "deviations/grid", locals: {deviations: @deviations} %>
+
+<script>
+  $(document).ready(function () {
+    var requestingNextPage = false
+
+    $(window).scroll(function (event) {
+      var distanceFromBottom = function () {
+        var $doc = $(document)
+        return $doc.height() - (window.innerHeight + $doc.scrollTop())
+      };
+
+      if (distanceFromBottom() < 500 && !requestingNextPage) {
+        requestingNextPage = true
+
+        $.ajax({
+          url: "<%= scroll_url %>" + "?offset=" + $("._deviation").length,
+          dataType: "html",
+          success: function (data) {
+            console.log(data)
+            $grid = $(".deviation-grid")
+
+            $grid.append(data)
+            $grid.masonry({
+              "columnWidth": 1,
+              "itemSelector": "._deviation",
+              "transitionDuration" : 0,
+              "isFitWidth" : "true"
+            }).masonry("reload")
+
+            requestingNextPage = false
+          }
+        })
+      }
+    })
+
+  })
+</script>

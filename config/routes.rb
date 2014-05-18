@@ -8,6 +8,7 @@ DArt::Application.routes.draw do
   get 'auth/facebook/callback', to: 'sessions#fb_create'
 
   resources :deviations
+  get '/scroll', controller: 'deviations', action: 'scroll'
 
   shallow do
     resources :users do

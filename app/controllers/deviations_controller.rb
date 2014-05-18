@@ -1,8 +1,14 @@
 class DeviationsController < ApplicationController
-  before_action :require_logged_in!, except: [ :index, :show ]
+  before_action :require_logged_in!, except: [ :index, :show, :scroll ]
 
   def index
     @deviations = Deviation.limit(30).all(order: "created_at DESC")
+  end
+
+  def scroll
+    @deviations = Deviation.limit(30).offset(params[:offset]).all(order: "created_at DESC")
+
+    render partial: "deviation", collection: @deviations
   end
 
   def new
