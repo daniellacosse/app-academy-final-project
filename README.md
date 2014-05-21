@@ -1,6 +1,6 @@
 #dArt#
 **a modernized deviantArt clone**  
-designed and built by [muah](http://da.niellacos.se/) in, like, ten days
+designed and built by [da.niellacos.se](http://da.niellacos.se/) in, like, ten days
 
 [go to it](http://dart-da.niellacos.se/)
 
@@ -14,21 +14,21 @@ Features:
 
 Tech:
 ===
-**Database/Backend:**
-  Postgresql, Rails (w/ API layer)
-**Frontend:**
-  [Backbone application](http://backbonejs.org/) for the user page (which, to my chagrin, has since broken everything/I regret not having a stable branch/#lessonlearned),
-  [masonry.js](http://masonry.desandro.com/) for showing image collections in a grid-like fashion
-  UJS for likes and comments
+**Database/Backend:** <br>
+&emsp;Postgresql, Rails (w/ API layer) <br>
+**Frontend:** <br>
+&emsp;[Backbone application](http://backbonejs.org/) for the user page (which, to my chagrin, has since broken everything/I regret not having a stable branch/#lessonlearned),<br>
+&emsp;[masonry.js](http://masonry.desandro.com/) for showing image collections in a grid-like fashion<br>
+&emsp;UJS for likes and comments<br>
 **Custom CSS!**
 
 Todos/Known Issues:
 ===
 1. Add Ease of Access to help guide people through the app remotely
-2. SQL Cleanup & general optimization
-  a. Create objects through their associations!
-  b. cut out unnecessary non-api routes, as many of them were moved into backbone
-  c. Much refactoring, comrade
+2. SQL Cleanup & general optimization<br>
+&emsp;a. Create objects through their associations!<br>
+&emsp;b. cut out unnecessary non-api routes, as many of them were moved into backbone<br>
+&emsp;c. Much refactoring, comrade<br>
 3. Redo icon (minor).
 4. Drag and drop for image upload (via [filepicker.io](https://www.inkfilepicker.com/))
 5. Amend ability to scroll through comments sections
