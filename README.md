@@ -15,16 +15,17 @@ Features:
 Tech:
 ===
 **Database/Backend:** <br>
-&emsp;Postgresql, Rails (w/ API layer) <br>
+&emsp;&emsp;&emsp;Postgresql, Rails (w/ API layer) <br>
 **Frontend:** <br>
-&emsp;[Backbone application](http://backbonejs.org/) for the user page (which, to my chagrin, has since broken everything/I regret not having a stable branch/#lessonlearned),<br>
-&emsp;[masonry.js](http://masonry.desandro.com/) for showing image collections in a grid-like fashion<br>
-&emsp;UJS for likes and comments<br>
+&emsp;&emsp;&emsp;[Backbone application](http://backbonejs.org/) for the user page<br>
+&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;(which, to my chagrin, has since broken everything/I regret not having a stable branch/#lessonlearned)<br>
+&emsp;&emsp;&emsp;[masonry.js](http://masonry.desandro.com/) for showing image collections in a grid-like fashion<br>
+&emsp;&emsp;&emsp;UJS for likes and comments<br>
 **Custom CSS!**
 
 Todos/Known Issues:
 ===
-1. Add Ease of Access to help guide people through the app remotely
+1. Add tutorial to help guide people through the app remotely
 2. SQL Cleanup & general optimization<br>
 &emsp;a. Create objects through their associations!<br>
 &emsp;b. cut out unnecessary non-api routes, as many of them were moved into backbone<br>
