@@ -38,4 +38,4 @@ Todos/Known Issues:
 
 Wish List:
 ===
-See [my blog post](http://daniellacosse.tumblr.com/post/82960380108/whale-coven-droit-twerp) on the matter, after 'I have three stretch goals'
+See [my blog post](http://daniellacosse.tumblr.com/post/82960380108/whale-coven-droit-twerp) on the matter (start reading after 'I have three-ish stretch goals')
