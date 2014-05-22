@@ -47,7 +47,7 @@
   </p>
 
   <% if deviation.is_commentable %>
-    <section id="comments">
+    <section id="comments" class="comment-wrapper">
       <%= render partial: "comments/form", locals: {
         type: "Deviation",
         id: deviation.id

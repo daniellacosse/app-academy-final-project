@@ -15,10 +15,10 @@ DArt.Views.UsersNewDeviation = Backbone.View.extend({
     event.stopPropagation();
     event.preventDefault();
 
-    var data = new FormData(document.getElementById("upload-art"));
+    $("input[type=submit]").attr("disabled", true)
+    $("input[type=submit]").attr("value", "Uploading...")
 
-    console.log(document.getElementById("upload-art"))
-    console.log(data);
+    var data = new FormData(document.getElementById("upload-art"));
 
     $.ajax({
         url: "/api/deviations",
@@ -31,9 +31,9 @@ DArt.Views.UsersNewDeviation = Backbone.View.extend({
           DArt.router.navigate("", {trigger: true})
         },
         error: function () {
-          alert("lol you thought that would work");
+          DArt.router.navigate("", {trigger: true})
+          alert("there was a problem, please try again lataz")
         }
-
       })
   },
 

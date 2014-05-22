@@ -18,8 +18,6 @@ class Api::DeviationsController < ApplicationController
   end
 
   def create
-    p deviation_params
-    p deviation_params[:media]
     @deviation = Deviation.new(deviation_params)
     if @deviation.save
       tag_params[:tags].split(/ |,/).reject{ |el| el.empty? }.each do |tag|
@@ -43,7 +41,7 @@ class Api::DeviationsController < ApplicationController
       render partial: "deviations/deviation.json.jbuilder",
              locals: { deviation: @deviation }
     else
-      flash.now[:errors] = @deviation.errors.full_messages
+      render json: @deviation.errors, status: 422
     end
   end
 

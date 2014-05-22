@@ -1,24 +1,26 @@
-<div>
-  <span class="form-header half-opacity">
-    <span class="comment-icon"></span> comment
-  </span>
-  <form
-    class="comment-form center"
-    action="<%= comments_url %>"
-    method="post"
-    data-remote="true">
+<% if logged_in? %>
+  <div>
+    <span class="form-header half-opacity">
+      <span class="comment-icon"></span> comment
+    </span>
+    <form
+      class="comment-form center"
+      action="<%= comments_url %>"
+      method="post"
+      data-remote="true">
 
-    <%= auth_token %>
+      <%= auth_token %>
 
-    <input type="hidden" name="comment[user_id]" value="<%= current_user.try(:id) %>">
-    <input type="hidden" name="comment[commentable_id]" value="<%= id %>">
-    <input type="hidden" name="comment[commentable_type]" value="<%= type %>">
+      <input type="hidden" name="comment[user_id]" value="<%= current_user.try(:id) %>">
+      <input type="hidden" name="comment[commentable_id]" value="<%= id %>">
+      <input type="hidden" name="comment[commentable_type]" value="<%= type %>">
 
-    <textarea
-      class="textarea-input"
-        placeholder="All comments are final"
-        name="comment[body]"></textarea>
+      <textarea
+        class="textarea-input"
+          placeholder="All comments are final"
+          name="comment[body]"></textarea>
 
-    <input class="submit-button" type="submit" value="...">
-  </form>
-</div>
+      <input class="submit-button" type="submit" value="...">
+    </form>
+  </div>
+<% end %>
