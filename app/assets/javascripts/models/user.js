@@ -27,6 +27,12 @@ DArt.Models.User = Backbone.Model.extend({
       delete jsonResp.galleries;
     }
 
+    if (jsonResp.notifications){
+      this._notifications = new DArt.Collections.Notifications(jsonResp.notifications,
+        {parse: true}
+     )
+    }
+
     return jsonResp
   }
 

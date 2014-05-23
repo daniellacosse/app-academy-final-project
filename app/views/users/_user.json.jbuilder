@@ -22,3 +22,8 @@ json.galleries do
                 collection: @user.galleries,
                 as: :gallery
 end
+json.notifications do
+  json.partial! 'notifications/note.json.jbuilder',
+                collection: @user.notifications,
+                as: :notification
+end

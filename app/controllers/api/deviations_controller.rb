@@ -45,6 +45,13 @@ class Api::DeviationsController < ApplicationController
     end
   end
 
+  def show
+    @deviation = Deviation.find(params[:id])
+
+    render partial: "deviations/deviation.json.jbuilder",
+           locals: { deviation: @deviation }
+  end
+
   def update
     @deviation = Deviation.find(params[:id])
     if @deviation.update_attributes(deviation_params)

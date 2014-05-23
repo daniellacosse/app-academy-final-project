@@ -1,0 +1,13 @@
+<a href="<%= model.get("notifier_url") %>">
+  <%= model.escape("notifier") %>
+</a>
+
+<%= model.escape("message") %>
+
+<a href="<%= model.get("message_url") %>">
+  <%= model.escape("subject") %>
+</a>
+
+<span class="metadata">
+  <%= model.escape("time_ago") %> ago
+</span>

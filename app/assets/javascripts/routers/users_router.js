@@ -13,6 +13,7 @@ DArt.Routers.Users = Backbone.Router.extend({
   routes: {
     "journals" : "journals",
     "galleries" : "galleries",
+    "notifications" : "notifications",
     "journal/new" : "newJournal",
     "gallery/new" : "newGallery",
     "deviation/new" : "newDeviation",
@@ -61,6 +62,16 @@ DArt.Routers.Users = Backbone.Router.extend({
   galleries: function () {
 
     var view = new DArt.Views.UsersGalleries({
+      model: DArt.user
+    })
+
+    this._swapView(view)
+
+  },
+
+  notifications: function () {
+
+    var view = new DArt.Views.UsersNotifications({
       model: DArt.user
     })
 

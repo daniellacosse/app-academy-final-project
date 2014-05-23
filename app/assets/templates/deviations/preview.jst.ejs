@@ -1,10 +1,12 @@
-<div class="_deviation" data-id="<%= model.get("id") %>">
-  <a href="/deviations/<%= model.get("id") %>" class="deviation-show" data-id="<%= model.get("id") %>">
+<div class="_deviation" data-id="<%= model.get('id') %>">
+  <a id="dev<%= model.get('id') %>" class="img-link" href=#>
     <img width="300" class="_deviation-media" src="<%= model.get("thumb_url") %>">
-
+  </a>
     <h2 class="_deviation-title">
-        <%= model.escape("title") %>
+      <%= model.escape("title") %>
     </h2>
 
-  </a>
+    <span class="metadata">
+      by ~<%= model.escape("author") %>
+    </span>
 </div>

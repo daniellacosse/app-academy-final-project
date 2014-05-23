@@ -1,0 +1,49 @@
+<section class="lightbox">
+  <section class="deviation-info">
+
+    <table>
+      <tr>
+        <td>
+          <h2 class="deviation-title">
+            <%= model.escape("title") %>
+          </h2>
+        </td>
+        <td>
+        </td>
+      </tr>
+    </table>
+
+
+    <span class="deviation-author">
+      by ~<%= model.get("author") %>
+      </a>
+    </span>
+
+    <p class="deviation-description">
+      <%= model.get("description") %>
+    </p>
+  </section>
+
+  <section class="media">
+    <div class="close-button">
+      X
+    </div>
+    <table>
+      <tr>
+        <td>
+          <img class="deviation-media" src="<%= model.get('url') %>">
+        </td>
+      </tr>
+    </table>
+    <script>
+      $(".media").on("click", function(event) {
+        $(event.target).closest(".lightbox").remove()
+      })
+
+      $(".deviation-media").on("click", function(event) {
+        event.stopPropagation();
+        event.preventDefault();
+      })
+    </script>
+  </section>
+</section
